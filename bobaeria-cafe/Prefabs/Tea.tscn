@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgtxsrha2o255"]
+
+[ext_resource type="Script" path="res://Prefabs/tea.gd" id="1_v2e1t"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4lxcr"]
+height = 0.748985
+radius = 0.191764
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ne1x"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8j0of"]
+material = SubResource("StandardMaterial3D_6ne1x")
+
+[node name="Tea" type="Area3D"]
+script = ExtResource("1_v2e1t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_4lxcr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 0, 0, 0)
+mesh = SubResource("CylinderMesh_8j0of")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
