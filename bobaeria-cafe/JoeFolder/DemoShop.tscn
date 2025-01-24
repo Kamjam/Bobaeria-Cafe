@@ -1,0 +1,206 @@
+[gd_scene load_steps=12 format=3 uid="uid://qvj5nrktjvlk"]
+
+[ext_resource type="PackedScene" uid="uid://do5p4i335e27s" path="res://JoeFolder/student.tscn" id="1_igbir"]
+[ext_resource type="Script" path="res://JoeFolder/Scripts/StudentSpawner.gd" id="2_30hv2"]
+[ext_resource type="Script" path="res://JoeFolder/Scripts/TableManager.gd" id="2_r8opo"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_krij8"]
+vertices = PackedVector3Array(-1, 1, -5.75, -0.5, 1, -6, -0.5, 1, -14.5, -14.5, 1, -14.5, -14.5, 1, -5, -1, 1, -5, 1, 1, -6, 1.25, 1, -5, 2, 1, -5, 2.25, 1, -6, 7, 1, -6, 8.25, 1, -6, 14.5, 1, -14.5, 4, 1, -6, 4.25, 1, -5, 5, 1, -5, 5.25, 1, -6, 10, 1, -6, 7.25, 1, -5, 8, 1, -5, 10.25, 1, -5, 14.5, 1, -5, -1, 1, 0.25, -0.75, 1, -1, -0.75, 1, -3.75, -14.5, 1, 0.25, 1, 1, -1, 1.25, 1, 0.25, 2, 1, 0.25, 2.25, 1, -1, 6.75, 1, -3.75, 5.25, 1, -3.75, 5.25, 1, -1, 7, 1, -1, 4, 1, -1, 4.25, 1, 0.25, 5, 1, 0.25, 3.75, 1, -3.75, 7.25, 1, 0.25, 8, 1, 0.25, 8.25, 1, -1, 10, 1, -1, 9.75, 1, -3.75, 8.25, 1, -3.75, 2.25, 1, -3.75, 10.25, 1, 0, 14.5, 1, 0, 0.75, 1, -3.75, 5.25, 1, 1.25, 3.75, 1, 1.25, -1.25, 1, 14.5, 2.25, 1, 1.25, 0.75, 1, 1.25, 8.25, 1, 1.25, 6.75, 1, 1.25, 14.5, 1, 14.5, 9.75, 1, 1.25, -0.75, 1, 1.25, -1, 1, 0.75, -14.5, 1, 14.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(0, 5, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 2), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 2), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(12, 17, 11), PackedInt32Array(18, 10, 19), PackedInt32Array(19, 10, 11), PackedInt32Array(16, 13, 2), PackedInt32Array(20, 17, 21), PackedInt32Array(21, 17, 12), PackedInt32Array(6, 1, 2), PackedInt32Array(13, 9, 2), PackedInt32Array(2, 10, 16), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 5), PackedInt32Array(5, 22, 25), PackedInt32Array(5, 25, 4), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(31, 30, 32), PackedInt32Array(32, 30, 33), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 32), PackedInt32Array(15, 31, 14), PackedInt32Array(14, 31, 37), PackedInt32Array(37, 31, 34), PackedInt32Array(34, 31, 32), PackedInt32Array(38, 33, 39), PackedInt32Array(39, 33, 40), PackedInt32Array(43, 42, 40), PackedInt32Array(40, 42, 41), PackedInt32Array(19, 43, 18), PackedInt32Array(18, 43, 30), PackedInt32Array(30, 43, 33), PackedInt32Array(33, 43, 40), PackedInt32Array(44, 37, 29), PackedInt32Array(29, 37, 34), PackedInt32Array(41, 42, 45), PackedInt32Array(45, 42, 20), PackedInt32Array(45, 20, 21), PackedInt32Array(45, 21, 46), PackedInt32Array(24, 47, 23), PackedInt32Array(23, 47, 26), PackedInt32Array(8, 44, 7), PackedInt32Array(7, 44, 47), PackedInt32Array(47, 44, 26), PackedInt32Array(26, 44, 29), PackedInt32Array(36, 48, 35), PackedInt32Array(35, 48, 49), PackedInt32Array(49, 48, 50), PackedInt32Array(28, 51, 27), PackedInt32Array(27, 51, 52), PackedInt32Array(52, 51, 50), PackedInt32Array(53, 38, 39), PackedInt32Array(50, 51, 49), PackedInt32Array(48, 54, 50), PackedInt32Array(50, 54, 55), PackedInt32Array(38, 53, 54), PackedInt32Array(54, 53, 55), PackedInt32Array(45, 46, 56), PackedInt32Array(56, 46, 55), PackedInt32Array(50, 58, 57), PackedInt32Array(50, 57, 52), PackedInt32Array(53, 56, 55), PackedInt32Array(22, 58, 25), PackedInt32Array(25, 58, 50), PackedInt32Array(25, 50, 59)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aseij"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ek0js"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1plej"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l2hfn"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_u8di7"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6ws41"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_j2rux"]
+
+[node name="DemoShop" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_krij8")
+
+[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor"]
+shape = SubResource("BoxShape3D_aseij")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor"]
+mesh = SubResource("BoxMesh_ek0js")
+
+[node name="Table" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Table"]
+shape = SubResource("BoxShape3D_1plej")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Table/CollisionShape3D"]
+mesh = SubResource("BoxMesh_l2hfn")
+
+[node name="Table2" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Table2"]
+shape = SubResource("BoxShape3D_1plej")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Table2/CollisionShape3D"]
+mesh = SubResource("BoxMesh_l2hfn")
+
+[node name="Table3" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Table3"]
+shape = SubResource("BoxShape3D_1plej")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Table3/CollisionShape3D"]
+mesh = SubResource("BoxMesh_l2hfn")
+
+[node name="Table4" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Table4"]
+shape = SubResource("BoxShape3D_1plej")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Table4/CollisionShape3D"]
+mesh = SubResource("BoxMesh_l2hfn")
+
+[node name="Table5" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Table5"]
+shape = SubResource("BoxShape3D_1plej")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Table5/CollisionShape3D"]
+mesh = SubResource("BoxMesh_l2hfn")
+
+[node name="Table6" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Table6"]
+shape = SubResource("BoxShape3D_1plej")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Table6/CollisionShape3D"]
+mesh = SubResource("BoxMesh_l2hfn")
+
+[node name="Table7" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Table7"]
+shape = SubResource("BoxShape3D_1plej")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Table7/CollisionShape3D"]
+mesh = SubResource("BoxMesh_l2hfn")
+
+[node name="Table8" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Table8"]
+shape = SubResource("BoxShape3D_1plej")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Table8/CollisionShape3D"]
+mesh = SubResource("BoxMesh_l2hfn")
+
+[node name="Chair1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair1"]
+shape = SubResource("CylinderShape3D_u8di7")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chair1/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_6ws41")
+
+[node name="Chair2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair2"]
+shape = SubResource("CylinderShape3D_u8di7")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chair2/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_6ws41")
+
+[node name="Chair3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 1.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair3"]
+shape = SubResource("CylinderShape3D_u8di7")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chair3/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_6ws41")
+
+[node name="Chair4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 1.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair4"]
+shape = SubResource("CylinderShape3D_u8di7")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chair4/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_6ws41")
+
+[node name="Chair5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair5"]
+shape = SubResource("CylinderShape3D_u8di7")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chair5/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_6ws41")
+
+[node name="Chair6" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair6"]
+shape = SubResource("CylinderShape3D_u8di7")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chair6/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_6ws41")
+
+[node name="Chair7" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair7"]
+shape = SubResource("CylinderShape3D_u8di7")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chair7/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_6ws41")
+
+[node name="Chair8" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -3.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair8"]
+shape = SubResource("CylinderShape3D_u8di7")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chair8/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_6ws41")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.269105, 0.963111, 0, -0.963111, 0.269105, 1.11774, 10, 2.04062)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.70962, 0.704585, 0, -0.704585, 0.70962, 0, 9.94611, 0)
+
+[node name="Manager" type="Node3D" parent="." node_paths=PackedStringArray("allChairs") groups=["Manager"]]
+script = ExtResource("2_r8opo")
+allChairs = [NodePath("../Chair1"), NodePath("../Chair2"), NodePath("../Chair3"), NodePath("../Chair4"), NodePath("../Chair5"), NodePath("../Chair6"), NodePath("../Chair7"), NodePath("../Chair8")]
+
+[node name="Spawn" type="MeshInstance3D" parent="." node_paths=PackedStringArray("spawnPosition")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.01323, 1.12142, 3.15506)
+mesh = SubResource("SphereMesh_j2rux")
+script = ExtResource("2_30hv2")
+student = ExtResource("1_igbir")
+spawnPosition = NodePath(".")
