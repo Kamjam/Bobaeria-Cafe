@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="bobaDrink" load_steps=2 format=3 uid="uid://bc4pt7uxm52as"]
+
+[ext_resource type="Script" path="res://JoeFolder/bobaDrink.gd" id="1_dfltq"]
+
+[resource]
+script = ExtResource("1_dfltq")
+drinkName = ""
+bubbles = 0

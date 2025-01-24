@@ -17,7 +17,8 @@ enum Drinks {
 	BLUE,
 }
 var desiredDrink: Drinks = Drinks.ORANGE
-
+var MyClass = preload("res://Boba/scripts/drink.gd")
+var wantedDrink
 
 func _ready() -> void:
 	desiredDrink = Drinks.values().pick_random()
