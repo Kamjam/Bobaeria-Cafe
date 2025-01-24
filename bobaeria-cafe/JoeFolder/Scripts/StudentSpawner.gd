@@ -7,7 +7,8 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_left"):
 		SpawnStudent()
 func SpawnStudent():
-	var instance = student.instantiate()
-	instance.position = spawnPosition.global_position
-	instance.rotation = Vector3(0,0,0)
-	get_parent().add_child(instance)
+	if get_tree().get_nodes_in_group("Student").size() < 8:
+		var instance = student.instantiate()
+		instance.position = spawnPosition.global_position
+		instance.rotation = Vector3(0,0,0)
+		get_parent().add_child(instance)

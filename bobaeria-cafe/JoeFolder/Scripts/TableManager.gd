@@ -9,8 +9,13 @@ extends Node
 func _ready() -> void:
 	for h in allChairs:
 		avaliableChairs.append(h)
-func GetChair() -> Vector3:
-	return avaliableChairs[0].global_position
+func GetChair() -> Node3D:
+	return avaliableChairs[0]
 func RemoveChair(a):
 	avaliableChairs.remove_at(a)
 	print("Removed")
+func AddChair(i):
+	avaliableChairs.append(i)
+func GetExit() -> Vector3:
+	return exit.global_position
+	

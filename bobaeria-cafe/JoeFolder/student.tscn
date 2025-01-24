@@ -1,15 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://do5p4i335e27s"]
+[gd_scene load_steps=5 format=3 uid="uid://do5p4i335e27s"]
 
 [ext_resource type="Script" path="res://JoeFolder/Scripts/student.gd" id="1_b1qys"]
+[ext_resource type="PackedScene" uid="uid://dlpg46q2lkiwn" path="res://JoeFolder/thought_bubble.tscn" id="2_2msao"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6o55e"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3f0l"]
 
-[node name="Student" type="CharacterBody3D" node_paths=PackedStringArray("agent") groups=["Student"]]
+[node name="Student" type="CharacterBody3D" node_paths=PackedStringArray("agent", "bubblePos") groups=["Student"]]
 collision_layer = 0
 script = ExtResource("1_b1qys")
 agent = NodePath("NavigationAgent3D")
+stoppingDistance = 1.505
+speed = 2.0
+thoughtBubble = ExtResource("2_2msao")
+bubblePos = NodePath("BubblePos")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_6o55e")
@@ -21,3 +26,6 @@ shape = SubResource("CapsuleShape3D_q3f0l")
 avoidance_enabled = true
 radius = 2.0
 neighbor_distance = 4.0
+
+[node name="BubblePos" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
