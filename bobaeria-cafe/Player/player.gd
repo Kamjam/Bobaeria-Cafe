@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 func _input(event):
 	if event.is_action_pressed("quit"):get_tree().quit()
 	
-	if event.is_action_pressed("interaction") and pickedObject:
+	if event.is_action_pressed("interact") and pickedObject:
 		pickedObject.reparent(get_tree().current_scene)
 		pickedObject = null
 
