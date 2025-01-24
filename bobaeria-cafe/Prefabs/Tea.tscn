@@ -13,6 +13,7 @@ albedo_color = Color(0, 1, 1, 1)
 material = SubResource("StandardMaterial3D_6ne1x")
 
 [node name="Tea" type="Area3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 script = ExtResource("1_v2e1t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
