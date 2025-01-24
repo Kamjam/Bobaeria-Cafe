@@ -4,11 +4,4 @@
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_jknv7")
-boba = 2
-flavor = 3
-ice_level = 3
-topping = 1
-sweetness = 5
-teabase = 2
-whipped_cream = true
 _cooldown_timer = 2.0

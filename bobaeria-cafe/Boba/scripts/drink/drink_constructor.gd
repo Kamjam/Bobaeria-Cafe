@@ -57,7 +57,7 @@ func construct_drink():
 		created_drink.iceLevel = ice_level
 		created_drink.hasWhippedCream = whipped_cream
 		
-		_set_cooldown()
+		await _set_cooldown()
 		
 		drink_created.emit(created_drink)
 		
