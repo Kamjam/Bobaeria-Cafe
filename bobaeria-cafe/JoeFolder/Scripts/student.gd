@@ -28,7 +28,7 @@ func _ready() -> void:
 	destination = chair.position
 	manager.RemoveChair(0)
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_just_pressed(""):
 		Leave()
 	var pos : Vector2 = Vector2(global_position.x, global_position.z)
 	var lookTarget : Vector2 = Vector2(destination.x, destination.z)
