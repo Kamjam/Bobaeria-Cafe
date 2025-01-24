@@ -1,8 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://cgi74d48wt8qo"]
+[gd_scene load_steps=20 format=3 uid="uid://cgi74d48wt8qo"]
 
 [ext_resource type="PackedScene" uid="uid://d0u83fayrvkma" path="res://Player/player.tscn" id="1_n77sb"]
 [ext_resource type="PackedScene" uid="uid://cgtxsrha2o255" path="res://Prefabs/Tea.tscn" id="2_iq2yb"]
 [ext_resource type="PackedScene" uid="uid://bg0l6trxtasyy" path="res://Prefabs/table.tscn" id="3_r8rpt"]
+[ext_resource type="Script" path="res://JoeFolder/Scripts/TableManager.gd" id="4_h2ysp"]
+[ext_resource type="Script" path="res://JoeFolder/Scripts/StudentSpawner.gd" id="5_g7obn"]
+[ext_resource type="PackedScene" uid="uid://do5p4i335e27s" path="res://JoeFolder/student.tscn" id="6_6hi14"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_qm2hx"]
+vertices = PackedVector3Array(-4.22224, 0.181403, -5.76287, -4.22224, 0.181403, 13.2371, 14.7778, 0.181403, 13.2371, 14.7778, 0.181403, -5.76287)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ljti"]
 albedo_color = Color(1, 0.537255, 0.207843, 1)
@@ -32,18 +39,28 @@ ambient_light_energy = 16.0
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6b1m8"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q83gp"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_78xr3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_lwtrr"]
+
 [node name="Main" type="Node3D"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -6.37445, 0, 1.08938)
+navigation_mesh = SubResource("NavigationMesh_qm2hx")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="NavigationRegion3D"]
+transform = Transform3D(0, 0, -20, 0, 0.24, 0, 20, 0, 0, 5.27773, -0.198597, 3.73711)
+use_collision = true
+mesh = SubResource("BoxMesh_f162b")
+
+[node name="Camera3D" type="Camera3D" parent="." groups=["Cam"]]
 transform = Transform3D(1, -2.10734e-08, 2.10734e-08, -1.77636e-15, 0.707107, 0.707107, -2.98023e-08, -0.707107, 0.707107, 0, 45.339, 45.207)
 fov = 21.9
 
 [node name="Player" parent="." instance=ExtResource("1_n77sb")]
-
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-transform = Transform3D(14.1421, 0, -14.1421, 0, 0.24, 0, 14.1421, 0, 14.1421, 0, -0.198597, 0)
-use_collision = true
-mesh = SubResource("BoxMesh_f162b")
 
 [node name="CSGMesh3D3" type="CSGMesh3D" parent="."]
 transform = Transform3D(0.707107, 0, 14.9222, 0, 5.08034, 0, -0.707107, 0, 14.9222, 7.08632, 2.22823, -7.75442)
@@ -91,3 +108,100 @@ shape = SubResource("WorldBoundaryShape3D_6b1m8")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.130526, 0.991445, 0, -0.991445, 0.130526, 0, 19.411, 11.636)
 light_color = Color(0.223529, 0.94902, 1, 1)
+
+[node name="Chair1" type="StaticBody3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -6.37445, 0, 1.08938)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair1"]
+shape = SubResource("CylinderShape3D_q83gp")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chair1/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_78xr3")
+
+[node name="Chair2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4.25313, 0, -1.03194)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair2"]
+shape = SubResource("CylinderShape3D_q83gp")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chair2/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_78xr3")
+
+[node name="Chair3" type="StaticBody3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -2.13181, 0, -3.15326)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair3"]
+shape = SubResource("CylinderShape3D_q83gp")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chair3/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_78xr3")
+
+[node name="Chair4" type="StaticBody3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.0104938, 0, -5.27458)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair4"]
+shape = SubResource("CylinderShape3D_q83gp")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chair4/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_78xr3")
+
+[node name="Chair5" type="StaticBody3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -9.90999, 0, -2.44615)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair5"]
+shape = SubResource("CylinderShape3D_q83gp")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chair5/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_78xr3")
+
+[node name="Chair6" type="StaticBody3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -7.78867, 0, -4.56747)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair6"]
+shape = SubResource("CylinderShape3D_q83gp")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chair6/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_78xr3")
+
+[node name="Chair7" type="StaticBody3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -5.66735, 0, -6.68879)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair7"]
+shape = SubResource("CylinderShape3D_q83gp")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chair7/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_78xr3")
+
+[node name="Chair8" type="StaticBody3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -3.54603, 0, -8.81011)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair8"]
+shape = SubResource("CylinderShape3D_q83gp")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chair8/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_78xr3")
+
+[node name="Manager" type="Node3D" parent="." node_paths=PackedStringArray("allChairs", "exit") groups=["Manager"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85745, -0.017889, 1.95329)
+script = ExtResource("4_h2ysp")
+allChairs = [NodePath("../Chair1"), NodePath("../Chair2"), NodePath("../Chair3"), NodePath("../Chair4"), NodePath("../Chair5"), NodePath("../Chair6"), NodePath("../Chair7"), NodePath("../Chair8")]
+exit = NodePath("../Exit")
+
+[node name="Spawn" type="MeshInstance3D" parent="." node_paths=PackedStringArray("spawnPosition")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1008, 1.12142, 0.209148)
+mesh = SubResource("SphereMesh_lwtrr")
+script = ExtResource("5_g7obn")
+student = ExtResource("6_6hi14")
+spawnPosition = NodePath(".")
+
+[node name="Exit" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28542, 1.12142, 9.69315)
+mesh = SubResource("SphereMesh_lwtrr")

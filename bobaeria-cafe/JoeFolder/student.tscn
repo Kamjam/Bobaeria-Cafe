@@ -11,7 +11,7 @@
 collision_layer = 0
 script = ExtResource("1_b1qys")
 agent = NodePath("NavigationAgent3D")
-stoppingDistance = 1.505
+stoppingDistance = 1.0
 speed = 2.0
 thoughtBubble = ExtResource("2_2msao")
 bubblePos = NodePath("BubblePos")

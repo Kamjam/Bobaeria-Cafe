@@ -2,7 +2,10 @@ extends Node
 
 @export var student : PackedScene
 @export var spawnPosition : Node3D
-
+@export var customerRate : float = 4
+func _ready() -> void:
+	SpawnStudent()
+	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_left"):
 		SpawnStudent()
@@ -12,3 +15,5 @@ func SpawnStudent():
 		instance.position = spawnPosition.global_position
 		instance.rotation = Vector3(0,0,0)
 		get_parent().add_child(instance)
+		await get_tree().create_timer(customerRate).timeout
+		SpawnStudent()
