@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3f0l"]
 
-[node name="Student" type="CharacterBody3D" node_paths=PackedStringArray("agent")]
+[node name="Student" type="CharacterBody3D" node_paths=PackedStringArray("agent") groups=["Student"]]
 collision_layer = 0
 script = ExtResource("1_b1qys")
 agent = NodePath("NavigationAgent3D")

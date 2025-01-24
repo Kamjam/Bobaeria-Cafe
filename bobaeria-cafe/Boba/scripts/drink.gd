@@ -1,7 +1,7 @@
 class_name drink
 extends Node
 
-var boba: Boba.Boba
+var boba: 
 var flavors: Flavors.Flavor
 var ice_level: int
 var topping: Toppings.Topping
