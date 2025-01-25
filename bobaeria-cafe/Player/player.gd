@@ -2,7 +2,9 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 
-var pickedObject
+var pickedObject: bool = false
+var interactables: Array[Area3D] 
+var byTrashCan: bool = false
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -18,19 +20,54 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-		
+	
 	move_and_slide()
 
 func _input(event):
 	if event.is_action_pressed("quit"):get_tree().quit()
 	
-	if event.is_action_pressed("interact") and pickedObject:
-		pickedObject.reparent(get_tree().current_scene)
-		pickedObject = null
+	if event.is_action_pressed("interact") and interactables.size() > 0 and !pickedObject:
+		
+		interactables[0].reparent(get_tree().current_scene)
+		pick_up_object(interactables[0])
+		
+		pickedObject = true
+		print("grabbed")
+		
+	elif event.is_action_pressed("interact") and pickedObject and byTrashCan:
+		
+		interactables[0].queue_free()
+		interactables.remove_at(0)
+		pickedObject = false
+		print("trashed")
+	
+	
 
 func pick_up_object(object):
 	object.reparent(self)
 	object.global_position = %CarryTeaMarker.global_position
-	
-	await get_tree().create_timer(0.1).timeout
-	pickedObject = object
+
+
+
+func _on_pickup_area_area_entered(area: Area3D) -> void:
+	interactables.append(area)
+	print("in area")
+
+func _on_pickup_area_area_exited(area: Area3D) -> void:
+	interactables.erase(area)
+	print("out area")
+
+
+
+
+func _on_pickup_area_body_entered(body: Node3D) -> void:
+	if body is ThisIsTrashCan:
+		byTrashCan = true
+		print("trash can")
+
+
+
+func _on_pickup_area_body_exited(body: Node3D) -> void:
+	if body is ThisIsTrashCan:
+		byTrashCan = false
+		print("not trash can")
