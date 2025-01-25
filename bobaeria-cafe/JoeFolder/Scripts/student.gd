@@ -121,7 +121,7 @@ func SetRandomDesire(num):
 				
 				print("Cream", judgeThree)		
 				
-func JudgeDrink(otherDrink : bobaDrink):
+func JudgeDrink(otherDrink : bobaDrink) -> int:
 	match listToJudge[0]:
 			1:
 				if judgeOne < (otherDrink.bubbleLevel -1) and judgeOne < (otherDrink.bubbleLevel +1):
@@ -170,13 +170,14 @@ func JudgeDrink(otherDrink : bobaDrink):
 			5:
 				if judgeThree == otherDrink.hasWhippedCream:
 					drinkScore+=20
-	print("YOU SCORED" ,drinkScore)
+	
 	textScore.text = "" + str(drinkScore)
 	if instance:
 		instance.queue_free()
 		instance = null
 	hasDrink = true
 	textScore.show()
+	return drinkScore
 func _ready() -> void:
 	manager = get_tree().get_first_node_in_group("Manager")
 	chair = manager.GetChair()
