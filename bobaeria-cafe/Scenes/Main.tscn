@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://cgi74d48wt8qo"]
+[gd_scene load_steps=24 format=3 uid="uid://cgi74d48wt8qo"]
 
 [ext_resource type="PackedScene" uid="uid://d0u83fayrvkma" path="res://Player/player.tscn" id="1_n77sb"]
+[ext_resource type="PackedScene" uid="uid://bg0l6trxtasyy" path="res://Prefabs/Trash.tscn" id="1_vutgy"]
 [ext_resource type="Texture2D" uid="uid://b46y5njumyqi3" path="res://icon.svg" id="2_c3ovl"]
 [ext_resource type="PackedScene" uid="uid://cgtxsrha2o255" path="res://Prefabs/Tea.tscn" id="2_iq2yb"]
 [ext_resource type="Script" path="res://JoeFolder/Scripts/TableManager.gd" id="4_h2ysp"]
@@ -136,14 +137,18 @@ shape = SubResource("BoxShape3D_57gc4")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Table5"]
 mesh = SubResource("BoxMesh_5cmy4")
 
+[node name="Trash" parent="NavigationRegion3D" instance=ExtResource("1_vutgy")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 0.715, 0, 0.707107, 0, 0.707107, -1.88816, 0.590769, 7.93485)
+
 [node name="Camera3D" type="Camera3D" parent="." groups=["Cam"]]
-transform = Transform3D(1, -2.10734e-08, 2.10734e-08, -1.77636e-15, 0.707107, 0.707107, -2.98023e-08, -0.707107, 0.707107, 4.03792e-07, 58.888, 58.756)
-fov = 21.9
+transform = Transform3D(1, -2.10734e-08, 2.10734e-08, -1.77636e-15, 0.707107, 0.707107, -2.98023e-08, -0.707107, 0.707107, 0, 59.973, 58.756)
+fov = 16.9
 
 [node name="Player" parent="." instance=ExtResource("1_n77sb")]
 
 [node name="Sprite3D" type="Sprite3D" parent="Player"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.197159, 0.174203)
+visible = false
 billboard = 1
 texture = ExtResource("2_c3ovl")
 
