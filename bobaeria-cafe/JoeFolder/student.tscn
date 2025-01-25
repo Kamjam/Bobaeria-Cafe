@@ -15,9 +15,10 @@ script = ExtResource("1_b1qys")
 agent = NodePath("NavigationAgent3D")
 stoppingDistance = 1.0
 speed = 2.0
-leaveTime = 60.0
+leaveTime = 90.0
 thoughtBubble = ExtResource("2_2msao")
 bubblePos = NodePath("BubblePos")
+test = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
