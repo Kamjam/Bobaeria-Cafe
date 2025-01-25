@@ -127,8 +127,17 @@ shape = SubResource("BoxShape3D_57gc4")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Table4"]
 mesh = SubResource("BoxMesh_5cmy4")
 
+[node name="Table5" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(0, 0, -1.7, 0, 1.7, 0, 1.7, 0, 0, 14.5633, 0.532608, 4.26149)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Table5"]
+shape = SubResource("BoxShape3D_57gc4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Table5"]
+mesh = SubResource("BoxMesh_5cmy4")
+
 [node name="Camera3D" type="Camera3D" parent="." groups=["Cam"]]
-transform = Transform3D(1, -2.10734e-08, 2.10734e-08, -1.77636e-15, 0.707107, 0.707107, -2.98023e-08, -0.707107, 0.707107, 0, 45.339, 45.207)
+transform = Transform3D(1, -2.10734e-08, 2.10734e-08, -1.77636e-15, 0.707107, 0.707107, -2.98023e-08, -0.707107, 0.707107, 4.03792e-07, 58.888, 58.756)
 fov = 21.9
 
 [node name="Player" parent="." instance=ExtResource("1_n77sb")]
@@ -253,6 +262,7 @@ mesh = SubResource("SphereMesh_lwtrr")
 script = ExtResource("5_g7obn")
 student = ExtResource("6_6hi14")
 spawnPosition = NodePath(".")
+customerRate = 3.0
 
 [node name="Exit" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0776, 1.12142, 18.2188)

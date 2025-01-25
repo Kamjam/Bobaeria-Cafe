@@ -9,12 +9,27 @@ albedo_color = Color(1, 1, 1, 0.337255)
 [sub_resource type="SphereMesh" id="SphereMesh_2fl6h"]
 material = SubResource("StandardMaterial3D_5ygoe")
 
-[node name="ThoughtBubble" type="MeshInstance3D"]
+[node name="ThoughtBubble" type="MeshInstance3D" node_paths=PackedStringArray("one", "two", "three")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 3.73374, 0)
 mesh = SubResource("SphereMesh_2fl6h")
 script = ExtResource("1_i2xtq")
+one = NodePath("One")
+two = NodePath("Two")
+three = NodePath("Three")
 
-[node name="Label3D" type="Label3D" parent="."]
+[node name="One" type="Label3D" parent="."]
+billboard = 1
+text = "Sweet Green Tea"
+font_size = 26
+
+[node name="Two" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19775, 0)
+billboard = 1
+text = "Sweet Green Tea"
+font_size = 26
+
+[node name="Three" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.237299, 0)
 billboard = 1
 text = "Sweet Green Tea"
 font_size = 26

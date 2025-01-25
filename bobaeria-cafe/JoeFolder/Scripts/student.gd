@@ -9,7 +9,6 @@ extends CharacterBody3D
 @export var target : Node3D
 @export var thinkingTime : float = 3
 @export var leaveTime : float = 4
-
 @export var thoughtBubble : PackedScene
 @export var bubblePos : Node3D
 
@@ -23,6 +22,10 @@ var chair : Node3D = null
 var judgeOne
 var judgeTwo
 var judgeThree
+var textOne
+var textTwo
+var textThree
+
 
 func _init():
 	randomize() 
@@ -33,31 +36,88 @@ func _init():
 		var num = randi() % 5 + 1
 		if num != listToJudge[0]:
 			listToJudge[1] = num
+			SetRandomDesire(2)
+			
 	while listToJudge[2] == 0:
 		var num = randi() % 5 + 1
 		if num != listToJudge[0] and num != listToJudge[1]:
 			listToJudge[2] = num
+			SetRandomDesire(3)
+			
 	#print(listToJudge[0], listToJudge[1], listToJudge[2])
 func SetRandomDesire(num):
 	if num == 1:
 		match listToJudge[0]:
 			1:
 				judgeOne = randi() % 9 + 1
+				textOne = "Bubbles: " + str(judgeOne)
 				print("Bubbles", judgeOne)
 			2:
 				judgeOne = Flavors.Flavor.values()[ randi()%Flavors.Flavor.size()]
+				textOne = "Flavor: " + str(judgeOne)
 				print("Flavor", judgeOne)
 			3:
 				judgeOne = Toppings.Topping.values()[ randi()%Toppings.Topping.size()]
+				textOne = "Topping: " + str(judgeOne)
 				print("Topping", judgeOne)
 			4:
 				judgeOne = randi() % 9 + 1
+				textOne = "Sweetness: " + str(judgeOne)
 				print("Sweetness", judgeOne)
 			5:
 				judgeOne = randi() % 2 == 0
+				textOne = "Cream: " + str(judgeOne)
 				print("Cream", judgeOne)
+	if num == 2:
+		match listToJudge[1]:
+			1:
+				judgeTwo = randi() % 9 + 1
+				textTwo = "Bubbles: " + str(judgeTwo)
+				print("Bubbles", judgeTwo)
+			2:
+				judgeTwo = Flavors.Flavor.values()[ randi()%Flavors.Flavor.size()]
+				textTwo = "Flavor: " + str(judgeTwo)
+				print("Flavor", judgeTwo)
+			3:
+				judgeTwo = Toppings.Topping.values()[ randi()%Toppings.Topping.size()]
+				textTwo = "Topping: " + str(judgeTwo)
+				print("Topping", judgeTwo)
+			4:
+				judgeTwo = randi() % 9 + 1
+				textTwo = "Sweetness: " + str(judgeTwo)
+				print("Sweetness", judgeTwo)
+			5:
+				judgeTwo = randi() % 2 == 0
+				textTwo = "Cream: " + str(judgeTwo)
+				print("Cream", judgeTwo)		
+	if num == 3:
+		match listToJudge[2]:
+			1:
+				judgeThree = randi() % 9 + 1
+				textThree = "Bubbles: " + str(judgeThree)
 				
-			
+				print("Bubbles", judgeThree)
+			2:
+				judgeThree = Flavors.Flavor.values()[ randi()%Flavors.Flavor.size()]
+				textThree = "Flavor: " + str(judgeThree)
+				
+				print("Flavor", judgeThree)
+			3:
+				judgeThree = Toppings.Topping.values()[ randi()%Toppings.Topping.size()]
+				textThree = "Topping: " + str(judgeThree)
+				
+				print("Topping", judgeThree)
+			4:
+				judgeThree = randi() % 9 + 1
+				textThree = "Sweetness: " + str(judgeThree)
+				
+				print("Sweetness", judgeThree)
+			5:
+				judgeThree = randi() % 2 == 0
+				textThree = "Cream: " + str(judgeThree)
+				
+				print("Cream", judgeThree)		
+				
 func JudgeDrink():
 	#match listToJudge[0]:
 			#1:
@@ -78,8 +138,6 @@ func _ready() -> void:
 	destination = chair.position
 	manager.RemoveChair(0)
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed(""):
-		Leave()
 	var pos : Vector2 = Vector2(global_position.x, global_position.z)
 	var lookTarget : Vector2 = Vector2(destination.x, destination.z)
 	var dir = (pos - lookTarget)
@@ -101,6 +159,7 @@ func Thinking():
 	instance = thoughtBubble.instantiate()
 	instance.position = bubblePos.global_position
 	instance.rotation = Vector3(0,0,0)
+	instance.SetBubbleText(textOne, textTwo, textThree)
 	get_parent().add_child(instance)
 	await get_tree().create_timer(leaveTime).timeout
 	Leave()

@@ -4,16 +4,20 @@ extends Node
 @export var spawnPosition : Node3D
 @export var customerRate : float = 4
 func _ready() -> void:
-	SpawnStudent()
+	LoopSpawn()
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_left"):
 		SpawnStudent()
+func LoopSpawn():
+	SpawnStudent()
+	await get_tree().create_timer(customerRate).timeout
+	LoopSpawn()
+	
 func SpawnStudent():
 	if get_tree().get_nodes_in_group("Student").size() < 8:
 		var instance = student.instantiate()
 		instance.position = spawnPosition.global_position
 		instance.rotation = Vector3(0,0,0)
 		get_parent().add_child(instance)
-		await get_tree().create_timer(customerRate).timeout
-		SpawnStudent()
+		
