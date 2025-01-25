@@ -50,6 +50,7 @@ vertical_alignment = 1
 
 [node name="GREEN TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+button_pressed = true
 text = "GREEN TEA"
 script = ExtResource("3_8noy5")
 _drink_constructor = NodePath("../../../..")
@@ -96,6 +97,7 @@ vertical_alignment = 1
 
 [node name="OREO CRUMBLES" type="CheckBox" parent="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+button_pressed = true
 text = "OREO CRUMBLES"
 script = ExtResource("4_51x64")
 _drink_constructor = NodePath("../../../..")
@@ -134,6 +136,7 @@ vertical_alignment = 1
 
 [node name="ORIGNAL" type="CheckBox" parent="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+button_pressed = true
 text = "ORIGNAL"
 script = ExtResource("5_yx06p")
 _drink_constructor = NodePath("../../../..")
