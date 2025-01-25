@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://8b7le07s2bwh"]
+
+[ext_resource type="Script" path="res://Scenes/door_trigger.gd" id="1_yukqq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fw6x7"]
+size = Vector3(1, 0.918823, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gq8hr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_alid7"]
+
+[node name="DoorTrigger" type="Area3D"]
+transform = Transform3D(2.12132, 0, -2.12132, 0, 3, 0, 2.12132, 0, 2.12132, 10.7943, 0.557323, 2.6918)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_yukqq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0317466, -0.0405884, 0)
+shape = SubResource("BoxShape3D_fw6x7")
+
+[node name="DoorHinge" type="Node3D" parent="."]
+transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, 2.38419e-07, 0.847924, -0.489833)
+
+[node name="Door" type="StaticBody3D" parent="DoorHinge"]
+transform = Transform3D(1, 0, 0, 0, 4.3278, 0, 0, 0, 2.85908, -9.53674e-07, -0.922831, 1.42354)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DoorHinge/Door"]
+mesh = SubResource("BoxMesh_gq8hr")
+skeleton = NodePath("../../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorHinge/Door"]
+shape = SubResource("BoxShape3D_alid7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

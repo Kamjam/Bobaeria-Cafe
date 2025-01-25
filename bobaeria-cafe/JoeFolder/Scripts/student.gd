@@ -22,7 +22,6 @@ var chair : Node3D = null
 func _ready() -> void:
 	var a :int = Boba.Boba.values()[ randi()%Boba.Boba.size() ]
 	boba = a
-	print(boba)
 	manager = get_tree().get_first_node_in_group("Manager")
 	chair = manager.GetChair()
 	destination = chair.position
@@ -40,11 +39,8 @@ func _physics_process(delta: float) -> void:
 		direction = agent.get_next_path_position() - global_position 
 		direction = direction.normalized()
 		velocity = velocity.lerp(direction * speed, accel * delta)
-		print(global_position.distance_to(destination))
-		
 		move_and_slide()
 	elif !isSeated:
-		print("Once?")
 		Thinking()
 		isSeated = true
 	

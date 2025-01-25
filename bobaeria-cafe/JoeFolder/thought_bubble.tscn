@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlpg46q2lkiwn"]
+[gd_scene load_steps=4 format=3 uid="uid://dlpg46q2lkiwn"]
 
 [ext_resource type="Script" path="res://JoeFolder/thought_bubble.gd" id="1_i2xtq"]
 
@@ -9,18 +9,12 @@ albedo_color = Color(1, 1, 1, 0.337255)
 [sub_resource type="SphereMesh" id="SphereMesh_2fl6h"]
 material = SubResource("StandardMaterial3D_5ygoe")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fwnkf"]
-albedo_color = Color(0, 0.462745, 1, 1)
-
-[sub_resource type="TextMesh" id="TextMesh_6vaka"]
-material = SubResource("StandardMaterial3D_fwnkf")
-text = "Sweet Green Tea"
-
 [node name="ThoughtBubble" type="MeshInstance3D"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 3.73374, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 3.73374, 0)
 mesh = SubResource("SphereMesh_2fl6h")
 script = ExtResource("1_i2xtq")
 
-[node name="Text" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.8, 0, -6.99382e-08, 0, 0.8, 0, 6.99382e-08, 0, -0.8, 0, 0, 0)
-mesh = SubResource("TextMesh_6vaka")
+[node name="Label3D" type="Label3D" parent="."]
+billboard = 1
+text = "Sweet Green Tea"
+font_size = 26
