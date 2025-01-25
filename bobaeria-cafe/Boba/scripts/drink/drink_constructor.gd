@@ -53,6 +53,7 @@ func construct_drink():
 		var created_drink: bobaDrink = bobaDrink.new()
 		
 		#name and image need to be set
+		created_drink.teaBase = teabase
 		created_drink.bubbleLevel = boba_level
 		created_drink.flavor = flavor
 		created_drink.topping = topping
@@ -65,6 +66,7 @@ func construct_drink():
 		
 		drink_created.emit(created_drink)
 		
+		print(teabase)
 		print(boba_level)
 		print(flavor)
 		print(topping)

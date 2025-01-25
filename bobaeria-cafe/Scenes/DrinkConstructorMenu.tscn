@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dup83nxucg4u2"]
+[gd_scene load_steps=11 format=3 uid="uid://dup83nxucg4u2"]
 
 [ext_resource type="Script" path="res://Boba/scripts/drink/drink_constructor.gd" id="1_jnf6v"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/tea_base_setter_button.gd" id="3_8noy5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/topping_setter_button.gd" id="4_51x64"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/boba_level_setter_slider.gd" id="5_kg0th"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/whipped_cream_setter_button.gd" id="5_y0mng"]
+[ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/flavor_setter_button.gd" id="5_yx06p"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/sweetness_level_setter_slider.gd" id="6_j6f1i"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/ice_level_setter_slider.gd" id="7_ug3ot"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/create_drink_button.gd" id="9_2j1gy"]
@@ -120,6 +121,51 @@ script = ExtResource("4_51x64")
 _drink_constructor = NodePath("../../../..")
 _topping_type = 3
 
+[node name="FlavorsRadioButtonControler3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+script = ExtResource("3_syue5")
+
+[node name="Flavors" type="Label" parent="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3"]
+layout_mode = 2
+text = "Flavors
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ORIGNAL" type="CheckBox" parent="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "ORIGNAL"
+script = ExtResource("5_yx06p")
+_drink_constructor = NodePath("../../../..")
+
+[node name="HONEYDEW" type="CheckBox" parent="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "HONEYDEW"
+script = ExtResource("5_yx06p")
+_drink_constructor = NodePath("../../../..")
+_flavor_type = 1
+
+[node name="COFFEE" type="CheckBox" parent="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "COFFEE"
+script = ExtResource("5_yx06p")
+_drink_constructor = NodePath("../../../..")
+_flavor_type = 2
+
+[node name="BANANA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "BANANA"
+script = ExtResource("5_yx06p")
+_drink_constructor = NodePath("../../../..")
+_flavor_type = 3
+
+[node name="COCONUT" type="CheckBox" parent="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "COCONUT"
+script = ExtResource("5_yx06p")
+_drink_constructor = NodePath("../../../..")
+_flavor_type = 4
+
 [node name="WippedCreambutton" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 
@@ -219,6 +265,16 @@ _drink_constructor = NodePath("../..")
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/RED BEANS" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" method="on_radio_button_toggeled" binds= [&"RED BEANS"]]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/POPPING BUBBLES" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/POPPING BUBBLES" method="_on_button_toggled"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/POPPING BUBBLES" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" method="on_radio_button_toggeled" binds= [&"POPPING BUBBLES"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/ORIGNAL" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/ORIGNAL" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/ORIGNAL" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" method="on_radio_button_toggeled" binds= [&"ORIGNAL"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/HONEYDEW" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/HONEYDEW" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/HONEYDEW" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" method="on_radio_button_toggeled" binds= [&"HONEYDEW"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/COFFEE" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/COFFEE" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/COFFEE" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" method="on_radio_button_toggeled" binds= [&"COFFEE"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/BANANA" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/BANANA" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/BANANA" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" method="on_radio_button_toggeled" binds= [&"BANANA"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/COCONUT" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/COCONUT" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/COCONUT" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" method="on_radio_button_toggeled" binds= [&"COCONUT"]]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/WippedCreambutton/WippedCreamCheckedBox" to="VBoxContainer/HBoxContainer2/WippedCreambutton/WippedCreamCheckedBox" method="_on_toggled"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer2/BobaSlider/BobaAmountSlider" to="VBoxContainer/HBoxContainer2/BobaSlider/BobaAmountSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer2/SweetnessSlider/SweetnessSlider" to="VBoxContainer/HBoxContainer2/SweetnessSlider/SweetnessSlider" method="_on_value_changed"]
