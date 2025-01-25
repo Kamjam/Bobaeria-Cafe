@@ -35,7 +35,6 @@ func _input(event):
 		currentDrink = interactables[0]._drink_resource
 		interactables[0].reparent(get_tree().current_scene)
 		pick_up_object(interactables[0])
-		
 		pickedObject = true
 	elif event.is_action_pressed("interact") and pickedObject and students.size() > 0:
 		if students[0].hasDrink == false:

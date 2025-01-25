@@ -8,7 +8,6 @@ class_name DateTime extends Resource
 
 
 var delta_time:float = 0
-var twelve_hr:int
 
 func increase_by_sec(delta_sec:float):
 	delta_time += delta_sec
@@ -24,9 +23,7 @@ func increase_by_sec(delta_sec:float):
 	
 	secs = secs % 60
 	mins = mins % 60
-	hours = hours % 24
-	
-	twelve_hr = hours - 12
+	hours = hours % 60
 	
 	#print_debug(str(days) + ":" + str(hours) + ":" + str(mins) + ":" + str(secs)) 
 
