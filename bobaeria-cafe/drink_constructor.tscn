@@ -4,6 +4,4 @@
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_jknv7")
-boba_level = null
-_number_of_drinks_to_construct = null
 _cooldown_timer = 2.0

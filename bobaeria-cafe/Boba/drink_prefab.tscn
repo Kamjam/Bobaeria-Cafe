@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjtfe6tjtspxo"]
+
+[ext_resource type="Script" path="res://Boba/scripts/drink.gd" id="1_kutml"]
+[ext_resource type="Script" path="res://JoeFolder/bobaDrink.gd" id="2_b2aec"]
+
+[sub_resource type="Resource" id="Resource_u4b6p"]
+script = ExtResource("2_b2aec")
+drinkName = ""
+bubbleLevel = 0
+teaBase = 0
+flavor = 0
+topping = 0
+sweetness = 0
+iceLevel = 0
+hasWhippedCream = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7676s"]
+albedo_color = Color(0.394948, 0.315569, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0vwta"]
+material = SubResource("StandardMaterial3D_7676s")
+bottom_radius = 0.25
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_kutml")
+_drink_resource = SubResource("Resource_u4b6p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_0vwta")
