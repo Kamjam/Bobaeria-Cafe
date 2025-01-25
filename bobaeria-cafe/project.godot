@@ -13,6 +13,7 @@ config_version=5
 config/name="Bobaeria Cafe"
 run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0.94902, 0.682353, 0.6, 1)
 config/icon="res://icon.svg"
 "<<<<<<<Updatedupstream[input]left"={
 "deadzone": 0.5,
