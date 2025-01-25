@@ -60,33 +60,11 @@ text = "Tea base"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GREEN TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
-layout_mode = 2
-button_pressed = true
-text = "GREEN TEA"
-script = ExtResource("3_8noy5")
-_drink_constructor = NodePath("../../../..")
-_tea_base_type = 2
-
-[node name="BLACK TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
-layout_mode = 2
-text = "BLACK TEA"
-script = ExtResource("3_8noy5")
-_drink_constructor = NodePath("../../../..")
-_tea_base_type = 4
-
 [node name="MILK TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
 text = "MILK TEA"
 script = ExtResource("3_8noy5")
 _drink_constructor = NodePath("../../../..")
-
-[node name="OOLONG" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
-layout_mode = 2
-text = "OOLONG"
-script = ExtResource("3_8noy5")
-_drink_constructor = NodePath("../../../..")
-_tea_base_type = 3
 
 [node name="TARO" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
@@ -95,6 +73,28 @@ text = "TARO
 script = ExtResource("3_8noy5")
 _drink_constructor = NodePath("../../../..")
 _tea_base_type = 1
+
+[node name="GREEN TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+button_pressed = true
+text = "GREEN TEA"
+script = ExtResource("3_8noy5")
+_drink_constructor = NodePath("../../../..")
+_tea_base_type = 2
+
+[node name="OOLONG" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "OOLONG"
+script = ExtResource("3_8noy5")
+_drink_constructor = NodePath("../../../..")
+_tea_base_type = 3
+
+[node name="BLACK TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "BLACK TEA"
+script = ExtResource("3_8noy5")
+_drink_constructor = NodePath("../../../..")
+_tea_base_type = 4
 
 [node name="ToppingsRadioButtonControler2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -309,16 +309,16 @@ text = "Close
 script = ExtResource("12_nhfb0")
 _contorl_node = NodePath("../..")
 
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/GREEN TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/GREEN TEA" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/GREEN TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"GREEN TEA"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/BLACK TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/BLACK TEA" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/BLACK TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"BLACK TEA"]]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/MILK TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/MILK TEA" method="_on_button_toggled"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/MILK TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"MILK TEA"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/OOLONG" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/OOLONG" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/OOLONG" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"OOLONG"]]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/TARO" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/TARO" method="_on_button_toggled"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/TARO" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"TARO"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/GREEN TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/GREEN TEA" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/GREEN TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"GREEN TEA"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/OOLONG" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/OOLONG" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/OOLONG" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"OOLONG"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/BLACK TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/BLACK TEA" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/BLACK TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"BLACK TEA"]]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/COOKIE CRUMBLE" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/COOKIE CRUMBLE" method="_on_button_toggled"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/COOKIE CRUMBLE" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" method="on_radio_button_toggeled" binds= [&"COOKIE CRUMBLE"]]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/JELLY" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/JELLY" method="_on_button_toggled"]
