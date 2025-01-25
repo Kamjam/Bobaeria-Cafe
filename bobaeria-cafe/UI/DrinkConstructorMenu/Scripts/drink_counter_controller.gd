@@ -3,6 +3,8 @@ extends Node
 
 var _drink_counter: int = 1
 
+@export var _drink_counter_max: int = 4
+
 @export var _drink_constructor: DrinkConstructor
 
 @export var _counter_label: Label
@@ -24,7 +26,9 @@ func _ready() -> void:
 
 func _increase_drink_count():
 	
-	_drink_counter += 1
+	if(_drink_counter < _drink_counter_max):
+		_drink_counter += 1
+	
 	_update_drink_counter()
 
 func _decrease_drink_count():
