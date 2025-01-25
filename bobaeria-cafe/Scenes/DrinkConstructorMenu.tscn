@@ -129,10 +129,11 @@ text = "Wipped Cream"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WippedCreamCheckedBox" type="CheckBox" parent="VBoxContainer/HBoxContainer2/WippedCreambutton"]
+[node name="WippedCreamCheckedBox" type="CheckBox" parent="VBoxContainer/HBoxContainer2/WippedCreambutton" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
 text = "Has Wipped Cream?"
 script = ExtResource("5_y0mng")
+_drink_constructor = NodePath("../../../..")
 
 [node name="BobaSlider" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
