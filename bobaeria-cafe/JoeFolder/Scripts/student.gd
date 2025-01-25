@@ -19,9 +19,47 @@ var manager
 var boba : Boba.Boba
 var instance
 var chair : Node3D = null
+@export var listToJudge : Array[int] = [0, 0, 0]
+# 1 Bubbles, 2 Flavor, 3 Topping, 4 Sweetness, 5 Ice, 6 Cream
+var judgeOne
+var judgeTwo
+var judgeThree
+
+func _init():
+	randomize() 
+	if listToJudge[0] == 0:
+		listToJudge[0] = 2
+		#randi() % 5 + 1
+		SetRandomDesire(1)
+	while listToJudge[1] == 0:
+		var num = randi() % 5 + 1
+		if num != listToJudge[0]:
+			listToJudge[1] = num
+	while listToJudge[2] == 0:
+		var num = randi() % 5 + 1
+		if num != listToJudge[0] and num != listToJudge[1]:
+			listToJudge[2] = num
+	print(listToJudge[0], listToJudge[1], listToJudge[2])
+func SetRandomDesire(num):
+	if num == 1:
+		match listToJudge[0]:
+			1:
+				pass
+			2:
+				judgeOne = Flavors.Flavor.values()[ randi()%Flavors.Flavor.size()]
+				print(judgeOne)
+			3:
+				pass
+			4:
+				pass
+			5:
+				pass
+			
+			
 func _ready() -> void:
 	var a :int = Boba.Boba.values()[ randi()%Boba.Boba.size() ]
 	boba = a
+	
 	manager = get_tree().get_first_node_in_group("Manager")
 	chair = manager.GetChair()
 	destination = chair.position
