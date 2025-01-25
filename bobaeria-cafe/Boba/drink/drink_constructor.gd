@@ -21,7 +21,7 @@ extends Node
 @export var _is_on_cooldown: bool
 
 @export var _cooldown_timer: float
-
+var isShowing = false
 signal drink_created(created_drink: bobaDrink)
 
 func set_boba_level(set_level: int):
@@ -89,3 +89,14 @@ func _set_cooldown():
 	_is_on_cooldown = true
 	await get_tree().create_timer(_cooldown_timer).timeout
 	_is_on_cooldown = false
+
+
+#dev tool
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_text_backspace"):
+		isShowing = !isShowing
+		if isShowing:
+			$".".show()
+		else:
+			$".".hide()
+			

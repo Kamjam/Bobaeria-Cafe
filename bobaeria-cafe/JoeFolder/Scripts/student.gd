@@ -30,23 +30,35 @@ var drinkScore : int = 0
 @onready var textScore : Label3D = $Score
 @onready var timer : Timer = $Timer
 @export var hasDrink : bool = false
+@export var test : bool
 func _init():
 	randomize() 
-	if listToJudge[0] == 0:
-		listToJudge[0] = randi() % 5 + 1
+	if test:
+		if listToJudge[0] == 0:
+			listToJudge[0] = randi() % 5 + 1
+			SetRandomDesire(1)
+		while listToJudge[1] == 0:
+			var num = randi() % 5 + 1
+			if num != listToJudge[0]:
+				listToJudge[1] = num
+				SetRandomDesire(2)
+				
+		while listToJudge[2] == 0:
+			var num = randi() % 5 + 1
+			if num != listToJudge[0] and num != listToJudge[1]:
+				listToJudge[2] = num
+				SetRandomDesire(3)
+	else:
+		listToJudge[0] = 1
 		SetRandomDesire(1)
-	while listToJudge[1] == 0:
-		var num = randi() % 5 + 1
-		if num != listToJudge[0]:
-			listToJudge[1] = num
-			SetRandomDesire(2)
-			
-	while listToJudge[2] == 0:
-		var num = randi() % 5 + 1
-		if num != listToJudge[0] and num != listToJudge[1]:
-			listToJudge[2] = num
-			SetRandomDesire(3)
-			
+		
+		listToJudge[1] = 2
+		SetRandomDesire(2)
+		
+		listToJudge[2] = 3
+		SetRandomDesire(3)
+		
+		
 	#print(listToJudge[0], listToJudge[1], listToJudge[2])
 func SetRandomDesire(num):
 	if num == 1:
@@ -124,7 +136,7 @@ func SetRandomDesire(num):
 func JudgeDrink(otherDrink : bobaDrink) -> int:
 	match listToJudge[0]:
 			1:
-				if judgeOne < (otherDrink.bubbleLevel -1) and judgeOne < (otherDrink.bubbleLevel +1):
+				if judgeOne >= (otherDrink.bubbleLevel -1) and judgeOne <= (otherDrink.bubbleLevel +1):
 					drinkScore+=20
 			2:
 				if judgeOne == otherDrink.flavor:
@@ -133,14 +145,14 @@ func JudgeDrink(otherDrink : bobaDrink) -> int:
 				if judgeOne == otherDrink.topping:
 					drinkScore+=20
 			4:
-				if judgeOne < (otherDrink.sweetness -1) and judgeOne < (otherDrink.sweetness +1):
+				if judgeOne >= (otherDrink.sweetness -1) and judgeOne <=(otherDrink.sweetness +1):
 					drinkScore+=20
 			5:
 				if judgeOne == otherDrink.hasWhippedCream:
 					drinkScore+=20
 	match listToJudge[1]:
 			1:
-				if judgeTwo < (otherDrink.bubbleLevel -1) and judgeTwo < (otherDrink.bubbleLevel +1):
+				if judgeTwo >= (otherDrink.bubbleLevel -1) and judgeTwo <= (otherDrink.bubbleLevel +1):
 					drinkScore+=20
 			2:
 				if judgeTwo == otherDrink.flavor:
@@ -149,14 +161,14 @@ func JudgeDrink(otherDrink : bobaDrink) -> int:
 				if judgeTwo == otherDrink.topping:
 					drinkScore+=20
 			4:
-				if judgeTwo < (otherDrink.sweetness -1) and judgeTwo < (otherDrink.sweetness +1):
+				if judgeTwo >= (otherDrink.sweetness -1) and judgeTwo <= (otherDrink.sweetness +1):
 					drinkScore+=20
 			5:
 				if judgeTwo == otherDrink.hasWhippedCream:
 					drinkScore+=20
 	match listToJudge[2]:
 			1:
-				if judgeThree < (otherDrink.bubbleLevel -1) and judgeThree < (otherDrink.bubbleLevel +1):
+				if judgeThree >= (otherDrink.bubbleLevel -1) and judgeThree <= (otherDrink.bubbleLevel +1):
 					drinkScore+=20
 			2:
 				if judgeThree == otherDrink.flavor:
@@ -165,7 +177,7 @@ func JudgeDrink(otherDrink : bobaDrink) -> int:
 				if judgeThree == otherDrink.topping:
 					drinkScore+=20
 			4:
-				if judgeThree < (otherDrink.sweetness -1) and judgeThree < (otherDrink.sweetness +1):
+				if judgeThree >= (otherDrink.sweetness -1) and judgeThree <= (otherDrink.sweetness +1):
 					drinkScore+=20
 			5:
 				if judgeThree == otherDrink.hasWhippedCream:

@@ -7,10 +7,14 @@ func _ready() -> void:
 	LoopSpawn()
 	
 func _process(delta: float) -> void:
+	
 	if Input.is_action_just_pressed("ui_left"):
 		SpawnStudent()
 func LoopSpawn():
+	await get_tree().create_timer(1).timeout
+	
 	SpawnStudent()
+	
 	await get_tree().create_timer(customerRate).timeout
 	LoopSpawn()
 	
