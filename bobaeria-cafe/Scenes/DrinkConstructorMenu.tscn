@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ohjny4c2utrl"]
+[gd_scene load_steps=11 format=3 uid="uid://dup83nxucg4u2"]
 
 [ext_resource type="Script" path="res://Boba/scripts/drink/drink_constructor.gd" id="1_jnf6v"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/tea_base_setter_button.gd" id="3_8noy5"]
@@ -19,6 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jnf6v")
+boba_level = null
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -51,15 +52,15 @@ vertical_alignment = 1
 layout_mode = 2
 text = "GREEN TEA"
 script = ExtResource("3_8noy5")
-_tea_base_type = 2
 _drink_constructor = NodePath("../../../..")
+_tea_base_type = 2
 
 [node name="BLACK TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
 text = "BLACK TEA"
 script = ExtResource("3_8noy5")
-_tea_base_type = 4
 _drink_constructor = NodePath("../../../..")
+_tea_base_type = 4
 
 [node name="MILK TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
@@ -71,16 +72,16 @@ _drink_constructor = NodePath("../../../..")
 layout_mode = 2
 text = "OOLONG"
 script = ExtResource("3_8noy5")
-_tea_base_type = 3
 _drink_constructor = NodePath("../../../..")
+_tea_base_type = 3
 
 [node name="TARO" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
 text = "TARO
 "
 script = ExtResource("3_8noy5")
-_tea_base_type = 1
 _drink_constructor = NodePath("../../../..")
+_tea_base_type = 1
 
 [node name="ToppingsRadioButtonControler2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -103,22 +104,22 @@ _drink_constructor = NodePath("../../../..")
 layout_mode = 2
 text = "JELLY"
 script = ExtResource("4_51x64")
-_topping_type = 1
 _drink_constructor = NodePath("../../../..")
+_topping_type = 1
 
 [node name="RED BEANS" type="CheckBox" parent="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
 text = "RED BEANS"
 script = ExtResource("4_51x64")
-_topping_type = 2
 _drink_constructor = NodePath("../../../..")
+_topping_type = 2
 
 [node name="POPPING BUBBLES" type="CheckBox" parent="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
 text = "POPPING BUBBLES"
 script = ExtResource("4_51x64")
-_topping_type = 3
 _drink_constructor = NodePath("../../../..")
+_topping_type = 3
 
 [node name="FlavorsRadioButtonControler3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -141,29 +142,29 @@ _drink_constructor = NodePath("../../../..")
 layout_mode = 2
 text = "HONEYDEW"
 script = ExtResource("5_yx06p")
-_flavor_type = 1
 _drink_constructor = NodePath("../../../..")
+_flavor_type = 1
 
 [node name="COFFEE" type="CheckBox" parent="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
 text = "COFFEE"
 script = ExtResource("5_yx06p")
-_flavor_type = 2
 _drink_constructor = NodePath("../../../..")
+_flavor_type = 2
 
 [node name="BANANA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
 text = "BANANA"
 script = ExtResource("5_yx06p")
-_flavor_type = 3
 _drink_constructor = NodePath("../../../..")
+_flavor_type = 3
 
 [node name="COCONUT" type="CheckBox" parent="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
 text = "COCONUT"
 script = ExtResource("5_yx06p")
-_flavor_type = 4
 _drink_constructor = NodePath("../../../..")
+_flavor_type = 4
 
 [node name="WippedCreambutton" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
