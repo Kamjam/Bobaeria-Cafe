@@ -37,11 +37,12 @@ func _input(event):
 		pickedObject = true
 		print("grabbed")
 	elif event.is_action_pressed("interact") and pickedObject and students.size() > 0:
-		students[0].JudgeDrink(currentDrink)
-		students.remove_at(0)
-		interactables[0].queue_free()
-		interactables.remove_at(0)
-		pickedObject = false
+		if students[0].hasDrink == false:
+			students[0].JudgeDrink(currentDrink)
+			students.remove_at(0)
+			interactables[0].queue_free()
+			interactables.remove_at(0)
+			pickedObject = false
 	elif event.is_action_pressed("interact") and pickedObject and byTrashCan:
 		interactables[0].queue_free()
 		interactables.remove_at(0)

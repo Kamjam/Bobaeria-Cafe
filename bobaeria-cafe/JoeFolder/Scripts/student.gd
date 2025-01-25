@@ -27,7 +27,9 @@ var textTwo
 var textThree
 
 var drinkScore : int = 0
-
+@onready var textScore : Label3D = $Score
+@onready var timer : Timer = $Timer
+@export var hasDrink : bool = false
 func _init():
 	randomize() 
 	if listToJudge[0] == 0:
@@ -169,6 +171,12 @@ func JudgeDrink(otherDrink : bobaDrink):
 				if judgeThree == otherDrink.hasWhippedCream:
 					drinkScore+=20
 	print("YOU SCORED" ,drinkScore)
+	textScore.text = "" + str(drinkScore)
+	if instance:
+		instance.queue_free()
+		instance = null
+	hasDrink = true
+	textScore.show()
 func _ready() -> void:
 	manager = get_tree().get_first_node_in_group("Manager")
 	chair = manager.GetChair()
@@ -204,6 +212,7 @@ func Leave():
 	destination = manager.GetExit()
 	if instance:
 		instance.queue_free()
+		instance = null
 	await get_tree().create_timer(10).timeout
 	manager.AddChair(chair)
 	queue_free()

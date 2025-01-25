@@ -15,6 +15,7 @@ script = ExtResource("1_b1qys")
 agent = NodePath("NavigationAgent3D")
 stoppingDistance = 1.0
 speed = 2.0
+leaveTime = 60.0
 thoughtBubble = ExtResource("2_2msao")
 bubblePos = NodePath("BubblePos")
 
@@ -23,6 +24,7 @@ visible = false
 mesh = SubResource("CapsuleMesh_6o55e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_q3f0l")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -38,3 +40,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.439871, 0)
 billboard = 1
 texture = ExtResource("3_0bxu7")
+
+[node name="Score" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+visible = false
+billboard = 1
+text = "3"
+font_size = 100
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
