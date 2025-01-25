@@ -1,0 +1,11 @@
+#https://www.youtube.com/watch?v=PbWtdMQO5jc&list=PLMQtM2GgbPEUsLNqlyHb_qFC8wZr5w7FW&index=2
+class_name TimeSystem extends Node
+
+@export var date_time:DateTime
+@export var ticks_per_sec:int = 6 #in game time 
+
+signal time_system_updated
+
+func _process(delta: float) -> void:
+	date_time.increase_by_sec(delta * ticks_per_sec)
+	TimeSys.time_system_updated.emit(date_time)

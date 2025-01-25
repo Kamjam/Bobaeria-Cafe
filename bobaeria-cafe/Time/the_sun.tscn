@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://de2lrqxj3ma6v"]
+
+[ext_resource type="Script" path="res://Time/the_sun.gd" id="1_5kf2s"]
+[ext_resource type="Script" path="res://Time/scripts/date_time.gd" id="2_0ffy3"]
+
+[sub_resource type="Resource" id="Resource_gttds"]
+script = ExtResource("2_0ffy3")
+days = 0
+hours = 11
+mins = 0
+secs = 0
+
+[sub_resource type="Resource" id="Resource_a7p21"]
+script = ExtResource("2_0ffy3")
+days = 0
+hours = 18
+mins = 30
+secs = 0
+
+[node name="THE SUN" type="DirectionalLight3D"]
+script = ExtResource("1_5kf2s")
+day_color = Color(1, 1, 1, 1)
+evening_color = Color(0.728989, 0.308411, 0.230706, 1)
+day_start = SubResource("Resource_gttds")
+evening_start = SubResource("Resource_a7p21")

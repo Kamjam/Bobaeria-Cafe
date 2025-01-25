@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7cgcijvuyqhn"]
+
+[ext_resource type="Script" path="res://Time/scripts/time_gui.gd" id="1_iadmb"]
+[ext_resource type="LabelSettings" uid="uid://3qrwk76fhqjg" path="res://Time/day_time_label_settings.tres" id="2_onafm"]
+
+[node name="Time GUI" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iadmb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 100.0
+grow_horizontal = 0
+
+[node name="DayCounter" type="HBoxContainer" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+alignment = 1
+
+[node name="time of day" type="Sprite2D" parent="Control/VBoxContainer/DayCounter"]
+
+[node name="day" type="Label" parent="Control/VBoxContainer/DayCounter"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_onafm")
+horizontal_alignment = 1
+
+[node name="Clock" type="HBoxContainer" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+alignment = 1
+
+[node name="hours" type="Label" parent="Control/VBoxContainer/Clock"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "00"
+label_settings = ExtResource("2_onafm")
+horizontal_alignment = 1
+
+[node name="semicolon" type="Label" parent="Control/VBoxContainer/Clock"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+text = ":"
+label_settings = ExtResource("2_onafm")
+
+[node name="mins" type="Label" parent="Control/VBoxContainer/Clock"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "00
+"
+label_settings = ExtResource("2_onafm")
+horizontal_alignment = 1

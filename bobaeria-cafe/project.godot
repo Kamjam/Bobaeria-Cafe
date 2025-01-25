@@ -35,6 +35,10 @@ up={
 ]
 }
 
+[autoload]
+
+TimeSys="*res://Time/time_system.tscn"
+
 [input]
 
 left={
