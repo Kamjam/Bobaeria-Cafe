@@ -5,14 +5,18 @@
 
 [node name="Time GUI" type="CanvasLayer"]
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("day_label", "hour_label", "min_label", "meridiem_label")]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_iadmb")
+is_twelve_hr_clock = true
+day_label = NodePath("VBoxContainer/DayCounter/day")
+hour_label = NodePath("VBoxContainer/Clock/hours")
+min_label = NodePath("VBoxContainer/Clock/mins")
+meridiem_label = NodePath("VBoxContainer/Clock/meridiem")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 custom_minimum_size = Vector2(100, 100)
@@ -60,6 +64,14 @@ label_settings = ExtResource("2_onafm")
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "00
+"
+label_settings = ExtResource("2_onafm")
+horizontal_alignment = 1
+
+[node name="meridiem" type="Label" parent="Control/VBoxContainer/Clock"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "AM
 "
 label_settings = ExtResource("2_onafm")
 horizontal_alignment = 1

@@ -13,4 +13,3 @@ secs = 0
 [node name="TimeSystem" type="Node"]
 script = ExtResource("1_y07xr")
 date_time = SubResource("Resource_pqmmr")
-ticks_per_sec = 12

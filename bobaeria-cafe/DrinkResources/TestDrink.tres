@@ -4,5 +4,11 @@
 
 [resource]
 script = ExtResource("1_dfltq")
-drinkName = ""
-bubbles = 0
+drinkName = "TEST"
+bubbleLevel = 0
+teaBase = 0
+flavor = 0
+topping = 0
+sweetness = 0
+iceLevel = 0
+hasWhippedCream = false
