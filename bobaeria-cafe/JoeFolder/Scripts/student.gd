@@ -16,7 +16,6 @@ extends CharacterBody3D
 var isSeated = false
 var destination : Vector3
 var manager
-var boba : Boba.Boba
 var instance
 var chair : Node3D = null
 @export var listToJudge : Array[int] = [0, 0, 0]
@@ -28,8 +27,7 @@ var judgeThree
 func _init():
 	randomize() 
 	if listToJudge[0] == 0:
-		listToJudge[0] = 2
-		#randi() % 5 + 1
+		listToJudge[0] = randi() % 5 + 1
 		SetRandomDesire(1)
 	while listToJudge[1] == 0:
 		var num = randi() % 5 + 1
@@ -39,27 +37,42 @@ func _init():
 		var num = randi() % 5 + 1
 		if num != listToJudge[0] and num != listToJudge[1]:
 			listToJudge[2] = num
-	print(listToJudge[0], listToJudge[1], listToJudge[2])
+	#print(listToJudge[0], listToJudge[1], listToJudge[2])
 func SetRandomDesire(num):
 	if num == 1:
 		match listToJudge[0]:
 			1:
-				pass
+				judgeOne = randi() % 9 + 1
+				print("Bubbles", judgeOne)
 			2:
 				judgeOne = Flavors.Flavor.values()[ randi()%Flavors.Flavor.size()]
-				print(judgeOne)
+				print("Flavor", judgeOne)
 			3:
-				pass
+				judgeOne = Toppings.Topping.values()[ randi()%Toppings.Topping.size()]
+				print("Topping", judgeOne)
 			4:
-				pass
+				judgeOne = randi() % 9 + 1
+				print("Sweetness", judgeOne)
 			5:
-				pass
+				judgeOne = randi() % 2 == 0
+				print("Cream", judgeOne)
+				
 			
-			
+func JudgeDrink():
+	#match listToJudge[0]:
+			#1:
+				#pass
+			#2:
+				#judgeOne = (Other drinks value)
+				#Add score
+			#3:
+				#pass
+			#4:
+				#pass
+			#5:
+				#pass
+	pass
 func _ready() -> void:
-	var a :int = Boba.Boba.values()[ randi()%Boba.Boba.size() ]
-	boba = a
-	
 	manager = get_tree().get_first_node_in_group("Manager")
 	chair = manager.GetChair()
 	destination = chair.position
@@ -95,6 +108,6 @@ func Leave():
 	destination = manager.GetExit()
 	if instance:
 		instance.queue_free()
-	await get_tree().create_timer(6).timeout
+	await get_tree().create_timer(10).timeout
 	manager.AddChair(chair)
 	queue_free()
