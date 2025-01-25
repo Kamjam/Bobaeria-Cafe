@@ -10,6 +10,8 @@ extends Node
 @export var teabase: Teabase.Base
 @export var whipped_cream: bool
 
+@export var _number_of_drinks_to_construct: int = 1
+
 @export var _test_boba: bool:
 	set(value):
 		construct_drink()
@@ -45,6 +47,9 @@ func set_teebase_type(set_base: Teabase.Base):
 func set_whipped_cream(has_cream: bool):
 	whipped_cream = has_cream
 
+func update_drink_count(updated_drink_count: int):
+	_number_of_drinks_to_construct = updated_drink_count
+
 func construct_drink():
 	
 	if _is_on_cooldown == false:
@@ -64,19 +69,19 @@ func construct_drink():
 		#waits for cooldown to finish befor emiting drink signal
 		await _set_cooldown()
 		
-		drink_created.emit(created_drink)
+		for int in _number_of_drinks_to_construct:
+			drink_created.emit(created_drink)
 		
-		print(teabase)
-		print(boba_level)
-		print(flavor)
-		print(topping)
-		print(sweetness)
-		print(ice_level)
-		print(whipped_cream)
-		print()
+			print(created_drink.teaBase)
+			print(created_drink.bubbleLevel)
+			print(created_drink.flavor)
+			print(created_drink.topping)
+			print(created_drink.sweetness)
+			print(created_drink.iceLevel)
+			print(created_drink.hasWhippedCream)
+			print()
 		
 		#drink.new(boba, flavor, ice_level, topping, sweetness, teabase, whipped_cream)
-		
 
 #enables _is_on_cooldown and disables it after the timer finishes
 func _set_cooldown():

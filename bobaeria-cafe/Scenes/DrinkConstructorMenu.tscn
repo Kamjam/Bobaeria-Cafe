@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dup83nxucg4u2"]
+[gd_scene load_steps=12 format=3 uid="uid://dup83nxucg4u2"]
 
 [ext_resource type="Script" path="res://Boba/scripts/drink/drink_constructor.gd" id="1_jnf6v"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/tea_base_setter_button.gd" id="3_8noy5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/sweetness_level_setter_slider.gd" id="6_j6f1i"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/ice_level_setter_slider.gd" id="7_ug3ot"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/create_drink_button.gd" id="9_2j1gy"]
+[ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/drink_counter_controller.gd" id="10_6jbcc"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -19,6 +20,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jnf6v")
+_number_of_drinks_to_construct = null
+_cooldown_timer = 2.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -94,7 +97,7 @@ text = "Toppings
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OREO CRUMBLES" type="CheckBox" parent="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" node_paths=PackedStringArray("_drink_constructor")]
+[node name="COOKIE CRUMBLE" type="CheckBox" parent="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
 button_pressed = true
 text = "OREO CRUMBLES"
@@ -196,9 +199,11 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
-max_value = 10.0
+min_value = 1.0
+max_value = 9.0
+value = 1.0
 rounded = true
-tick_count = 10
+tick_count = 9
 script = ExtResource("5_kg0th")
 _drink_constructor = NodePath("../../../..")
 
@@ -216,9 +221,11 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
-max_value = 10.0
+min_value = 1.0
+max_value = 9.0
+value = 1.0
 rounded = true
-tick_count = 10
+tick_count = 9
 script = ExtResource("6_j6f1i")
 _drink_constructor = NodePath("../../../..")
 
@@ -236,15 +243,47 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
+min_value = 1.0
 max_value = 10.0
+value = 1.0
 rounded = true
 tick_count = 10
 script = ExtResource("7_ug3ot")
 _drink_constructor = NodePath("../../../..")
 
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Number of drinks"
+horizontal_alignment = 1
+
+[node name="DrinkCounterController" type="HBoxContainer" parent="VBoxContainer" node_paths=PackedStringArray("_drink_constructor", "_counter_label", "_less_button", "_more_button")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 21
+script = ExtResource("10_6jbcc")
+_drink_constructor = NodePath("../..")
+_counter_label = NodePath("Label")
+_less_button = NodePath("Button2")
+_more_button = NodePath("Button")
+
+[node name="Button2" type="Button" parent="VBoxContainer/DrinkCounterController"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+text = "Less"
+
+[node name="Label" type="Label" parent="VBoxContainer/DrinkCounterController"]
+layout_mode = 2
+text = "1"
+
+[node name="Button" type="Button" parent="VBoxContainer/DrinkCounterController"]
+layout_mode = 2
+text = "More"
+
 [node name="Button" type="Button" parent="VBoxContainer" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
-text = "Create Drink
+text = "Create Drink(s)
 "
 script = ExtResource("9_2j1gy")
 _drink_constructor = NodePath("../..")
@@ -259,8 +298,8 @@ _drink_constructor = NodePath("../..")
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/OOLONG" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"OOLONG"]]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/TARO" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/TARO" method="_on_button_toggled"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/TARO" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"TARO"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/OREO CRUMBLES" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/OREO CRUMBLES" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/OREO CRUMBLES" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" method="on_radio_button_toggeled" binds= [&"OREO CRUMBLES"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/COOKIE CRUMBLE" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/COOKIE CRUMBLE" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/COOKIE CRUMBLE" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" method="on_radio_button_toggeled" binds= [&"COOKIE CRUMBLE"]]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/JELLY" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/JELLY" method="_on_button_toggled"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/JELLY" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" method="on_radio_button_toggeled" binds= [&"JELLY"]]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/RED BEANS" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/RED BEANS" method="_on_button_toggled"]
