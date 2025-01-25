@@ -13,7 +13,6 @@ func GetChair() -> Node3D:
 	return avaliableChairs[0]
 func RemoveChair(a):
 	avaliableChairs.remove_at(a)
-	print("Removed")
 func AddChair(i):
 	avaliableChairs.append(i)
 func GetExit() -> Vector3:
