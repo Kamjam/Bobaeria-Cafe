@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ckxmyumxv0tvr"]
 
-[ext_resource type="Script" path="res://Boba/scripts/drink/drink_constructor.gd" id="1_jknv7"]
+[ext_resource type="Script" path="res://Boba/drink/drink_constructor.gd" id="1_jknv7"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_jknv7")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dup83nxucg4u2"]
 
-[ext_resource type="Script" path="res://Boba/scripts/drink/drink_constructor.gd" id="1_jnf6v"]
+[ext_resource type="Script" path="res://Boba/drink/drink_constructor.gd" id="1_jnf6v"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/tea_base_setter_button.gd" id="3_8noy5"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/radio_buttons_controller.gd" id="3_syue5"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/topping_setter_button.gd" id="4_51x64"]
