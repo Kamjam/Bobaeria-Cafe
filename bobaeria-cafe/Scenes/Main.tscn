@@ -1,14 +1,15 @@
-[gd_scene load_steps=26 format=3 uid="uid://cgi74d48wt8qo"]
+[gd_scene load_steps=27 format=3 uid="uid://cgi74d48wt8qo"]
 
 [ext_resource type="PackedScene" uid="uid://7cmxluwvpp1r" path="res://Time/time_system.tscn" id="1_jmxwn"]
 [ext_resource type="PackedScene" uid="uid://d0u83fayrvkma" path="res://Player/player.tscn" id="1_n77sb"]
 [ext_resource type="Texture2D" uid="uid://b46y5njumyqi3" path="res://icon.svg" id="2_c3ovl"]
 [ext_resource type="PackedScene" uid="uid://cgtxsrha2o255" path="res://Prefabs/Tea.tscn" id="2_iq2yb"]
+[ext_resource type="Resource" uid="uid://bc4pt7uxm52as" path="res://DrinkResources/TestDrink.tres" id="3_bcw0s"]
 [ext_resource type="PackedScene" uid="uid://de2lrqxj3ma6v" path="res://Time/the_sun.tscn" id="3_m4rye"]
 [ext_resource type="Script" path="res://JoeFolder/Scripts/TableManager.gd" id="4_h2ysp"]
 [ext_resource type="Script" path="res://JoeFolder/Scripts/StudentSpawner.gd" id="5_g7obn"]
 [ext_resource type="PackedScene" uid="uid://do5p4i335e27s" path="res://JoeFolder/student.tscn" id="6_6hi14"]
-[ext_resource type="PackedScene" path="res://JoeFolder/door_trigger.tscn" id="8_7hgyd"]
+[ext_resource type="PackedScene" uid="uid://8b7le07s2bwh" path="res://JoeFolder/door_trigger.tscn" id="8_7hgyd"]
 [ext_resource type="PackedScene" uid="uid://c7cgcijvuyqhn" path="res://Time/Time GUI.tscn" id="9_1qeq3"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_qm2hx"]
@@ -171,24 +172,12 @@ shape = SubResource("BoxShape3D_57gc4")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Table8"]
 mesh = SubResource("BoxMesh_5cmy4")
 
-[node name="Trash" parent="NavigationRegion3D"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.707107, 0, -0.707107, 0, 0.715, 0, 0.707107, 0, 0.707107, 10.6621, 0.590769, -5.10629)
-script = null
-
 [node name="Camera3D" type="Camera3D" parent="." groups=["Cam"]]
 transform = Transform3D(1, -2.10734e-08, 2.10734e-08, -1.77636e-15, 0.707107, 0.707107, -2.98023e-08, -0.707107, 0.707107, 0, 59.493, 59.531)
 fov = 16.9
 
 [node name="Player" parent="." instance=ExtResource("1_n77sb")]
+currentDrink = ExtResource("3_bcw0s")
 
 [node name="Sprite3D" type="Sprite3D" parent="Player"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.197159, 0.174203)

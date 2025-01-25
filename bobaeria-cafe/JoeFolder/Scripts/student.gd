@@ -26,6 +26,7 @@ var textOne
 var textTwo
 var textThree
 
+var drinkScore : int = 0
 
 func _init():
 	randomize() 
@@ -118,20 +119,56 @@ func SetRandomDesire(num):
 				
 				print("Cream", judgeThree)		
 				
-func JudgeDrink():
-	#match listToJudge[0]:
-			#1:
-				#pass
-			#2:
-				#judgeOne = (Other drinks value)
-				#Add score
-			#3:
-				#pass
-			#4:
-				#pass
-			#5:
-				#pass
-	pass
+func JudgeDrink(otherDrink : bobaDrink):
+	match listToJudge[0]:
+			1:
+				if judgeOne < (otherDrink.bubbleLevel -1) and judgeOne < (otherDrink.bubbleLevel +1):
+					drinkScore+=20
+			2:
+				if judgeOne == otherDrink.flavor:
+					drinkScore+=20
+			3:
+				if judgeOne == otherDrink.topping:
+					drinkScore+=20
+			4:
+				if judgeOne < (otherDrink.sweetness -1) and judgeOne < (otherDrink.sweetness +1):
+					drinkScore+=20
+			5:
+				if judgeOne == otherDrink.hasWhippedCream:
+					drinkScore+=20
+	match listToJudge[1]:
+			1:
+				if judgeTwo < (otherDrink.bubbleLevel -1) and judgeTwo < (otherDrink.bubbleLevel +1):
+					drinkScore+=20
+			2:
+				if judgeTwo == otherDrink.flavor:
+					drinkScore+=20
+			3:
+				if judgeTwo == otherDrink.topping:
+					drinkScore+=20
+			4:
+				if judgeTwo < (otherDrink.sweetness -1) and judgeTwo < (otherDrink.sweetness +1):
+					drinkScore+=20
+			5:
+				if judgeTwo == otherDrink.hasWhippedCream:
+					drinkScore+=20
+	match listToJudge[2]:
+			1:
+				if judgeThree < (otherDrink.bubbleLevel -1) and judgeThree < (otherDrink.bubbleLevel +1):
+					drinkScore+=20
+			2:
+				if judgeThree == otherDrink.flavor:
+					drinkScore+=20
+			3:
+				if judgeThree == otherDrink.topping:
+					drinkScore+=20
+			4:
+				if judgeThree < (otherDrink.sweetness -1) and judgeThree < (otherDrink.sweetness +1):
+					drinkScore+=20
+			5:
+				if judgeThree == otherDrink.hasWhippedCream:
+					drinkScore+=20
+	print("YOU SCORED" ,drinkScore)
 func _ready() -> void:
 	manager = get_tree().get_first_node_in_group("Manager")
 	chair = manager.GetChair()

@@ -25,7 +25,7 @@ func increase_by_sec(delta_sec:float):
 	mins = mins % 60
 	hours = hours % 60
 	
-	print_debug(str(days) + ":" + str(hours) + ":" + str(mins) + ":" + str(secs)) 
+	#print_debug(str(days) + ":" + str(hours) + ":" + str(mins) + ":" + str(secs)) 
 
 #comparing clocks, return secs
 func diff_without_days(other_time:DateTime):

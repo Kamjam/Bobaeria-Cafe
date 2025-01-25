@@ -21,7 +21,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jnf6v")
-_number_of_drinks_to_construct = null
 _cooldown_timer = 2.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

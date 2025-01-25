@@ -6,6 +6,9 @@ var pickedObject: bool = false
 var interactables: Array[Area3D] 
 var byTrashCan: bool = false
 
+var students: Array[CharacterBody3D]
+@export var currentDrink : bobaDrink
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -33,21 +36,21 @@ func _input(event):
 		
 		pickedObject = true
 		print("grabbed")
-		
+	elif event.is_action_pressed("interact") and pickedObject and students.size() > 0:
+		students[0].JudgeDrink(currentDrink)
+		students.remove_at(0)
+		interactables[0].queue_free()
+		interactables.remove_at(0)
+		pickedObject = false
 	elif event.is_action_pressed("interact") and pickedObject and byTrashCan:
-		
 		interactables[0].queue_free()
 		interactables.remove_at(0)
 		pickedObject = false
 		print("trashed")
-	
-	
 
 func pick_up_object(object):
 	object.reparent(self)
 	object.global_position = %CarryTeaMarker.global_position
-
-
 
 func _on_pickup_area_area_entered(area: Area3D) -> void:
 	interactables.append(area)
@@ -57,17 +60,17 @@ func _on_pickup_area_area_exited(area: Area3D) -> void:
 	interactables.erase(area)
 	print("out area")
 
-
-
-
 func _on_pickup_area_body_entered(body: Node3D) -> void:
+	if body is Student:
+		students.append(body)
+	
 	if body is ThisIsTrashCan:
 		byTrashCan = true
 		print("trash can")
-
-
 
 func _on_pickup_area_body_exited(body: Node3D) -> void:
 	if body is ThisIsTrashCan:
 		byTrashCan = false
 		print("not trash can")
+	if body is Student:
+		students.erase(body)
