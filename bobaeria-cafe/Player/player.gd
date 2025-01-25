@@ -13,6 +13,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("left", "right", "up", "down")
@@ -38,7 +39,8 @@ func _input(event):
 		print("grabbed")
 	elif event.is_action_pressed("interact") and pickedObject and students.size() > 0:
 		if students[0].hasDrink == false:
-			students[0].JudgeDrink(currentDrink)
+			var num = students[0].JudgeDrink(currentDrink)
+			
 			students.remove_at(0)
 			interactables[0].queue_free()
 			interactables.remove_at(0)
