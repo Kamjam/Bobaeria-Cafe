@@ -11,3 +11,8 @@ func on_radio_button_toggeled(button_pressed, name):
 	for child in self.get_children():
 		if (child is CheckBox and child.name != name):
 			child.button_pressed = false
+			child.disabled = false
+		
+		elif (child is CheckBox and child.name == name):
+			
+			child.disabled = true
