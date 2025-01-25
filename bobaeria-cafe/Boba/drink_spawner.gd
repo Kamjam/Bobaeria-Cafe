@@ -8,6 +8,8 @@ var _drink_spawn_dict: Dictionary = {}
 
 @export var _drink_constructor: DrinkConstructor
 
+signal drink_spawned(spawned_drink: Node3D)
+
 func _ready() -> void:
 	pass
 	if _drink_constructor != null:
@@ -27,4 +29,7 @@ func _spawn_drink(drink_to_spawn: bobaDrink):
 			spawned_tea.set_drink_instance(drink_to_spawn)
 			
 			_drink_spawn_dict[point] = spawned_tea
+			drink_spawned.emit(spawned_tea)
+			
+			#stops looking for empty spawn point if one is found
 			return

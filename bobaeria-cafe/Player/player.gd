@@ -59,6 +59,9 @@ func pick_up_object(object):
 	object.global_position = %CarryTeaMarker.global_position
 
 func _on_pickup_area_area_entered(area: Area3D) -> void:
+	
+	#This needs to be changed. currently the player can pick up anything with
+	#an area 3D which lets the player pick up the door.
 	interactables.append(area)
 	print("in area")
 	
