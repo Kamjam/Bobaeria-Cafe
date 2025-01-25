@@ -37,6 +37,7 @@ func _ready() -> void:
 	var diff_evening_start = time_system.date_time.diff_without_days(evening_start)
 	if diff_day_start < 0 or diff_evening_start > 0: cur_state = DayState.EVENING
 
+
 func _on_time_system_updated(game_time:DateTime):
 	var next_state = transition_map[cur_state]
 	var change_time = time_map[next_state]
