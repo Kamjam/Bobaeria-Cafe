@@ -4,4 +4,5 @@
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_jknv7")
+boba_level = null
 _cooldown_timer = 2.0

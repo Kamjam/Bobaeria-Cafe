@@ -1,7 +1,8 @@
 @tool
+class_name  DrinkConstructor
 extends Node
 
-@export var boba: Boba.Boba
+@export var boba_level: int
 @export var flavor: Flavors.Flavor
 @export var ice_level: int
 @export var topping: Toppings.Topping
@@ -21,8 +22,8 @@ extends Node
 
 signal drink_created(created_drink: bobaDrink)
 
-func set_boba_type(boba_type: Boba.Boba):
-	boba = boba_type
+func set_boba_level(set_level: int):
+	boba_level = set_level
 
 func set_flavor(flavor_type: Flavors.Flavor):
 	flavor = flavor_type
@@ -35,9 +36,11 @@ func set_topping_type(set_topping: Toppings.Topping):
 
 func set_sweetness_level(set_sweetness: int):
 	sweetness = set_sweetness
+	print(sweetness)
 
 func set_teebase_type(set_base: Teabase.Base):
 	teabase = set_base
+	print(teabase)
 
 func set_whipped_cream(has_cream: bool):
 	whipped_cream = has_cream
@@ -50,18 +53,19 @@ func construct_drink():
 		var created_drink: bobaDrink = bobaDrink.new()
 		
 		#name and image need to be set
-		created_drink.bubbles = boba
+		created_drink.bubbleLevel = boba_level
 		created_drink.flavor = flavor
 		created_drink.topping = topping
 		created_drink.sweetness = sweetness
 		created_drink.iceLevel = ice_level
 		created_drink.hasWhippedCream = whipped_cream
 		
+		#waits for cooldown to finish befor emiting drink signal
 		await _set_cooldown()
 		
 		drink_created.emit(created_drink)
 		
-		print(boba)
+		print(boba_level)
 		print(flavor)
 		print(topping)
 		print(sweetness)
@@ -72,7 +76,7 @@ func construct_drink():
 		#drink.new(boba, flavor, ice_level, topping, sweetness, teabase, whipped_cream)
 		
 
-
+#enables _is_on_cooldown and disables it after the timer finishes
 func _set_cooldown():
 	
 	_is_on_cooldown = true

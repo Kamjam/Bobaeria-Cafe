@@ -5,5 +5,5 @@ enum Base
 	TARO,
 	GREEN_TEA,
 	OOLONG,
-	BLACKTEA,
+	BLACK_TEA,
 }

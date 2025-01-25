@@ -1,0 +1,225 @@
+[gd_scene load_steps=10 format=3 uid="uid://dup83nxucg4u2"]
+
+[ext_resource type="Script" path="res://Boba/scripts/drink/drink_constructor.gd" id="1_jnf6v"]
+[ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/tea_base_setter_button.gd" id="3_8noy5"]
+[ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/radio_buttons_controller.gd" id="3_syue5"]
+[ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/topping_setter_button.gd" id="4_51x64"]
+[ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/boba_level_setter_slider.gd" id="5_kg0th"]
+[ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/whipped_cream_setter_button.gd" id="5_y0mng"]
+[ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/sweetness_level_setter_slider.gd" id="6_j6f1i"]
+[ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/ice_level_setter_slider.gd" id="7_ug3ot"]
+[ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/create_drink_button.gd" id="9_2j1gy"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jnf6v")
+boba_level = null
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -361.5
+offset_top = -116.5
+offset_right = 361.5
+offset_bottom = 116.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TeaBaseRadioButtonControler" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+script = ExtResource("3_syue5")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler"]
+layout_mode = 2
+text = "Tea base"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GREEN TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "GREEN TEA"
+script = ExtResource("3_8noy5")
+_drink_constructor = NodePath("../../../..")
+_tea_base_type = 2
+
+[node name="BLACK TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "BLACK TEA"
+script = ExtResource("3_8noy5")
+_drink_constructor = NodePath("../../../..")
+_tea_base_type = 4
+
+[node name="MILK TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "MILK TEA"
+script = ExtResource("3_8noy5")
+_drink_constructor = NodePath("../../../..")
+
+[node name="OOLONG" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "OOLONG"
+script = ExtResource("3_8noy5")
+_drink_constructor = NodePath("../../../..")
+_tea_base_type = 3
+
+[node name="TARO" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "TARO
+"
+script = ExtResource("3_8noy5")
+_drink_constructor = NodePath("../../../..")
+_tea_base_type = 1
+
+[node name="ToppingsRadioButtonControler2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+script = ExtResource("3_syue5")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2"]
+layout_mode = 2
+text = "Toppings
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OREO CRUMBLES" type="CheckBox" parent="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "OREO CRUMBLES"
+script = ExtResource("4_51x64")
+_drink_constructor = NodePath("../../../..")
+
+[node name="JELLY" type="CheckBox" parent="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "JELLY"
+script = ExtResource("4_51x64")
+_drink_constructor = NodePath("../../../..")
+_topping_type = 1
+
+[node name="RED BEANS" type="CheckBox" parent="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "RED BEANS"
+script = ExtResource("4_51x64")
+_drink_constructor = NodePath("../../../..")
+_topping_type = 2
+
+[node name="POPPING BUBBLES" type="CheckBox" parent="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "POPPING BUBBLES"
+script = ExtResource("4_51x64")
+_drink_constructor = NodePath("../../../..")
+_topping_type = 3
+
+[node name="WippedCreambutton" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/WippedCreambutton"]
+layout_mode = 2
+text = "Wipped Cream"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WippedCreamCheckedBox" type="CheckBox" parent="VBoxContainer/HBoxContainer2/WippedCreambutton"]
+layout_mode = 2
+text = "Has Wipped Cream?"
+script = ExtResource("5_y0mng")
+
+[node name="BobaSlider" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/BobaSlider"]
+layout_mode = 2
+text = "Boba Level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BobaAmountSlider" type="VSlider" parent="VBoxContainer/HBoxContainer2/BobaSlider" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+max_value = 10.0
+rounded = true
+tick_count = 10
+script = ExtResource("5_kg0th")
+_drink_constructor = NodePath("../../../..")
+
+[node name="SweetnessSlider" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/SweetnessSlider"]
+layout_mode = 2
+text = "Sweetness
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SweetnessSlider" type="VSlider" parent="VBoxContainer/HBoxContainer2/SweetnessSlider" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+max_value = 10.0
+rounded = true
+tick_count = 10
+script = ExtResource("6_j6f1i")
+_drink_constructor = NodePath("../../../..")
+
+[node name="IceSlider" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/IceSlider"]
+layout_mode = 2
+text = "Ice Level
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IceLevelSlider" type="VSlider" parent="VBoxContainer/HBoxContainer2/IceSlider" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+max_value = 10.0
+rounded = true
+tick_count = 10
+script = ExtResource("7_ug3ot")
+_drink_constructor = NodePath("../../../..")
+
+[node name="Button" type="Button" parent="VBoxContainer" node_paths=PackedStringArray("_drink_constructor")]
+layout_mode = 2
+text = "Create Drink
+"
+script = ExtResource("9_2j1gy")
+_drink_constructor = NodePath("../..")
+
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/GREEN TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/GREEN TEA" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/GREEN TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"GREEN TEA"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/BLACK TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/BLACK TEA" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/BLACK TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"BLACK TEA"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/MILK TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/MILK TEA" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/MILK TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"MILK TEA"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/OOLONG" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/OOLONG" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/OOLONG" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"OOLONG"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/TARO" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/TARO" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/TARO" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"TARO"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/OREO CRUMBLES" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/OREO CRUMBLES" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/OREO CRUMBLES" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" method="on_radio_button_toggeled" binds= [&"OREO CRUMBLES"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/JELLY" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/JELLY" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/JELLY" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" method="on_radio_button_toggeled" binds= [&"JELLY"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/RED BEANS" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/RED BEANS" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/RED BEANS" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" method="on_radio_button_toggeled" binds= [&"RED BEANS"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/POPPING BUBBLES" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/POPPING BUBBLES" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/POPPING BUBBLES" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" method="on_radio_button_toggeled" binds= [&"POPPING BUBBLES"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/WippedCreambutton/WippedCreamCheckedBox" to="VBoxContainer/HBoxContainer2/WippedCreambutton/WippedCreamCheckedBox" method="_on_toggled"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/BobaSlider/BobaAmountSlider" to="VBoxContainer/HBoxContainer2/BobaSlider/BobaAmountSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/SweetnessSlider/SweetnessSlider" to="VBoxContainer/HBoxContainer2/SweetnessSlider/SweetnessSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/IceSlider/IceLevelSlider" to="VBoxContainer/HBoxContainer2/IceSlider/IceLevelSlider" method="_on_value_changed"]
+[connection signal="button_down" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_button_down"]
