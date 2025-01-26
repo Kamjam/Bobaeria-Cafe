@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Bobaeria Cafe"
-run/main_scene="res://Scenes/Main.tscn"
+run/main_scene="res://Menus/splashscreen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.94902, 0.682353, 0.6, 1)
+boot_splash/image="res://Ian_Art/boba-world_bobaTea.png"
 config/icon="res://icon.svg"
 "<<<<<<<Updatedupstream[input]left"={
 "deadzone": 0.5,
