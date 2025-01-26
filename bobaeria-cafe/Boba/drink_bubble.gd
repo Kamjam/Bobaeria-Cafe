@@ -13,8 +13,11 @@ var _stats_set: bool = false
 
 var _current_hight: float
 
-signal bubble_popped(drink_node: Node3D, bubble_pos: Vector3)
+var dayEnd
 
+signal bubble_popped(drink_node: Node3D, bubble_pos: Vector3)
+func _ready() -> void:
+	dayEnd = get_tree().get_first_node_in_group("DayEnd")
 func set_bubble_stats(popping_hight: float, time_till_bubble_pop:float):
 	
 	_bubble_float_speed = popping_hight / time_till_bubble_pop
@@ -33,6 +36,8 @@ func _process(delta: float) -> void:
 	if _stats_set :
 		
 		if(_current_hight >= _popping_hight):
+			if dayEnd:
+				dayEnd.SetBubbled()
 			self.queue_free()
 		
 		else:

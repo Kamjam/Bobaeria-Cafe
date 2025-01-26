@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://Shaders/silly_circles.gdshader" id="1_pnh50"]
 [ext_resource type="StyleBox" uid="uid://d1l5ocquqr8ta" path="res://Styles/transparent-round-panel.tres" id="3_e3uuw"]
-[ext_resource type="Material" path="res://Menus/text_woble.tres" id="3_smruw"]
+[ext_resource type="Material" uid="uid://bqoj8csik42km" path="res://Menus/text_woble.tres" id="3_smruw"]
 [ext_resource type="LabelSettings" path="res://Styles/day_over_screen_text_pink_o.tres" id="5_1hh5f"]
 [ext_resource type="Texture2D" uid="uid://bdbarplw6vcbu" path="res://Ian_Art/boba-world_bobaTea.png" id="5_qry7v"]
 [ext_resource type="StyleBox" uid="uid://dfjpbvoidlf2p" path="res://Styles/round-panel-black.tres" id="6_3w7js"]
@@ -169,11 +169,11 @@ theme_override_constants/separation = 6
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/Tabs/Customers/Statisfaction/HBoxContainer"]
+[node name="TextSatisfaction" type="Label" parent="HBoxContainer/VBoxContainer2/Tabs/Customers/Statisfaction/HBoxContainer"]
 material = ExtResource("3_smruw")
 layout_mode = 2
 theme_override_styles/normal = ExtResource("3_e3uuw")
-text = "Statisfaction: "
+text = "Satisfaction: "
 label_settings = ExtResource("16_qeeju")
 horizontal_alignment = 1
 

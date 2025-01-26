@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://s0y7ph8xpq0q"]
+[gd_scene load_steps=38 format=3 uid="uid://s0y7ph8xpq0q"]
 
 [ext_resource type="PackedScene" uid="uid://7cmxluwvpp1r" path="res://Time/time_system.tscn" id="1_4divv"]
 [ext_resource type="PackedScene" uid="uid://bg0l6trxtasyy" path="res://Prefabs/Trash.tscn" id="1_dyfi0"]
@@ -20,6 +20,8 @@
 [ext_resource type="Script" path="res://Boba/bubbled_drink_controller.gd" id="18_3w1qe"]
 [ext_resource type="PackedScene" uid="uid://brafkcj31svm" path="res://drink_bubble.tscn" id="19_1qonx"]
 [ext_resource type="AudioStream" uid="uid://d2dl1wt6gslug" path="res://Sounds/Music/(no copyright music) lofi type beat 'Grinch's cafe shop' free vlog music  by Lofiru.mp3" id="20_rkofv"]
+[ext_resource type="PackedScene" uid="uid://daqcvp33bdhp7" path="res://Menus/day_over_screen.tscn" id="21_sd4mh"]
+[ext_resource type="Script" path="res://JoeFolder/Scripts/DayManger.gd" id="22_76nyx"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_qm2hx"]
 vertices = PackedVector3Array(16.6537, 0.0398855, -7.70873, 16.9037, 0.0398855, -7.20873, 50.1537, 0.0398855, -38.7087, -5.8463, 0.0398855, -7.70873, 1.1537, 0.0398855, -87.9587, -26.3463, 0.0398855, -60.4587, -6.3463, 0.0398855, -3.70873, -5.3463, 0.0398855, -3.95873, -5.3463, 0.0398855, -5.45873, -6.3463, 0.0398855, -5.70873, -6.3463, 0.0398855, -7.45873, -20.8463, 0.0398855, 31.2913, -5.8463, 0.0398855, 15.2913, -6.3463, 0.0398855, 15.0413, -69.5963, 0.0398855, -17.2087, 16.9037, 0.0398855, 9.79127, 15.9037, 0.0398855, 10.0413, 15.9037, 0.0398855, 11.5413, 16.9037, 0.0398855, 11.7913, 16.9037, 0.0398855, 14.7913, 73.9037, 0.0398855, 35.7913, 99.4037, 0.0398855, 10.2913, 15.4037, 4.78989, -6.45873, 15.9037, 4.53989, 9.04127, 15.9037, 4.78989, -6.70873, -5.3463, 4.78989, -6.70873, -4.0963, 0.289886, -3.70873, -2.0963, 0.289886, -3.95873, -2.3463, 0.289886, -5.45873, -4.0963, 0.289886, 7.04127, -2.3463, 0.289886, 7.04127, -2.0963, 0.289886, 5.79127, 4.6537, 0.289886, -3.95873, 0.153702, 0.289886, 5.79127, 3.4037, 0.289886, 5.79127, 4.6537, 0.289886, 5.79127, 0.403702, 0.289886, 7.04127, 3.1537, 0.289886, 7.04127, -1.3463, 1.78989, -5.45873, -1.3463, 1.78989, -4.95873, 6.4037, 1.78989, -4.95873, 6.4037, 1.78989, -5.45873, 12.6537, 0.289886, 1.54127, 14.6537, 0.289886, 1.29127, 14.6537, 0.289886, -0.458733, 12.4037, 0.289886, -0.708733, 9.9037, 0.289886, -3.95873, 7.1537, 0.289886, -3.95873, 9.6537, 0.289886, -5.45873, 7.4037, 0.289886, -5.45873, 5.9037, 0.289886, 5.79127, 6.1537, 0.289886, 7.04127, 12.4037, 0.289886, 7.04127, 12.4037, 0.289886, -3.20873, 14.6537, 0.289886, -3.45873, 14.6537, 0.289886, -5.45873, 11.9037, 0.289886, -5.45873, 11.4037, 0.289886, -3.95873, -5.3463, 0.789886, 14.2913, 14.6537, 0.789886, 14.2913, -4.8463, 0.789886, 14.0413, -5.3463, 0.789886, -2.95873, 13.4037, 3.53989, -2.45873, 13.4037, 3.53989, -1.45873, 14.4037, 3.53989, -1.45873, 14.4037, 3.53989, -2.45873, 13.6537, 0.289886, -2.20873, 13.6537, 0.289886, -1.70873, 14.1537, 0.289886, -1.70873, 14.1537, 0.289886, -2.20873, 13.6537, 1.78989, 2.29127, 13.6537, 1.78989, 3.29127, 14.6537, 1.78989, 3.29127, 14.6537, 1.78989, 2.29127, 13.6537, 1.78989, 4.54127, 13.6537, 1.78989, 5.54127, 14.4037, 1.78989, 5.54127, 14.4037, 1.78989, 4.54127, -1.3463, 1.78989, 6.79127, -1.3463, 1.78989, 7.54127, -0.596298, 1.78989, 7.54127, -0.596298, 1.78989, 6.79127, 4.1537, 1.78989, 6.79127, 4.1537, 1.78989, 7.54127, 5.1537, 1.78989, 7.54127, 5.1537, 1.78989, 6.79127, 13.4037, 1.78989, 6.79127, 13.4037, 1.78989, 7.54127, 14.4037, 1.78989, 7.54127, 14.4037, 1.78989, 6.79127, -2.0963, 0.289886, 8.54127, -4.0963, 0.289886, 13.0413, 3.1537, 0.289886, 8.29127, 0.153702, 0.289886, 8.54127, 4.6537, 0.289886, 8.54127, 4.6537, 0.289886, 13.0413, 14.6537, 0.289886, 11.7913, 14.6537, 0.289886, 9.79127, 12.6537, 0.289886, 8.54127, 5.9037, 0.289886, 8.54127, 14.6537, 0.289886, 8.54127, 14.6537, 0.289886, 13.0413, 16.6537, 0.0398855, 15.2913, 28.6537, 0.0398855, 81.0413)
@@ -65,7 +67,8 @@ ambient_light_energy = 0.5
 
 [node name="Main" type="Node3D"]
 
-[node name="TimeSystem" parent="." instance=ExtResource("1_4divv")]
+[node name="TimeSystem" parent="." node_paths=PackedStringArray("day_manager") instance=ExtResource("1_4divv")]
+day_manager = NodePath("../DayEndManager")
 
 [node name="Time GUI" parent="." instance=ExtResource("2_5hg1t")]
 
@@ -335,14 +338,18 @@ transform = Transform3D(2.13313, 0, 2.10944, 0, 3, 0, -2.10944, 0, 2.13313, -13.
 [node name="Trash" parent="." instance=ExtResource("1_dyfi0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.07418, 0.791596, -9.53582)
 
-[node name="ScoreKeeper" type="Node3D" parent="."]
+[node name="ScoreKeeper" type="Node3D" parent="." node_paths=PackedStringArray("text_satisfaction", "text_failed", "text_perfect")]
 transform = Transform3D(2.13313, 0, 2.10944, 0, 3, 0, -2.10944, 0, 2.13313, -13.4307, 0.266522, 1.38014)
 script = ExtResource("14_g7g1d")
+text_satisfaction = NodePath("../Day Over Screen/HBoxContainer/VBoxContainer2/Tabs/Customers/Statisfaction/HBoxContainer/Num")
+text_failed = NodePath("../Day Over Screen/HBoxContainer/VBoxContainer2/Tabs/Customers/Failed Drinks/HBoxContainer/Num")
+text_perfect = NodePath("../Day Over Screen/HBoxContainer/VBoxContainer2/Tabs/Customers/Perfect Drinks/HBoxContainer/Num")
 
-[node name="DrinkSpawner" parent="." node_paths=PackedStringArray("_drink_spawn_points", "_drink_constructor") instance=ExtResource("15_q87gh")]
+[node name="DrinkSpawner" parent="." node_paths=PackedStringArray("_drink_spawn_points", "_drink_constructor", "_player") instance=ExtResource("15_q87gh")]
 _drink_prefab = ExtResource("4_pjios")
 _drink_spawn_points = [NodePath("../NavigationRegion3D/Table8/DrinkSpawnPoint"), NodePath("../NavigationRegion3D/Table7/DrinkSpawnPoint"), NodePath("../NavigationRegion3D/Table6/DrinkSpawnPoint")]
 _drink_constructor = NodePath("../Control")
+_player = NodePath("../Player")
 
 [node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("_drink_spawner")]
 script = ExtResource("18_3w1qe")
@@ -381,4 +388,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.13086, -1.01835, 2.01195e-0
 light_energy = 8.0
 spot_range = 20.0
 
+[node name="Day Over Screen" parent="." instance=ExtResource("21_sd4mh")]
+
+[node name="DayEndManager" type="Node3D" parent="." node_paths=PackedStringArray("text_drinksGiven", "text_drinksMade", "text_drinksBubbled", "text_Days") groups=["DayEnd"]]
+script = ExtResource("22_76nyx")
+text_drinksGiven = NodePath("../Day Over Screen/HBoxContainer/VBoxContainer2/Tabs/Shop Details/Drinks/HBoxContainer/Num")
+text_drinksMade = NodePath("../Day Over Screen/HBoxContainer/VBoxContainer2/Tabs/Shop Details/Drinks2/HBoxContainer/Num")
+text_drinksBubbled = NodePath("../Day Over Screen/HBoxContainer/VBoxContainer2/Tabs/Shop Details/Drinks3/HBoxContainer/Num")
+text_Days = NodePath("../Day Over Screen/HBoxContainer/VBoxContainer2/HBoxContainer/Day Count/Label2")
+
 [connection signal="AddScore" from="Player" to="ScoreKeeper" method="_on_player_add_score"]
+
+[editable path="Day Over Screen"]
