@@ -1,0 +1,14 @@
+[remap]
+
+importer="import_gif_to_animated_texture"
+type="AnimatedTexture"
+uid="uid://c35jxau1pyw3y"
+path="res://.godot/imported/boba-intro.gif-0dcb789b40d0e8db47849bdb7c1bd661.tres"
+
+[deps]
+
+source_file="res://Ian_Art/boba-intro.gif"
+dest_files=["res://.godot/imported/boba-intro.gif-0dcb789b40d0e8db47849bdb7c1bd661.tres"]
+
+[params]
+

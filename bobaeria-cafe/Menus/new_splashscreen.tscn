@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://d02neijhnyxly"]
+
+[ext_resource type="Shader" path="res://Shaders/silly_circles.gdshader" id="1_l4dco"]
+[ext_resource type="Material" uid="uid://4jrah7dlw45x" path="res://Menus/texture_rect_squish.tres" id="2_odxf2"]
+[ext_resource type="Texture2D" uid="uid://c35jxau1pyw3y" path="res://Ian_Art/boba-intro.gif" id="3_nqy0p"]
+[ext_resource type="Script" path="res://Menus/splashscreen.gd" id="4_3l8no"]
+[ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="5_ja2pr"]
+[ext_resource type="FontFile" uid="uid://dbsvhg7b3et03" path="res://Fonts/Spineless Normal.ttf" id="6_dqeep"]
+[ext_resource type="AudioStream" uid="uid://d3gtxe4rgav0l" path="res://Sounds/SFX/pop-91931.mp3" id="7_prvj3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1520d"]
+shader = ExtResource("1_l4dco")
+shader_parameter/separation = 0.034
+shader_parameter/radius = 0.01
+shader_parameter/min_thick = 0.25
+shader_parameter/speed = 0.022
+shader_parameter/tilt_45 = true
+shader_parameter/direction = -45.0
+shader_parameter/color1 = Color(0.69992, 0.78, 0.6084, 1)
+shader_parameter/color2 = Color(0, 0.0214999, 0.43, 0.372549)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bjw4n"]
+shader = ExtResource("5_ja2pr")
+shader_parameter/lod = 2.843
+shader_parameter/mix_percentage = 0.266
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu1if"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.188235, 0.196078, 0.34902, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+anti_aliasing = false
+
+[node name="Node2D" type="Control" node_paths=PackedStringArray("changescenetimer", "audioplayer")]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_3l8no")
+changescenetimer = NodePath("Timer")
+audioplayer = NodePath("AudioStreamPlayer2D")
+
+[node name="background" type="ColorRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_1520d")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.509804, 0.223529, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="boba_gif" type="TextureRect" parent="VBoxContainer"]
+texture_filter = 1
+material = ExtResource("2_odxf2")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_nqy0p")
+stretch_mode = 2
+
+[node name="TextureRect" type="PanelContainer" parent="VBoxContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_bjw4n")
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wu1if")
+
+[node name="Label" type="Label" parent="VBoxContainer/TextureRect"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_dqeep")
+theme_override_font_sizes/font_size = 72
+text = "Team Bobaeria"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.6
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_prvj3")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

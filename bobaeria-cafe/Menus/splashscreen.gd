@@ -6,6 +6,7 @@ extends Control
 
 func _ready():
 	changescenetimer.start()
+	audioplayer.play()
 
 func _on_timer_timeout() -> void:
 	print('change scene')
