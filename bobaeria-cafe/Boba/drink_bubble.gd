@@ -15,6 +15,7 @@ var _current_hight: float
 
 var dayEnd
 
+@onready var audioSource = $AudioStreamPlayer3D
 signal bubble_popped(drink_node: Node3D, bubble_pos: Vector3)
 func _ready() -> void:
 	dayEnd = get_tree().get_first_node_in_group("DayEnd")
@@ -51,4 +52,7 @@ func pop_bubble():
 	_drink.global_position = self.global_position
 	print("bubble is popped")
 	bubble_popped.emit(_drink, self.global_position)
+	audioSource.play()
+	self.hide()
+	await get_tree().create_timer(1).timeout
 	self.queue_free()
