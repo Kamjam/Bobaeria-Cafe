@@ -29,7 +29,6 @@ var in_transition:bool = false
 	DayState.EVENING: evening_color,
 }
 
-@onready var day_manager = $"../Day Manager"
 func _ready() -> void:
 	TimeSys.time_system_updated.connect(_on_time_system_updated)
 	$".".rotation_degrees = Vector3(-45,90,0)
@@ -71,7 +70,6 @@ func _process(delta: float) -> void:
 
 func ResetDay():
 	print("Reset")
-	day_manager.NewDay()
 	cur_state = DayState.DAY
 	$".".rotation_degrees = Vector3(-45,90,0)
 	$".".light_energy = 1.5	
