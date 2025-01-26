@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccaw8hs5vu0ni"]
+[gd_scene load_steps=11 format=3 uid="uid://ccaw8hs5vu0ni"]
 
 [ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="1_dah4w"]
 [ext_resource type="Script" path="res://Menus/tutorial-controls.gd" id="2_fkqxn"]
 [ext_resource type="LabelSettings" uid="uid://bxng2h6fp6edb" path="res://Styles/littleguy_white_text.tres" id="3_aq11s"]
+[ext_resource type="StyleBox" uid="uid://dfjpbvoidlf2p" path="res://Styles/round-panel-black.tres" id="3_h6tds"]
 [ext_resource type="Material" uid="uid://sajypig68e7q" path="res://Menus/text_woble.tres" id="3_kvpkf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kbhgc"]
@@ -115,6 +116,7 @@ offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("3_h6tds")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="blurShader/TopContainer/Panel3"]
 layout_mode = 1
@@ -204,6 +206,7 @@ grow_vertical = 2
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("3_h6tds")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="blurShader/MiddleContainer/VBoxContainer/Panel"]
 custom_minimum_size = Vector2(150, 100)
@@ -228,10 +231,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="menu label" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel/VBoxContainer/ControlsHeader"]
+material = ExtResource("3_kvpkf")
 custom_minimum_size = Vector2(150, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Close This Panel With:"
+label_settings = ExtResource("3_aq11s")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -244,10 +249,12 @@ theme_override_constants/v_separation = 15
 columns = 3
 
 [node name="menu label" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel/VBoxContainer/KeysContainer"]
+material = ExtResource("3_kvpkf")
 custom_minimum_size = Vector2(15, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "T"
+label_settings = ExtResource("3_aq11s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -255,6 +262,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(250, 200)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("3_h6tds")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="blurShader/MiddleContainer/VBoxContainer/Panel2"]
 custom_minimum_size = Vector2(200, 0)
@@ -278,9 +286,11 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="menu label" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer/ControlsHeader"]
+material = ExtResource("3_kvpkf")
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Controls: "
+label_settings = ExtResource("3_aq11s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -295,9 +305,11 @@ columns = 3
 layout_mode = 2
 
 [node name="menu label" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer/KeysContainer"]
+material = ExtResource("3_kvpkf")
 layout_mode = 2
 size_flags_horizontal = 4
 text = "W"
+label_settings = ExtResource("3_aq11s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -305,23 +317,29 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="menu label2" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer/KeysContainer"]
+material = ExtResource("3_kvpkf")
 layout_mode = 2
 size_flags_horizontal = 4
 text = "A"
+label_settings = ExtResource("3_aq11s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="menu label3" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer/KeysContainer"]
+material = ExtResource("3_kvpkf")
 layout_mode = 2
 size_flags_horizontal = 4
 text = "S"
+label_settings = ExtResource("3_aq11s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="menu label4" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer/KeysContainer"]
+material = ExtResource("3_kvpkf")
 layout_mode = 2
 size_flags_horizontal = 4
 text = "D"
+label_settings = ExtResource("3_aq11s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -330,9 +348,11 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="hpLabel" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer/ControlsHeader2"]
+material = ExtResource("3_kvpkf")
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Attack: "
+label_settings = ExtResource("3_aq11s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -343,8 +363,10 @@ theme_override_constants/h_separation = 10
 columns = 3
 
 [node name="hpLabel2" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer/KeysContainer2"]
+material = ExtResource("3_kvpkf")
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Left Click/E"
+label_settings = ExtResource("3_aq11s")
 horizontal_alignment = 1
 vertical_alignment = 1

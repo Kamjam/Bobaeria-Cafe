@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cmmasam7oih5x"]
+
+[ext_resource type="FontFile" uid="uid://ndha7hy85g75" path="res://Fonts/FatPix-SVG.ttf" id="1_t2f28"]
+
+[resource]
+font = ExtResource("1_t2f28")
+font_size = 24
+font_color = Color(0.639216, 0.156863, 0.345098, 1)
+outline_size = 3

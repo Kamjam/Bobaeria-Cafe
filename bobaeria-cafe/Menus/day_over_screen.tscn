@@ -1,24 +1,31 @@
-[gd_scene load_steps=21 format=3 uid="uid://daqcvp33bdhp7"]
+[gd_scene load_steps=28 format=3 uid="uid://daqcvp33bdhp7"]
 
 [ext_resource type="Shader" path="res://Shaders/silly_circles.gdshader" id="1_pnh50"]
 [ext_resource type="StyleBox" uid="uid://d1l5ocquqr8ta" path="res://Styles/transparent-round-panel.tres" id="3_e3uuw"]
-[ext_resource type="Material" uid="uid://bqoj8csik42km" path="res://Menus/text_woble.tres" id="3_smruw"]
+[ext_resource type="Material" uid="uid://sajypig68e7q" path="res://Menus/text_woble.tres" id="3_smruw"]
 [ext_resource type="LabelSettings" path="res://Styles/day_over_screen_text_pink_o.tres" id="5_1hh5f"]
 [ext_resource type="Texture2D" uid="uid://bdbarplw6vcbu" path="res://Ian_Art/boba-world_bobaTea.png" id="5_qry7v"]
 [ext_resource type="StyleBox" uid="uid://dfjpbvoidlf2p" path="res://Styles/round-panel-black.tres" id="6_3w7js"]
-[ext_resource type="Material" path="res://Menus/texture_rect_squish.tres" id="6_bhy1q"]
+[ext_resource type="Material" uid="uid://4jrah7dlw45x" path="res://Menus/texture_rect_squish.tres" id="6_bhy1q"]
 [ext_resource type="FontFile" uid="uid://um3bnq4u2kaj" path="res://Fonts/puffi.ttf" id="7_k27ur"]
 [ext_resource type="LabelSettings" path="res://Styles/day_over_screen_text_blue_o.tres" id="7_lgrvq"]
 [ext_resource type="LabelSettings" path="res://Styles/day_over_screen_text_white_ob.tres" id="8_i0y65"]
 [ext_resource type="Script" path="res://Menus/squish_on_mouse.gd" id="8_j55em"]
-[ext_resource type="StyleBox" path="res://Styles/round-tab-black.tres" id="8_ja35j"]
-[ext_resource type="StyleBox" path="res://Styles/round-tab-white.tres" id="9_yhlxo"]
-[ext_resource type="StyleBox" path="res://Styles/transparent-round-tab.tres" id="10_tvtsw"]
+[ext_resource type="StyleBox" uid="uid://b2uvlvy8a67mh" path="res://Styles/round-tab-black.tres" id="8_ja35j"]
+[ext_resource type="StyleBox" uid="uid://cqgw6l3sfj7i7" path="res://Styles/round-tab-white.tres" id="9_yhlxo"]
+[ext_resource type="StyleBox" uid="uid://0sqqxfu8spl6" path="res://Styles/transparent-round-tab.tres" id="10_tvtsw"]
 [ext_resource type="Script" path="res://Menus/stats_tabs.gd" id="11_gogbw"]
 [ext_resource type="LabelSettings" path="res://Styles/day_over_screen_text_white_op.tres" id="15_rvlef"]
-[ext_resource type="LabelSettings" path="res://Styles/day_over_screen_text_white_o.tres" id="16_qeeju"]
+[ext_resource type="Material" uid="uid://cqoujrd6c6p7w" path="res://Menus/shiny_icon.tres" id="16_7hhic"]
+[ext_resource type="LabelSettings" uid="uid://bs8sjhagahngb" path="res://Styles/day_over_screen_text_white_o.tres" id="16_qeeju"]
+[ext_resource type="Texture2D" uid="uid://ctm7a5o6pjlov" path="res://Icons/Heart.png" id="16_subbg"]
 [ext_resource type="StyleBox" uid="uid://bd8tf3grtlofo" path="res://Styles/round-panel-white.tres" id="18_8laa4"]
 [ext_resource type="Script" path="res://JoeFolder/Scripts/StartDay.gd" id="19_7j3hg"]
+[ext_resource type="Texture2D" uid="uid://ds65dv2mjylk8" path="res://Icons/Person-Crossed.png" id="19_nbnxv"]
+[ext_resource type="Texture2D" uid="uid://cuadmkp74d42a" path="res://Icons/Star.png" id="20_bhb8a"]
+[ext_resource type="Texture2D" uid="uid://bqiiv6vvx2ilb" path="res://Icons/Chevron-Arrow-Right.png" id="21_isf2b"]
+[ext_resource type="Texture2D" uid="uid://dssafa1syxc3c" path="res://Icons/Plus.png" id="22_dsjna"]
+[ext_resource type="Texture2D" uid="uid://dt13nw8hki7bu" path="res://Icons/Stack.png" id="23_b26pw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_magjy"]
 shader = ExtResource("1_pnh50")
@@ -146,14 +153,20 @@ theme_override_styles/panel = ExtResource("6_3w7js")
 theme_override_styles/tab_selected = ExtResource("8_ja35j")
 theme_override_styles/tab_hovered = ExtResource("9_yhlxo")
 theme_override_styles/tab_unselected = ExtResource("10_tvtsw")
-current_tab = 0
+current_tab = 1
 script = ExtResource("11_gogbw")
 
 [node name="Customers" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Tabs"]
+visible = false
 material = ExtResource("3_smruw")
+custom_minimum_size = Vector2(655, 0)
 layout_mode = 2
 theme_override_constants/separation = 30
 metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2/Tabs/Customers"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 
 [node name="Statisfaction" type="PanelContainer" parent="HBoxContainer/VBoxContainer2/Tabs/Customers"]
 custom_minimum_size = Vector2(570, 0)
@@ -166,8 +179,13 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 6
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer/VBoxContainer2/Tabs/Customers/Statisfaction/HBoxContainer"]
+self_modulate = Color(0.917647, 0.384314, 0.384314, 1)
+material = ExtResource("16_7hhic")
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+texture = ExtResource("16_subbg")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="TextSatisfaction" type="Label" parent="HBoxContainer/VBoxContainer2/Tabs/Customers/Statisfaction/HBoxContainer"]
 material = ExtResource("3_smruw")
@@ -197,8 +215,12 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 6
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer/VBoxContainer2/Tabs/Customers/Failed Drinks/HBoxContainer"]
+self_modulate = Color(0.639216, 0.156863, 0.345098, 1)
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+texture = ExtResource("19_nbnxv")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/Tabs/Customers/Failed Drinks/HBoxContainer"]
 material = ExtResource("3_smruw")
@@ -228,8 +250,13 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 6
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer/VBoxContainer2/Tabs/Customers/Perfect Drinks/HBoxContainer"]
+self_modulate = Color(0.988235, 0.937255, 0.552941, 1)
+material = ExtResource("16_7hhic")
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+texture = ExtResource("20_bhb8a")
+expand_mode = 5
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/Tabs/Customers/Perfect Drinks/HBoxContainer"]
 material = ExtResource("3_smruw")
@@ -248,11 +275,19 @@ text = "000
 label_settings = ExtResource("15_rvlef")
 horizontal_alignment = 1
 
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer2/Tabs/Customers"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
 [node name="Shop Details" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Tabs"]
-visible = false
+custom_minimum_size = Vector2(655, 0)
 layout_mode = 2
 theme_override_constants/separation = 30
 metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2/Tabs/Shop Details"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 
 [node name="Drinks" type="PanelContainer" parent="HBoxContainer/VBoxContainer2/Tabs/Shop Details"]
 custom_minimum_size = Vector2(570, 0)
@@ -265,8 +300,12 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 6
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer/VBoxContainer2/Tabs/Shop Details/Drinks/HBoxContainer"]
+self_modulate = Color(0.356863, 0.65098, 0.458824, 1)
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+texture = ExtResource("21_isf2b")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/Tabs/Shop Details/Drinks/HBoxContainer"]
 material = ExtResource("3_smruw")
@@ -296,8 +335,12 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 6
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer/VBoxContainer2/Tabs/Shop Details/Drinks2/HBoxContainer"]
+self_modulate = Color(1, 0.764706, 0.94902, 1)
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+texture = ExtResource("22_dsjna")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/Tabs/Shop Details/Drinks2/HBoxContainer"]
 material = ExtResource("3_smruw")
@@ -327,8 +370,11 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 6
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer/VBoxContainer2/Tabs/Shop Details/Drinks3/HBoxContainer"]
+self_modulate = Color(0.682353, 0.886275, 1, 1)
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+texture = ExtResource("23_b26pw")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/Tabs/Shop Details/Drinks3/HBoxContainer"]
 material = ExtResource("3_smruw")
@@ -346,6 +392,10 @@ text = "000
 "
 label_settings = ExtResource("15_rvlef")
 horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer2/Tabs/Shop Details"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 
 [node name="Buttons" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2

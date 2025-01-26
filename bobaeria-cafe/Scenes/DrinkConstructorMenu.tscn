@@ -1,37 +1,73 @@
-[gd_scene load_steps=14 format=3 uid="uid://dup83nxucg4u2"]
+[gd_scene load_steps=30 format=3 uid="uid://dup83nxucg4u2"]
 
 [ext_resource type="Script" path="res://Boba/drink/drink_constructor.gd" id="1_jnf6v"]
+[ext_resource type="Material" uid="uid://sajypig68e7q" path="res://Menus/text_woble.tres" id="3_3e5e6"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/tea_base_setter_button.gd" id="3_8noy5"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/radio_buttons_controller.gd" id="3_syue5"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/topping_setter_button.gd" id="4_51x64"]
+[ext_resource type="StyleBox" uid="uid://b2uvlvy8a67mh" path="res://Styles/round-tab-black.tres" id="4_3422m"]
+[ext_resource type="StyleBox" uid="uid://cqgw6l3sfj7i7" path="res://Styles/round-tab-white.tres" id="5_as2o2"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/boba_level_setter_slider.gd" id="5_kg0th"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/whipped_cream_setter_button.gd" id="5_y0mng"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/flavor_setter_button.gd" id="5_yx06p"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/sweetness_level_setter_slider.gd" id="6_j6f1i"]
+[ext_resource type="StyleBox" uid="uid://0sqqxfu8spl6" path="res://Styles/transparent-round-tab.tres" id="6_tnkvq"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/ice_level_setter_slider.gd" id="7_ug3ot"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/print_slider_level.gd" id="7_wjhio"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/create_drink_button.gd" id="9_2j1gy"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/drink_counter_controller.gd" id="10_6jbcc"]
+[ext_resource type="LabelSettings" uid="uid://cmmasam7oih5x" path="res://Styles/fatpix_orange_text_o.tres" id="10_f3odl"]
+[ext_resource type="FontFile" uid="uid://ndha7hy85g75" path="res://Fonts/FatPix-SVG.ttf" id="10_y7gnp"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/close_menu_button.gd" id="12_nhfb0"]
+[ext_resource type="FontFile" uid="uid://um3bnq4u2kaj" path="res://Fonts/puffi.ttf" id="15_k3ftj"]
+[ext_resource type="LabelSettings" uid="uid://biwm0brwroj6b" path="res://Styles/puffi_white_text_20.tres" id="16_cij2y"]
+[ext_resource type="StyleBox" uid="uid://bd8tf3grtlofo" path="res://Styles/round-panel-white.tres" id="16_ik1tk"]
+[ext_resource type="StyleBox" uid="uid://dfjpbvoidlf2p" path="res://Styles/round-panel-black.tres" id="17_0ou2w"]
+[ext_resource type="StyleBox" uid="uid://d1l5ocquqr8ta" path="res://Styles/transparent-round-panel.tres" id="18_b1ys8"]
+[ext_resource type="LabelSettings" uid="uid://cuocjtsbiy6h1" path="res://Styles/fatpix_white_text.tres" id="23_j37t2"]
+[ext_resource type="LabelSettings" uid="uid://dbt7mpif02xcs" path="res://Styles/puffi_white_text.tres" id="26_nr0sy"]
 
-[node name="Control" type="Control"]
+[sub_resource type="Shader" id="Shader_drtv5"]
+code = "shader_type canvas_item;
+
+uniform float lod: hint_range(0.0, 5.0) = 5.0;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform float mix_percentage: hint_range(0.0, 1.0) = 0.3;
+
+void fragment(){
+	vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV, lod);
+	color = mix(color, vec4(0,0,0,1), mix_percentage);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aepxh"]
+shader = SubResource("Shader_drtv5")
+shader_parameter/lod = 2.5
+shader_parameter/mix_percentage = 0.2
+
+[sub_resource type="LabelSettings" id="LabelSettings_6sfyp"]
+font = ExtResource("10_y7gnp")
+font_size = 24
+font_color = Color(0.639216, 0.156863, 0.345098, 1)
+
+[node name="Drink Constructor" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jnf6v")
 _cooldown_timer = 2.0
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = -575.0
-offset_top = -326.0
-offset_right = 577.0
-offset_bottom = 330.0
+material = SubResource("ShaderMaterial_aepxh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -41,183 +77,362 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -361.5
-offset_top = -116.5
+offset_top = -261.5
 offset_right = 361.5
-offset_bottom = 116.5
+offset_bottom = 261.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="TabContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_unselected_color = Color(0.552941, 0.717647, 1, 1)
+theme_override_colors/font_selected_color = Color(0.427451, 0.501961, 0.980392, 1)
+theme_override_constants/side_margin = 20
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/tabbar_background = ExtResource("18_b1ys8")
+theme_override_styles/panel = ExtResource("17_0ou2w")
+theme_override_styles/tab_selected = ExtResource("4_3422m")
+theme_override_styles/tab_hovered = ExtResource("5_as2o2")
+theme_override_styles/tab_unselected = ExtResource("6_tnkvq")
+current_tab = 0
+tabs_position = 1
 
-[node name="TeaBaseRadioButtonControler" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+[node name="Checkbox Controller" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+alignment = 1
+metadata/_tab_index = 0
+
+[node name="TeaBase" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/Checkbox Controller"]
 layout_mode = 2
 script = ExtResource("3_syue5")
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase"]
+custom_minimum_size = Vector2(125, 25)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("16_ik1tk")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase/Panel"]
+material = ExtResource("3_3e5e6")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -12.0
+offset_right = 62.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Tea base"
+label_settings = ExtResource("10_f3odl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MILK TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
+[node name="MILK TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0.721569, 0.47451, 1)
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 20
 disabled = true
 button_pressed = true
 text = "MILK TEA"
 script = ExtResource("3_8noy5")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 
-[node name="TARO" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
+[node name="TARO" type="CheckBox" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0.721569, 0.47451, 1)
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 20
 text = "TARO
 "
 script = ExtResource("3_8noy5")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 _tea_base_type = 1
 
-[node name="GREEN TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
+[node name="GREEN TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0.721569, 0.47451, 1)
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 20
 text = "GREEN TEA"
 script = ExtResource("3_8noy5")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 _tea_base_type = 2
 
-[node name="OOLONG" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
+[node name="OOLONG" type="CheckBox" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0.721569, 0.47451, 1)
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 20
 text = "OOLONG"
 script = ExtResource("3_8noy5")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 _tea_base_type = 3
 
-[node name="BLACK TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" node_paths=PackedStringArray("_drink_constructor")]
+[node name="BLACK TEA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0.721569, 0.47451, 1)
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 20
 text = "BLACK TEA"
 script = ExtResource("3_8noy5")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 _tea_base_type = 4
 
-[node name="ToppingsRadioButtonControler2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+[node name="Toppings" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/Checkbox Controller"]
 layout_mode = 2
 script = ExtResource("3_syue5")
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings"]
+custom_minimum_size = Vector2(125, 25)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("16_ik1tk")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings/Panel"]
+material = ExtResource("3_3e5e6")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -12.0
+offset_right = 78.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Toppings
 "
+label_settings = ExtResource("10_f3odl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="COOKIE CRUMBLE" type="CheckBox" parent="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" node_paths=PackedStringArray("_drink_constructor")]
+[node name="COOKIE CRUMBLE" type="CheckBox" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0.721569, 0.47451, 1)
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 20
 disabled = true
 button_pressed = true
 text = "OREO CRUMBLES"
 script = ExtResource("4_51x64")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 
-[node name="JELLY" type="CheckBox" parent="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" node_paths=PackedStringArray("_drink_constructor")]
+[node name="JELLY" type="CheckBox" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0.721569, 0.47451, 1)
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 20
 text = "JELLY"
 script = ExtResource("4_51x64")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 _topping_type = 1
 
-[node name="RED BEANS" type="CheckBox" parent="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" node_paths=PackedStringArray("_drink_constructor")]
+[node name="RED BEANS" type="CheckBox" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0.721569, 0.47451, 1)
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 20
 text = "RED BEANS"
 script = ExtResource("4_51x64")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 _topping_type = 2
 
-[node name="POPPING BUBBLES" type="CheckBox" parent="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" node_paths=PackedStringArray("_drink_constructor")]
+[node name="POPPING BUBBLES" type="CheckBox" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0.721569, 0.47451, 1)
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 20
 text = "POPPING BUBBLES"
 script = ExtResource("4_51x64")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 _topping_type = 3
 
-[node name="FlavorsRadioButtonControler3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+[node name="Flavors" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/Checkbox Controller"]
 layout_mode = 2
 script = ExtResource("3_syue5")
 
-[node name="Flavors" type="Label" parent="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors"]
+custom_minimum_size = Vector2(125, 25)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("16_ik1tk")
+
+[node name="Flavors" type="Label" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors/Panel"]
+material = ExtResource("3_3e5e6")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -12.0
+offset_right = 62.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Flavors
 "
+label_settings = ExtResource("10_f3odl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ORIGNAL" type="CheckBox" parent="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" node_paths=PackedStringArray("_drink_constructor")]
+[node name="ORIGNAL" type="CheckBox" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0.721569, 0.47451, 1)
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 20
 disabled = true
 button_pressed = true
 text = "ORIGNAL"
 script = ExtResource("5_yx06p")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 
-[node name="HONEYDEW" type="CheckBox" parent="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" node_paths=PackedStringArray("_drink_constructor")]
+[node name="HONEYDEW" type="CheckBox" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0.721569, 0.47451, 1)
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 20
 text = "HONEYDEW"
 script = ExtResource("5_yx06p")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 _flavor_type = 1
 
-[node name="COFFEE" type="CheckBox" parent="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" node_paths=PackedStringArray("_drink_constructor")]
+[node name="COFFEE" type="CheckBox" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0.721569, 0.47451, 1)
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 20
 text = "COFFEE"
 script = ExtResource("5_yx06p")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 _flavor_type = 2
 
-[node name="BANANA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" node_paths=PackedStringArray("_drink_constructor")]
+[node name="BANANA" type="CheckBox" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0.721569, 0.47451, 1)
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 20
 text = "BANANA"
 script = ExtResource("5_yx06p")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 _flavor_type = 3
 
-[node name="COCONUT" type="CheckBox" parent="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" node_paths=PackedStringArray("_drink_constructor")]
+[node name="COCONUT" type="CheckBox" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 0.721569, 0.47451, 1)
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 20
 text = "COCONUT"
 script = ExtResource("5_yx06p")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 _flavor_type = 4
 
-[node name="WippedCreambutton" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+[node name="WippedCream" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/Checkbox Controller"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/WippedCreambutton"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/WippedCream"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/WippedCream"]
+custom_minimum_size = Vector2(125, 25)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("16_ik1tk")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/WippedCream/Panel"]
+material = ExtResource("3_3e5e6")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -12.0
+offset_right = 91.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Wipped Cream"
+label_settings = ExtResource("10_f3odl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WippedCreamCheckedBox" type="CheckBox" parent="VBoxContainer/HBoxContainer2/WippedCreambutton" node_paths=PackedStringArray("_drink_constructor")]
+[node name="WippedCreamCheckedBox" type="CheckBox" parent="VBoxContainer/HBoxContainer2/Checkbox Controller/WippedCream" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 20
 text = "Has Wipped Cream?"
 script = ExtResource("5_y0mng")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 
-[node name="BobaSlider" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+[node name="Slider Controllers" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+visible = false
+layout_mode = 2
+alignment = 1
+metadata/_tab_index = 1
+
+[node name="Boba" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/Slider Controllers"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/BobaSlider"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/Slider Controllers/Boba"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-text = "Bubbles
-"
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer2/Slider Controllers/Boba"]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("16_ik1tk")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/Slider Controllers/Boba/Panel"]
+material = ExtResource("3_3e5e6")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -12.0
+offset_right = 65.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Boba Level"
+label_settings = ExtResource("10_f3odl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/BobaSlider" node_paths=PackedStringArray("label")]
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/Slider Controllers/Boba" node_paths=PackedStringArray("label")]
 layout_mode = 2
 text = "1"
+label_settings = ExtResource("16_cij2y")
 horizontal_alignment = 1
 script = ExtResource("7_wjhio")
 label = NodePath(".")
 
-[node name="BobaAmountSlider" type="VSlider" parent="VBoxContainer/HBoxContainer2/BobaSlider" node_paths=PackedStringArray("_drink_constructor")]
+[node name="BobaAmountSlider" type="VSlider" parent="VBoxContainer/HBoxContainer2/Slider Controllers/Boba" node_paths=PackedStringArray("_drink_constructor")]
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
@@ -227,28 +442,56 @@ value = 1.0
 rounded = true
 tick_count = 9
 script = ExtResource("5_kg0th")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 
-[node name="SweetnessSlider" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/Slider Controllers/Boba"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/SweetnessSlider"]
+[node name="Sweetness" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/Slider Controllers"]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/Slider Controllers/Sweetness"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer2/Slider Controllers/Sweetness"]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("16_ik1tk")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/Slider Controllers/Sweetness/Panel"]
+material = ExtResource("3_3e5e6")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -12.0
+offset_right = 67.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Sweetness
 "
+label_settings = ExtResource("10_f3odl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/SweetnessSlider" node_paths=PackedStringArray("label")]
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/Slider Controllers/Sweetness" node_paths=PackedStringArray("label")]
 layout_mode = 2
 text = "1
 "
+label_settings = ExtResource("16_cij2y")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("7_wjhio")
 label = NodePath(".")
 
-[node name="SweetnessSlider" type="VSlider" parent="VBoxContainer/HBoxContainer2/SweetnessSlider" node_paths=PackedStringArray("_drink_constructor")]
+[node name="SweetnessSlider" type="VSlider" parent="VBoxContainer/HBoxContainer2/Slider Controllers/Sweetness" node_paths=PackedStringArray("_drink_constructor")]
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
@@ -258,28 +501,56 @@ value = 1.0
 rounded = true
 tick_count = 9
 script = ExtResource("6_j6f1i")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 
-[node name="IceSlider" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/Slider Controllers/Sweetness"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/IceSlider"]
+[node name="IceS" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/Slider Controllers"]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/Slider Controllers/IceS"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer2/Slider Controllers/IceS"]
+custom_minimum_size = Vector2(125, 25)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("16_ik1tk")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/Slider Controllers/IceS/Panel"]
+material = ExtResource("3_3e5e6")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -12.0
+offset_right = 62.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Ice Level
 "
+label_settings = ExtResource("10_f3odl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/IceSlider" node_paths=PackedStringArray("label")]
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/Slider Controllers/IceS" node_paths=PackedStringArray("label")]
 layout_mode = 2
 text = "1
 "
+label_settings = ExtResource("16_cij2y")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("7_wjhio")
 label = NodePath(".")
 
-[node name="IceLevelSlider" type="VSlider" parent="VBoxContainer/HBoxContainer2/IceSlider" node_paths=PackedStringArray("_drink_constructor")]
+[node name="IceLevelSlider" type="VSlider" parent="VBoxContainer/HBoxContainer2/Slider Controllers/IceS" node_paths=PackedStringArray("_drink_constructor")]
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
@@ -289,11 +560,34 @@ value = 1.0
 rounded = true
 tick_count = 10
 script = ExtResource("7_ug3ot")
-_drink_constructor = NodePath("../../../..")
+_drink_constructor = NodePath("../../../../..")
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/Slider Controllers/IceS"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-text = "Number of drinks"
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("17_0ou2w")
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel"]
+material = ExtResource("3_3e5e6")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -361.5
+offset_top = -12.0
+offset_right = 361.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Number of Drinks"
+label_settings = SubResource("LabelSettings_6sfyp")
 horizontal_alignment = 1
 
 [node name="DrinkCounterController" type="HBoxContainer" parent="VBoxContainer" node_paths=PackedStringArray("_drink_constructor", "_counter_label", "_less_button", "_more_button")]
@@ -308,23 +602,43 @@ _less_button = NodePath("Button2")
 _more_button = NodePath("Button")
 
 [node name="Button2" type="Button" parent="VBoxContainer/DrinkCounterController"]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/hover_pressed = ExtResource("16_ik1tk")
+theme_override_styles/hover = ExtResource("16_ik1tk")
+theme_override_styles/normal = ExtResource("17_0ou2w")
 text = "Less"
 
 [node name="Label" type="Label" parent="VBoxContainer/DrinkCounterController"]
 layout_mode = 2
 text = "1"
+label_settings = ExtResource("23_j37t2")
 
 [node name="Button" type="Button" parent="VBoxContainer/DrinkCounterController"]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/hover_pressed = ExtResource("16_ik1tk")
+theme_override_styles/hover = ExtResource("16_ik1tk")
+theme_override_styles/normal = ExtResource("17_0ou2w")
 text = "More"
 
 [node name="CreatDrinkButton" type="Button" parent="VBoxContainer" node_paths=PackedStringArray("_drink_constructor")]
+custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.917647, 0.384314, 0.384314, 1)
+theme_override_fonts/font = ExtResource("15_k3ftj")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/hover_pressed = ExtResource("16_ik1tk")
+theme_override_styles/hover = ExtResource("16_ik1tk")
+theme_override_styles/normal = ExtResource("17_0ou2w")
 text = "Create Drink(s)
 "
 script = ExtResource("9_2j1gy")
@@ -332,6 +646,7 @@ _drink_constructor = NodePath("../..")
 
 [node name="CloseMenuButton" type="Button" parent="VBoxContainer" node_paths=PackedStringArray("_contorl_node")]
 process_mode = 4
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -340,40 +655,59 @@ text = "E - Close
 script = ExtResource("12_nhfb0")
 _contorl_node = NodePath("../..")
 
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/MILK TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/MILK TEA" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/MILK TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"MILK TEA"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/TARO" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/TARO" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/TARO" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"TARO"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/GREEN TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/GREEN TEA" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/GREEN TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"GREEN TEA"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/OOLONG" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/OOLONG" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/OOLONG" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"OOLONG"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/BLACK TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/BLACK TEA" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler/BLACK TEA" to="VBoxContainer/HBoxContainer2/TeaBaseRadioButtonControler" method="on_radio_button_toggeled" binds= [&"BLACK TEA"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/COOKIE CRUMBLE" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/COOKIE CRUMBLE" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/COOKIE CRUMBLE" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" method="on_radio_button_toggeled" binds= [&"COOKIE CRUMBLE"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/JELLY" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/JELLY" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/JELLY" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" method="on_radio_button_toggeled" binds= [&"JELLY"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/RED BEANS" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/RED BEANS" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/RED BEANS" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" method="on_radio_button_toggeled" binds= [&"RED BEANS"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/POPPING BUBBLES" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/POPPING BUBBLES" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2/POPPING BUBBLES" to="VBoxContainer/HBoxContainer2/ToppingsRadioButtonControler2" method="on_radio_button_toggeled" binds= [&"POPPING BUBBLES"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/ORIGNAL" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/ORIGNAL" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/ORIGNAL" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" method="on_radio_button_toggeled" binds= [&"ORIGNAL"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/HONEYDEW" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/HONEYDEW" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/HONEYDEW" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" method="on_radio_button_toggeled" binds= [&"HONEYDEW"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/COFFEE" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/COFFEE" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/COFFEE" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" method="on_radio_button_toggeled" binds= [&"COFFEE"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/BANANA" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/BANANA" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/BANANA" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" method="on_radio_button_toggeled" binds= [&"BANANA"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/COCONUT" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/COCONUT" method="_on_button_toggled"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/COCONUT" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" method="on_radio_button_toggeled" binds= [&"COCONUT"]]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/WippedCreambutton/WippedCreamCheckedBox" to="VBoxContainer/HBoxContainer2/WippedCreambutton/WippedCreamCheckedBox" method="_on_toggled"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/BobaSlider/BobaAmountSlider" to="VBoxContainer/HBoxContainer2/BobaSlider/Label2" method="print_slider_level"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/BobaSlider/BobaAmountSlider" to="VBoxContainer/HBoxContainer2/BobaSlider/BobaAmountSlider" method="_on_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/SweetnessSlider/SweetnessSlider" to="VBoxContainer/HBoxContainer2/SweetnessSlider/Label2" method="print_slider_level"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/SweetnessSlider/SweetnessSlider" to="VBoxContainer/HBoxContainer2/SweetnessSlider/SweetnessSlider" method="_on_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/IceSlider/IceLevelSlider" to="VBoxContainer/HBoxContainer2/IceSlider/Label2" method="print_slider_level"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/IceSlider/IceLevelSlider" to="VBoxContainer/HBoxContainer2/IceSlider/IceLevelSlider" method="_on_value_changed"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(175, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("18_b1ys8")
+
+[node name="Button" type="Label" parent="VBoxContainer/PanelContainer"]
+material = ExtResource("3_3e5e6")
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Press E to Close
+ this menu"
+label_settings = ExtResource("26_nr0sy")
+horizontal_alignment = 1
+
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase/MILK TEA" to="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase/MILK TEA" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase/MILK TEA" to="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase" method="on_radio_button_toggeled" binds= [&"MILK TEA"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase/TARO" to="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase/TARO" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase/TARO" to="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase" method="on_radio_button_toggeled" binds= [&"TARO"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase/GREEN TEA" to="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase/GREEN TEA" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase/GREEN TEA" to="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase" method="on_radio_button_toggeled" binds= [&"GREEN TEA"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase/OOLONG" to="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase/OOLONG" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase/OOLONG" to="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase" method="on_radio_button_toggeled" binds= [&"OOLONG"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase/BLACK TEA" to="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase/BLACK TEA" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase/BLACK TEA" to="VBoxContainer/HBoxContainer2/Checkbox Controller/TeaBase" method="on_radio_button_toggeled" binds= [&"BLACK TEA"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings/COOKIE CRUMBLE" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings/COOKIE CRUMBLE" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings/COOKIE CRUMBLE" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings" method="on_radio_button_toggeled" binds= [&"COOKIE CRUMBLE"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings/JELLY" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings/JELLY" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings/JELLY" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings" method="on_radio_button_toggeled" binds= [&"JELLY"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings/RED BEANS" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings/RED BEANS" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings/RED BEANS" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings" method="on_radio_button_toggeled" binds= [&"RED BEANS"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings/POPPING BUBBLES" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings/POPPING BUBBLES" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings/POPPING BUBBLES" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Toppings" method="on_radio_button_toggeled" binds= [&"POPPING BUBBLES"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors/ORIGNAL" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors/ORIGNAL" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors/ORIGNAL" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors" method="on_radio_button_toggeled" binds= [&"ORIGNAL"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors/HONEYDEW" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors/HONEYDEW" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors/HONEYDEW" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors" method="on_radio_button_toggeled" binds= [&"HONEYDEW"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors/COFFEE" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors/COFFEE" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors/COFFEE" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors" method="on_radio_button_toggeled" binds= [&"COFFEE"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors/BANANA" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors/BANANA" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors/BANANA" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors" method="on_radio_button_toggeled" binds= [&"BANANA"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors/COCONUT" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors/COCONUT" method="_on_button_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors/COCONUT" to="VBoxContainer/HBoxContainer2/Checkbox Controller/Flavors" method="on_radio_button_toggeled" binds= [&"COCONUT"]]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/Checkbox Controller/WippedCream/WippedCreamCheckedBox" to="VBoxContainer/HBoxContainer2/Checkbox Controller/WippedCream/WippedCreamCheckedBox" method="_on_toggled"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/Slider Controllers/Boba/BobaAmountSlider" to="VBoxContainer/HBoxContainer2/Slider Controllers/Boba/Label2" method="print_slider_level"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/Slider Controllers/Boba/BobaAmountSlider" to="VBoxContainer/HBoxContainer2/Slider Controllers/Boba/BobaAmountSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/Slider Controllers/Sweetness/SweetnessSlider" to="VBoxContainer/HBoxContainer2/Slider Controllers/Sweetness/Label2" method="print_slider_level"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/Slider Controllers/Sweetness/SweetnessSlider" to="VBoxContainer/HBoxContainer2/Slider Controllers/Sweetness/SweetnessSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/Slider Controllers/IceS/IceLevelSlider" to="VBoxContainer/HBoxContainer2/Slider Controllers/IceS/Label2" method="print_slider_level"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/Slider Controllers/IceS/IceLevelSlider" to="VBoxContainer/HBoxContainer2/Slider Controllers/IceS/IceLevelSlider" method="_on_value_changed"]
 [connection signal="button_down" from="VBoxContainer/CreatDrinkButton" to="VBoxContainer/CreatDrinkButton" method="_on_button_down"]
 [connection signal="button_down" from="VBoxContainer/CloseMenuButton" to="VBoxContainer/CloseMenuButton" method="disable_menu"]

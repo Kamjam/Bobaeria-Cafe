@@ -10,23 +10,11 @@ func _ready():
 	pass
 
 func _process(delta):
-	check_first()
-	if Input.is_action_just_pressed("toggle_tutorial_overlay"):
+	if Input.is_action_just_pressed("quit"):
 		if(is_open):
 			close_tutorial()
 		else:
 			open_tutorial()
-
-func check_first():
-		if not first_steps and \
-		(Input.is_action_pressed("up") or \
-		Input.is_action_pressed("left") or \
-		Input.is_action_pressed("down") or \
-		Input.is_action_pressed("right") or \
-		Input.is_mouse_button_pressed(1) or \
-		Input.is_mouse_button_pressed(2)):
-			open_tutorial()
-			first_steps = true
 
 func close_tutorial():
 		animator.play("panel_fade_out")
@@ -40,3 +28,12 @@ func open_tutorial():
 		self.visible = true
 		animator.play("panel_fade_in")
 		is_open = true
+
+func _on_resume_button_down() -> void:
+	close_tutorial()
+
+func _on_load_button_down() -> void:
+	pass # Replace with function body.
+
+func _on_exit_button_down() -> void:
+	get_tree().quit()
