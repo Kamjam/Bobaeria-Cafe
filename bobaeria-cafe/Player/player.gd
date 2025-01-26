@@ -19,7 +19,7 @@ var horrizontalLastDirrection: float
 signal AddScore(num : int)
 signal DrinkPickedUp(drink: Node3D)
 @onready var dayEnd = $"../DayEndManager"
-
+@onready var audioSource = $AudioStreamPlayer3D
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -53,7 +53,7 @@ func _input(event):
 		currentDrink = interactables[0]._drink_resource
 		interactables[0].reparent(get_tree().current_scene)
 		pick_up_object(interactables[0])
-		
+		audioSource.play()
 		pickedObject = true
 		DrinkPickedUp.emit(interactables[0])
 	
@@ -65,11 +65,14 @@ func _input(event):
 			students.remove_at(0)
 			interactables[0].queue_free()
 			interactables.remove_at(0)
+			audioSource.play()
 			pickedObject = false
 	elif event.is_action_pressed("interact") and pickedObject and byTrashCan:
 		interactables[0].queue_free()
 		interactables.remove_at(0)
 		pickedObject = false
+		audioSource.play()
+		
 	elif event.is_action_pressed("interact") and menuController != null:
 		menuController.enable_constructor_menu()
 		canMove = !canMove

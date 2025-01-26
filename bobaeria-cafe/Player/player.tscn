@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://d0u83fayrvkma"]
+[gd_scene load_steps=13 format=3 uid="uid://d0u83fayrvkma"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_aau14"]
-[ext_resource type="PackedScene" uid="uid://ch330pk0oenh4" path="res://Assets/animations/player/player_animator.tscn" id="2_qp5da"]
+[ext_resource type="PackedScene" path="res://Assets/animations/player/player_animator.tscn" id="2_qp5da"]
+[ext_resource type="AudioStream" uid="uid://crleg8ufo5lpf" path="res://Sounds/SFX/pickup_putdown.wav" id="3_wwmss"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uxrvj"]
 
@@ -70,6 +71,10 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.258454, 0, 0)
 
 [node name="Player_Animator" parent="." instance=ExtResource("2_qp5da")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.149636, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_wwmss")
+volume_db = 1.0
 
 [connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="PickupArea" to="." method="_on_pickup_area_area_exited"]
