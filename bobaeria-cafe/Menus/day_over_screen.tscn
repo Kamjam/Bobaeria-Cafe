@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://daqcvp33bdhp7"]
+[gd_scene load_steps=29 format=3 uid="uid://daqcvp33bdhp7"]
 
 [ext_resource type="Shader" path="res://Shaders/silly_circles.gdshader" id="1_pnh50"]
 [ext_resource type="StyleBox" uid="uid://d1l5ocquqr8ta" path="res://Styles/transparent-round-panel.tres" id="3_e3uuw"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://bqiiv6vvx2ilb" path="res://Icons/Chevron-Arrow-Right.png" id="21_isf2b"]
 [ext_resource type="Texture2D" uid="uid://dssafa1syxc3c" path="res://Icons/Plus.png" id="22_dsjna"]
 [ext_resource type="Texture2D" uid="uid://dt13nw8hki7bu" path="res://Icons/Stack.png" id="23_b26pw"]
+[ext_resource type="StyleBox" uid="uid://ckgwnfodyrird" path="res://Menus/disabled_btn_w.tres" id="25_elo82"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_magjy"]
 shader = ExtResource("1_pnh50")
@@ -415,13 +416,14 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("7_k27ur")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/disabled = ExtResource("25_elo82")
 theme_override_styles/hover_pressed = ExtResource("18_8laa4")
 theme_override_styles/hover = ExtResource("18_8laa4")
 theme_override_styles/normal = ExtResource("6_3w7js")
+disabled = true
 text = "Save Stats"
 
 [node name="Upgrades" type="PanelContainer" parent="HBoxContainer/VBoxContainer2/Buttons"]
-visible = false
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -434,9 +436,11 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("7_k27ur")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/disabled = ExtResource("25_elo82")
 theme_override_styles/hover_pressed = ExtResource("18_8laa4")
 theme_override_styles/hover = ExtResource("18_8laa4")
 theme_override_styles/normal = ExtResource("6_3w7js")
+disabled = true
 text = "Shop Upgrades"
 
 [node name="Continue" type="PanelContainer" parent="HBoxContainer/VBoxContainer2/Buttons"]

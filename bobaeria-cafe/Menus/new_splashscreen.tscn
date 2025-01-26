@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://d02neijhnyxly"]
+[gd_scene load_steps=11 format=3 uid="uid://533n7x6ofymc"]
 
 [ext_resource type="Shader" path="res://Shaders/silly_circles.gdshader" id="1_l4dco"]
-[ext_resource type="Material" uid="uid://4jrah7dlw45x" path="res://Menus/texture_rect_squish.tres" id="2_odxf2"]
 [ext_resource type="Texture2D" uid="uid://c35jxau1pyw3y" path="res://Ian_Art/boba-intro.gif" id="3_nqy0p"]
 [ext_resource type="Script" path="res://Menus/splashscreen.gd" id="4_3l8no"]
 [ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="5_ja2pr"]
+[ext_resource type="Material" uid="uid://sajypig68e7q" path="res://Menus/text_woble.tres" id="6_4vltw"]
 [ext_resource type="FontFile" uid="uid://dbsvhg7b3et03" path="res://Fonts/Spineless Normal.ttf" id="6_dqeep"]
 [ext_resource type="AudioStream" uid="uid://d3gtxe4rgav0l" path="res://Sounds/SFX/pop-91931.mp3" id="7_prvj3"]
 
@@ -67,15 +67,20 @@ color = Color(1, 0.509804, 0.223529, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -321.5
+offset_top = -242.5
+offset_right = 321.5
+offset_bottom = 242.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="boba_gif" type="TextureRect" parent="VBoxContainer"]
 texture_filter = 1
-material = ExtResource("2_odxf2")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -92,6 +97,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wu1if")
 
 [node name="Label" type="Label" parent="VBoxContainer/TextureRect"]
 texture_filter = 1
+material = ExtResource("6_4vltw")
 layout_mode = 2
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("6_dqeep")

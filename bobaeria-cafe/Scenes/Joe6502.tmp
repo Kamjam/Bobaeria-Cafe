@@ -1,6 +1,7 @@
-[gd_scene load_steps=44 format=3 uid="uid://s0y7ph8xpq0q"]
+[gd_scene load_steps=45 format=3 uid="uid://s0y7ph8xpq0q"]
 
 [ext_resource type="PackedScene" uid="uid://7cmxluwvpp1r" path="res://Time/time_system.tscn" id="1_4divv"]
+[ext_resource type="Script" path="res://Scenes/menu_manager.gd" id="1_aaulo"]
 [ext_resource type="PackedScene" path="res://Prefabs/Trash.tscn" id="1_dyfi0"]
 [ext_resource type="PackedScene" uid="uid://c0d3asfjghctc" path="res://Menus/controls_overlay.tscn" id="1_hu5c0"]
 [ext_resource type="PackedScene" uid="uid://hrhiwsr2ivwh" path="res://Time/Time GUI.tscn" id="2_5hg1t"]
@@ -74,22 +75,25 @@ ambient_light_energy = 0.5
 [node name="Main2" type="Node3D"]
 process_mode = 1
 
+[node name="Menu Manager" type="Node" parent="." node_paths=PackedStringArray("time_gui", "tutorial_overlay", "esc_menu", "recipe_menu")]
+script = ExtResource("1_aaulo")
+time_gui = NodePath("../Time GUI")
+tutorial_overlay = NodePath("../tutorial overlay")
+esc_menu = NodePath("../Esc Menu")
+recipe_menu = NodePath("../Recipie Book")
+
 [node name="TimeSystem" parent="." node_paths=PackedStringArray("day_manager") instance=ExtResource("1_4divv")]
 day_manager = NodePath("../DayEndManager")
 
 [node name="Time GUI" parent="." instance=ExtResource("2_5hg1t")]
 
 [node name="Drink Constructor" parent="." instance=ExtResource("3_x6iix")]
-visible = true
 
 [node name="tutorial overlay" parent="." instance=ExtResource("4_h4ve6")]
-visible = false
 
 [node name="Esc Menu" parent="." instance=ExtResource("1_hu5c0")]
-visible = false
 
 [node name="Recipie Book" parent="." instance=ExtResource("6_74lpg")]
-visible = false
 
 [node name="THE SUN" parent="." node_paths=PackedStringArray("time_system") instance=ExtResource("4_5m0e6")]
 light_energy = 1.5

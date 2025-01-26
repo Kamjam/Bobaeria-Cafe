@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccaw8hs5vu0ni"]
+[gd_scene load_steps=12 format=3 uid="uid://ccaw8hs5vu0ni"]
 
 [ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="1_dah4w"]
 [ext_resource type="Script" path="res://Menus/tutorial-controls.gd" id="2_fkqxn"]
 [ext_resource type="LabelSettings" uid="uid://bxng2h6fp6edb" path="res://Styles/littleguy_white_text.tres" id="3_aq11s"]
 [ext_resource type="StyleBox" uid="uid://dfjpbvoidlf2p" path="res://Styles/round-panel-black.tres" id="3_h6tds"]
 [ext_resource type="Material" uid="uid://sajypig68e7q" path="res://Menus/text_woble.tres" id="3_kvpkf"]
+[ext_resource type="LabelSettings" uid="uid://cv0kyqpg1hqot" path="res://Styles/tutorial_overlay_keywords.tres" id="6_jfhbn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kbhgc"]
 shader = ExtResource("1_dah4w")
@@ -84,12 +85,74 @@ libraries = {
 [node name="BottomContainer" type="Control" parent="blurShader"]
 custom_minimum_size = Vector2(200, 130)
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -200.0
 offset_top = -200.0
-offset_right = 200.0
+grow_horizontal = 0
 grow_vertical = 0
+
+[node name="Panel3" type="Panel" parent="blurShader/BottomContainer"]
+custom_minimum_size = Vector2(225, 125)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -225.0
+offset_top = -125.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("3_h6tds")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/BottomContainer/Panel3"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -56.5
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Header" type="HBoxContainer" parent="blurShader/BottomContainer/Panel3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="menu label" type="Label" parent="blurShader/BottomContainer/Panel3/VBoxContainer/Header"]
+material = ExtResource("3_kvpkf")
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Click Over here
+for a"
+label_settings = ExtResource("3_aq11s")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="KeysContainer" type="VBoxContainer" parent="blurShader/BottomContainer/Panel3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="menu label2" type="Label" parent="blurShader/BottomContainer/Panel3/VBoxContainer/KeysContainer"]
+material = ExtResource("3_kvpkf")
+custom_minimum_size = Vector2(15, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Surprise"
+label_settings = ExtResource("6_jfhbn")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TopContainer" type="Control" parent="blurShader"]
 custom_minimum_size = Vector2(250, 150)
@@ -168,7 +231,7 @@ custom_minimum_size = Vector2(15, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "11:00 AM - 8PM"
-label_settings = ExtResource("3_aq11s")
+label_settings = ExtResource("6_jfhbn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -254,7 +317,7 @@ custom_minimum_size = Vector2(15, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "T"
-label_settings = ExtResource("3_aq11s")
+label_settings = ExtResource("6_jfhbn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -309,7 +372,7 @@ material = ExtResource("3_kvpkf")
 layout_mode = 2
 size_flags_horizontal = 4
 text = "W"
-label_settings = ExtResource("3_aq11s")
+label_settings = ExtResource("6_jfhbn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -321,7 +384,7 @@ material = ExtResource("3_kvpkf")
 layout_mode = 2
 size_flags_horizontal = 4
 text = "A"
-label_settings = ExtResource("3_aq11s")
+label_settings = ExtResource("6_jfhbn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -330,7 +393,7 @@ material = ExtResource("3_kvpkf")
 layout_mode = 2
 size_flags_horizontal = 4
 text = "S"
-label_settings = ExtResource("3_aq11s")
+label_settings = ExtResource("6_jfhbn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -339,7 +402,7 @@ material = ExtResource("3_kvpkf")
 layout_mode = 2
 size_flags_horizontal = 4
 text = "D"
-label_settings = ExtResource("3_aq11s")
+label_settings = ExtResource("6_jfhbn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -351,7 +414,7 @@ size_flags_horizontal = 0
 material = ExtResource("3_kvpkf")
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Attack: "
+text = "Interact: "
 label_settings = ExtResource("3_aq11s")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -367,6 +430,6 @@ material = ExtResource("3_kvpkf")
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Left Click/E"
-label_settings = ExtResource("3_aq11s")
+label_settings = ExtResource("6_jfhbn")
 horizontal_alignment = 1
 vertical_alignment = 1

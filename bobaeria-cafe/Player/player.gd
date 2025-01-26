@@ -46,9 +46,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		animator.play_idle()
 	
-func _input(event):
-	if event.is_action_pressed("quit"):get_tree().quit()
-	
+func _input(event):	
 	if event.is_action_pressed("interact") and interactables.size() > 0 and !pickedObject:
 		currentDrink = interactables[0]._drink_resource
 		interactables[0].reparent(get_tree().current_scene)

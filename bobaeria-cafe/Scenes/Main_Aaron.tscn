@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=3 uid="uid://dl7nid8y84g1h"]
 
 [ext_resource type="PackedScene" uid="uid://7cmxluwvpp1r" path="res://Time/time_system.tscn" id="1_pgpvu"]
-[ext_resource type="PackedScene" uid="uid://c7cgcijvuyqhn" path="res://Time/Time GUI.tscn" id="2_x1djx"]
+[ext_resource type="PackedScene" uid="uid://c7cgcijvuyqhn" path="res://Time/Time GUI OLD.tscn" id="2_x1djx"]
 [ext_resource type="PackedScene" uid="uid://dup83nxucg4u2" path="res://Scenes/DrinkConstructorMenu.tscn" id="3_fgi62"]
 [ext_resource type="PackedScene" uid="uid://de2lrqxj3ma6v" path="res://Time/the_sun.tscn" id="4_g772c"]
 [ext_resource type="Script" path="res://drink_menu_controller.gd" id="5_h7v7t"]
@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://ckuvr458mwi4f" path="res://drink_spawner.tscn" id="16_e7kbb"]
 [ext_resource type="PackedScene" uid="uid://cgtxsrha2o255" path="res://Prefabs/Tea.tscn" id="17_wesmi"]
 [ext_resource type="Script" path="res://Boba/bubbled_drink_controller.gd" id="18_m0uxc"]
-[ext_resource type="PackedScene" uid="uid://1p5nseud57au" path="res://drink_bubble.tscn" id="19_j47ib"]
+[ext_resource type="PackedScene" path="res://drink_bubble.tscn" id="19_j47ib"]
 [ext_resource type="AudioStream" uid="uid://d2dl1wt6gslug" path="res://Sounds/Music/(no copyright music) lofi type beat 'Grinch's cafe shop' free vlog music  by Lofiru.mp3" id="20_t5xrd"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_qm2hx"]

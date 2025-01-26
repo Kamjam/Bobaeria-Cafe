@@ -1,18 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://hrhiwsr2ivwh"]
+[gd_scene load_steps=3 format=3 uid="uid://c7cgcijvuyqhn"]
 
-[ext_resource type="Script" path="res://Time/scripts/time_gui.gd" id="1_qiwa5"]
-[ext_resource type="LabelSettings" uid="uid://3qrwk76fhqjg" path="res://Time/day_time_label_settings.tres" id="2_cevmh"]
+[ext_resource type="Script" path="res://Time/scripts/time_gui.gd" id="1_3afuf"]
+[ext_resource type="LabelSettings" uid="uid://3qrwk76fhqjg" path="res://Time/day_time_label_settings.tres" id="2_ko41h"]
 
 [node name="Time GUI" type="CanvasLayer"]
 
-[node name="Control" type="Control" parent="." node_paths=PackedStringArray("day_label", "hour_label", "min_label", "meridiem_label")]
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("hour_label", "min_label", "meridiem_label")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
-script = ExtResource("1_qiwa5")
-day_label = NodePath("VBoxContainer/DayCounter/day")
+script = ExtResource("1_3afuf")
 hour_label = NodePath("VBoxContainer/Clock/hours")
 min_label = NodePath("VBoxContainer/Clock/mins")
 meridiem_label = NodePath("VBoxContainer/Clock/meridiem")
@@ -40,7 +39,7 @@ visible = false
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "0"
-label_settings = ExtResource("2_cevmh")
+label_settings = ExtResource("2_ko41h")
 horizontal_alignment = 1
 
 [node name="Clock" type="HBoxContainer" parent="Control/VBoxContainer"]
@@ -52,21 +51,21 @@ alignment = 1
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "00"
-label_settings = ExtResource("2_cevmh")
+label_settings = ExtResource("2_ko41h")
 horizontal_alignment = 1
 
 [node name="semicolon" type="Label" parent="Control/VBoxContainer/Clock"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 text = ":"
-label_settings = ExtResource("2_cevmh")
+label_settings = ExtResource("2_ko41h")
 
 [node name="mins" type="Label" parent="Control/VBoxContainer/Clock"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "00
 "
-label_settings = ExtResource("2_cevmh")
+label_settings = ExtResource("2_ko41h")
 horizontal_alignment = 1
 
 [node name="meridiem" type="Label" parent="Control/VBoxContainer/Clock"]
@@ -74,5 +73,5 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "AM
 "
-label_settings = ExtResource("2_cevmh")
+label_settings = ExtResource("2_ko41h")
 horizontal_alignment = 1

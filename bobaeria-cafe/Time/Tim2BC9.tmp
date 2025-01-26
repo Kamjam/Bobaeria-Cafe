@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://hrhiwsr2ivwh"]
+[gd_scene load_steps=5 format=3 uid="uid://hrhiwsr2ivwh"]
 
-[ext_resource type="Script" path="res://Time/scripts/time_gui.gd" id="1_iadmb"]
-[ext_resource type="Texture2D" uid="uid://d4mdrr7x4habh" path="res://Icons/icons8-sun-48.png" id="2_7ehyd"]
-[ext_resource type="Material" uid="uid://4jrah7dlw45x" path="res://Menus/texture_rect_squish.tres" id="2_yms8o"]
-[ext_resource type="LabelSettings" uid="uid://biwm0brwroj6b" path="res://Styles/puffi_white_text_20.tres" id="3_pu0io"]
-[ext_resource type="Material" uid="uid://sajypig68e7q" path="res://Menus/text_woble.tres" id="3_q5xig"]
+[ext_resource type="Script" path="res://Time/scripts/time_gui.gd" id="1_qiwa5"]
+[ext_resource type="Texture2D" uid="uid://d4mdrr7x4habh" path="res://Icons/icons8-sun-48.png" id="2_8vhed"]
+[ext_resource type="LabelSettings" uid="uid://qf3njy6uiy6" path="res://Styles/spineless_white_text.tres" id="2_ifbsn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2rtq"]
 bg_color = Color(0.639216, 0.156863, 0.345098, 1)
@@ -12,50 +10,55 @@ corner_radius_top_left = 15
 corner_radius_bottom_left = 15
 
 [node name="Time GUI" type="CanvasLayer"]
-process_mode = 3
 
-[node name="Control" type="Control" parent="." node_paths=PackedStringArray("hour_label", "min_label", "meridiem_label", "day_img")]
-custom_minimum_size = Vector2(250, 100)
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("day_label", "hour_label", "min_label", "meridiem_label")]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 100.0
-grow_horizontal = 0
-script = ExtResource("1_iadmb")
+grow_horizontal = 2
+script = ExtResource("1_qiwa5")
+day_label = NodePath("")
 hour_label = NodePath("Panel/VBoxContainer/Clock/hours")
 min_label = NodePath("Panel/VBoxContainer/Clock/mins")
 meridiem_label = NodePath("Panel/VBoxContainer/Clock/meridiem")
 is_twelve_hr_clock = true
-day_img = NodePath("Panel/VBoxContainer/time of day")
 
 [node name="Panel" type="Panel" parent="Control"]
-custom_minimum_size = Vector2(225, 50)
+custom_minimum_size = Vector2(325, 125)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -225.0
-offset_top = 30.0
-offset_bottom = 80.0
+offset_left = -325.0
+offset_top = 20.0
+offset_bottom = 145.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_c2rtq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -22.5
-offset_bottom = 22.5
+offset_left = -132.0
+offset_top = -53.0
+offset_right = 132.0
+offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="time of day" type="Sprite2D" parent="Control/Panel/VBoxContainer"]
-material = ExtResource("2_yms8o")
-position = Vector2(0, 0.5)
-texture = ExtResource("2_7ehyd")
+[node name="DayCounter" type="HBoxContainer" parent="Control/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+alignment = 1
+
+[node name="time of day" type="TextureRect" parent="Control/Panel/VBoxContainer/DayCounter"]
+layout_mode = 2
+texture = ExtResource("2_8vhed")
 
 [node name="Clock" type="HBoxContainer" parent="Control/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 45)
@@ -63,34 +66,30 @@ layout_mode = 2
 alignment = 1
 
 [node name="hours" type="Label" parent="Control/Panel/VBoxContainer/Clock"]
-material = ExtResource("3_q5xig")
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "00"
-label_settings = ExtResource("3_pu0io")
+label_settings = ExtResource("2_ifbsn")
 horizontal_alignment = 1
 
 [node name="semicolon" type="Label" parent="Control/Panel/VBoxContainer/Clock"]
-material = ExtResource("3_q5xig")
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 text = ":"
-label_settings = ExtResource("3_pu0io")
+label_settings = ExtResource("2_ifbsn")
 
 [node name="mins" type="Label" parent="Control/Panel/VBoxContainer/Clock"]
-material = ExtResource("3_q5xig")
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "00
 "
-label_settings = ExtResource("3_pu0io")
+label_settings = ExtResource("2_ifbsn")
 horizontal_alignment = 1
 
 [node name="meridiem" type="Label" parent="Control/Panel/VBoxContainer/Clock"]
-material = ExtResource("3_q5xig")
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "AM
 "
-label_settings = ExtResource("3_pu0io")
+label_settings = ExtResource("2_ifbsn")
 horizontal_alignment = 1

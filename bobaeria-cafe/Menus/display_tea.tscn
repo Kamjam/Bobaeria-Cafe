@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0axo6y3tlra"]
+[gd_scene load_steps=11 format=3 uid="uid://bwfi0rrbe2aph"]
 
 [ext_resource type="PackedScene" uid="uid://cvmkj1lrggwni" path="res://Ian_Art/boba-world.glb" id="1_hbsug"]
 [ext_resource type="Script" path="res://Menus/display_tea_rotate.gd" id="1_pbdrn"]
 [ext_resource type="Material" uid="uid://crijbrjtu075w" path="res://Scenes/sockpop_sky.tres" id="2_wuw5j"]
+[ext_resource type="Material" uid="uid://k0sg3s63ugtd" path="res://Prefabs/3d_obj_woble_material.tres" id="4_6jjlp"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_q0r0w"]
 height = 0.748985
@@ -22,7 +23,11 @@ sky = SubResource("Sky_x43lm")
 ambient_light_source = 3
 ambient_light_color = Color(0, 0, 0, 0)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_uc7qb"]
+material = ExtResource("4_6jjlp")
+
 [node name="DisplayTea" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_q0r0w")
@@ -37,5 +42,10 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_pbdrn")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.0104437, 0.350812, -0.936388, -0.00391242, 0.936446, 0.35079, 0.999938, 0, 0.0111525, -2.37713, 0.984581, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, -50, 0)
+top_level = true
 environment = SubResource("Environment_wur43")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0, 0, 5, 1, 0, 0)
+mesh = SubResource("PlaneMesh_uc7qb")

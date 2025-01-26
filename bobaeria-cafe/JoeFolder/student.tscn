@@ -1,11 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://do5p4i335e27s"]
+[gd_scene load_steps=9 format=3 uid="uid://do5p4i335e27s"]
 
 [ext_resource type="Script" path="res://JoeFolder/Scripts/student.gd" id="1_b1qys"]
 [ext_resource type="PackedScene" uid="uid://dlpg46q2lkiwn" path="res://JoeFolder/thought_bubble.tscn" id="2_2msao"]
 [ext_resource type="Texture2D" uid="uid://b46y5njumyqi3" path="res://icon.svg" id="3_0bxu7"]
+[ext_resource type="Shader" path="res://Shaders/char_outline.gdshader" id="3_d7fk3"]
 [ext_resource type="PackedScene" uid="uid://xp5tfwyroe3x" path="res://Assets/animations/npcs/customer_walk_animator.tscn" id="4_lcv0p"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f0sf1"]
+shader = ExtResource("3_d7fk3")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6o55e"]
+material = SubResource("ShaderMaterial_f0sf1")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3f0l"]
 

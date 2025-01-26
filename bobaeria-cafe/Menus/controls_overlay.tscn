@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c0d3asfjghctc"]
+[gd_scene load_steps=20 format=3 uid="uid://c0d3asfjghctc"]
 
 [ext_resource type="StyleBox" uid="uid://d1l5ocquqr8ta" path="res://Styles/transparent-round-panel.tres" id="1_05uoq"]
 [ext_resource type="Shader" path="res://Shaders/silly_circles.gdshader" id="1_egpk6"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Menus/squish_on_mouse.gd" id="4_ylv7p"]
 [ext_resource type="StyleBox" uid="uid://dfjpbvoidlf2p" path="res://Styles/round-panel-black.tres" id="5_ypekl"]
 [ext_resource type="LabelSettings" path="res://Styles/day_over_screen_text_white_op.tres" id="9_8ehrd"]
+[ext_resource type="StyleBox" uid="uid://ckgwnfodyrird" path="res://Menus/disabled_btn_w.tres" id="12_bepar"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_00yyp"]
 shader = ExtResource("1_egpk6")
@@ -93,7 +94,7 @@ shader = SubResource("Shader_872g3")
 shader_parameter/lod = 2.788
 shader_parameter/mix_percentage = 0.295
 
-[node name="Control" type="CanvasLayer" node_paths=PackedStringArray("animator")]
+[node name="Esc Menu" type="CanvasLayer" node_paths=PackedStringArray("animator")]
 process_mode = 3
 script = ExtResource("1_p7ilo")
 animator = NodePath("TextureRect/AnimationPlayer")
@@ -160,9 +161,11 @@ size_flags_horizontal = 4
 theme_override_styles/panel = ExtResource("1_05uoq")
 
 [node name="Resume" type="Button" parent="TextureRect/PanelContainer/VBoxContainer/Resume"]
+process_mode = 3
 material = ExtResource("2_7lq8d")
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.639216, 0.156863, 0.345098, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_s3v3a")
 theme_override_font_sizes/font_size = 30
@@ -178,15 +181,19 @@ size_flags_horizontal = 4
 theme_override_styles/panel = ExtResource("1_05uoq")
 
 [node name="Load" type="Button" parent="TextureRect/PanelContainer/VBoxContainer/Load"]
+process_mode = 3
 material = ExtResource("2_7lq8d")
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.639216, 0.156863, 0.345098, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_s3v3a")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/disabled = ExtResource("12_bepar")
 theme_override_styles/hover_pressed = ExtResource("4_mtgab")
 theme_override_styles/hover = ExtResource("4_mtgab")
 theme_override_styles/normal = ExtResource("5_ypekl")
+disabled = true
 text = "LOAD SAVE"
 
 [node name="Exit" type="PanelContainer" parent="TextureRect/PanelContainer/VBoxContainer"]
@@ -196,9 +203,11 @@ size_flags_horizontal = 4
 theme_override_styles/panel = ExtResource("1_05uoq")
 
 [node name="Exit" type="Button" parent="TextureRect/PanelContainer/VBoxContainer/Exit"]
+process_mode = 3
 material = ExtResource("2_7lq8d")
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.639216, 0.156863, 0.345098, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_s3v3a")
 theme_override_font_sizes/font_size = 30

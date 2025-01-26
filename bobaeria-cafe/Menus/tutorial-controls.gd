@@ -22,9 +22,7 @@ func check_first():
 		(Input.is_action_pressed("up") or \
 		Input.is_action_pressed("left") or \
 		Input.is_action_pressed("down") or \
-		Input.is_action_pressed("right") or \
-		Input.is_mouse_button_pressed(1) or \
-		Input.is_mouse_button_pressed(2)):
+		Input.is_action_pressed("right")):
 			open_tutorial()
 			first_steps = true
 
