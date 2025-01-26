@@ -20,6 +20,7 @@ layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
+offset_left = -250.0
 offset_bottom = 100.0
 grow_horizontal = 0
 script = ExtResource("1_iadmb")
@@ -36,8 +37,7 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -225.0
-offset_top = 30.0
-offset_bottom = 80.0
+offset_bottom = 50.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_c2rtq")
 
@@ -54,7 +54,7 @@ grow_vertical = 2
 
 [node name="time of day" type="Sprite2D" parent="Control/Panel/VBoxContainer"]
 material = ExtResource("2_yms8o")
-position = Vector2(0, 0.5)
+position = Vector2(5, 20.5)
 texture = ExtResource("2_7ehyd")
 
 [node name="Clock" type="HBoxContainer" parent="Control/Panel/VBoxContainer"]

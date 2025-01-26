@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlpg46q2lkiwn"]
+[gd_scene load_steps=4 format=3 uid="uid://dlpg46q2lkiwn"]
 
 [ext_resource type="Script" path="res://JoeFolder/thought_bubble.gd" id="1_i2xtq"]
 [ext_resource type="Texture2D" uid="uid://dd8n0exyklgpd" path="res://Assets/bubble.png" id="2_fu0vk"]
+[ext_resource type="FontFile" uid="uid://um3bnq4u2kaj" path="res://Fonts/puffi.ttf" id="3_huc77"]
 
 [node name="ThoughtBubble" type="MeshInstance3D" node_paths=PackedStringArray("one", "two", "three")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 3.73374, 0)
@@ -13,7 +14,7 @@ two = NodePath("Two")
 three = NodePath("Three")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.19, 0, 0, 0, 0.19, 0, 0, 0, 0.19, 0, 1.01021, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.01021, 0)
 layers = 512
 modulate = Color(1, 1, 1, 0.470588)
 billboard = 1
@@ -29,7 +30,8 @@ billboard = 1
 render_priority = 12
 outline_render_priority = 11
 text = "Sweet Green Tea"
-font_size = 30
+font = ExtResource("3_huc77")
+font_size = 45
 autowrap_mode = 2
 
 [node name="Two" type="Label3D" parent="."]
@@ -40,7 +42,8 @@ billboard = 1
 render_priority = 12
 outline_render_priority = 11
 text = "Sweet Green Tea"
-font_size = 30
+font = ExtResource("3_huc77")
+font_size = 45
 
 [node name="Three" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.184361, 0)
@@ -50,4 +53,5 @@ billboard = 1
 render_priority = 12
 outline_render_priority = 11
 text = "Sweet Green Tea"
-font_size = 30
+font = ExtResource("3_huc77")
+font_size = 45

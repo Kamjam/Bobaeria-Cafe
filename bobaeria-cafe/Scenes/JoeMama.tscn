@@ -1,15 +1,19 @@
-[gd_scene load_steps=44 format=3 uid="uid://s0y7ph8xpq0q"]
+[gd_scene load_steps=48 format=3 uid="uid://s0y7ph8xpq0q"]
 
 [ext_resource type="PackedScene" uid="uid://7cmxluwvpp1r" path="res://Time/time_system.tscn" id="1_4divv"]
-[ext_resource type="PackedScene" uid="uid://bg0l6trxtasyy" path="res://Prefabs/Trash.tscn" id="1_dyfi0"]
-[ext_resource type="PackedScene" uid="uid://c7cgcijvuyqhn" path="res://Time/Time GUI.tscn" id="2_5hg1t"]
+[ext_resource type="PackedScene" path="res://Prefabs/Trash.tscn" id="1_dyfi0"]
+[ext_resource type="PackedScene" uid="uid://c0d3asfjghctc" path="res://Menus/controls_overlay.tscn" id="1_hu5c0"]
+[ext_resource type="PackedScene" uid="uid://dikq5bvkxp1nn" path="res://window_controls.tscn" id="1_w0eu0"]
+[ext_resource type="PackedScene" uid="uid://hrhiwsr2ivwh" path="res://Time/Time GUI.tscn" id="2_5hg1t"]
 [ext_resource type="PackedScene" uid="uid://d0u83fayrvkma" path="res://Player/player.tscn" id="2_ruddo"]
 [ext_resource type="Texture2D" uid="uid://b46y5njumyqi3" path="res://icon.svg" id="3_872u7"]
 [ext_resource type="PackedScene" uid="uid://dup83nxucg4u2" path="res://Scenes/DrinkConstructorMenu.tscn" id="3_x6iix"]
 [ext_resource type="PackedScene" uid="uid://de2lrqxj3ma6v" path="res://Time/the_sun.tscn" id="4_5m0e6"]
+[ext_resource type="PackedScene" uid="uid://ccaw8hs5vu0ni" path="res://Menus/tutorial_overlay.tscn" id="4_h4ve6"]
 [ext_resource type="PackedScene" uid="uid://cgtxsrha2o255" path="res://Prefabs/Tea.tscn" id="4_pjios"]
 [ext_resource type="Script" path="res://JoeFolder/Scripts/TableManager.gd" id="5_6hxun"]
 [ext_resource type="Script" path="res://drink_menu_controller.gd" id="5_udj78"]
+[ext_resource type="PackedScene" uid="uid://dy52m3l240m12" path="res://Menus/recipie_book.tscn" id="6_74lpg"]
 [ext_resource type="Script" path="res://ScoreScripts/BubblePopping.gd" id="6_atcqm"]
 [ext_resource type="PackedScene" uid="uid://ceftpv5jeks6w" path="res://Ian_Art/kiosk.glb" id="6_vcgry"]
 [ext_resource type="Script" path="res://JoeFolder/Scripts/StudentSpawner.gd" id="6_vqcra"]
@@ -18,11 +22,11 @@
 [ext_resource type="Resource" uid="uid://bc4pt7uxm52as" path="res://DrinkResources/TestDrink.tres" id="7_ok7un"]
 [ext_resource type="PackedScene" uid="uid://bc0flyw6we6xc" path="res://Ian_Art/restaurant.glb" id="7_rfn7o"]
 [ext_resource type="PackedScene" uid="uid://cspvqn1uy5npb" path="res://Ian_Art/blender.glb" id="8_78yk4"]
-[ext_resource type="PackedScene" uid="uid://8b7le07s2bwh" path="res://JoeFolder/door_trigger.tscn" id="8_uugu6"]
+[ext_resource type="PackedScene" path="res://JoeFolder/door_trigger.tscn" id="8_uugu6"]
 [ext_resource type="Script" path="res://ScoreScripts/score_mannager.gd" id="14_g7g1d"]
 [ext_resource type="PackedScene" uid="uid://ckuvr458mwi4f" path="res://drink_spawner.tscn" id="15_q87gh"]
 [ext_resource type="Script" path="res://Boba/bubbled_drink_controller.gd" id="18_3w1qe"]
-[ext_resource type="PackedScene" uid="uid://1p5nseud57au" path="res://drink_bubble.tscn" id="19_1qonx"]
+[ext_resource type="PackedScene" path="res://drink_bubble.tscn" id="19_1qonx"]
 [ext_resource type="AudioStream" uid="uid://d2dl1wt6gslug" path="res://Sounds/Music/(no copyright music) lofi type beat 'Grinch's cafe shop' free vlog music  by Lofiru.mp3" id="20_rkofv"]
 [ext_resource type="PackedScene" uid="uid://daqcvp33bdhp7" path="res://Menus/day_over_screen.tscn" id="21_sd4mh"]
 [ext_resource type="PackedScene" path="res://JoeFolder/Fade.tscn" id="22_18evc"]
@@ -77,12 +81,22 @@ albedo_color = Color(1, 0.47451, 0.478431, 1)
 
 [node name="Main2" type="Node3D"]
 
+[node name="Window-Controls" parent="." instance=ExtResource("1_w0eu0")]
+
 [node name="TimeSystem" parent="." node_paths=PackedStringArray("day_manager") instance=ExtResource("1_4divv")]
 day_manager = NodePath("../DayEndManager")
 
 [node name="Time GUI" parent="." instance=ExtResource("2_5hg1t")]
 
 [node name="Control" parent="." instance=ExtResource("3_x6iix")]
+
+[node name="Recipie Book" parent="." instance=ExtResource("6_74lpg")]
+
+[node name="tutorial overlay" parent="." instance=ExtResource("4_h4ve6")]
+visible = false
+
+[node name="Esc Menu" parent="." instance=ExtResource("1_hu5c0")]
+visible = false
 
 [node name="THE SUN" parent="." node_paths=PackedStringArray("time_system") instance=ExtResource("4_5m0e6")]
 light_color = Color(0.843184, 0.843184, 0.843184, 1)

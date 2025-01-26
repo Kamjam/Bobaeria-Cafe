@@ -201,8 +201,20 @@ func JudgeDrink(otherDrink : bobaDrink) -> int:
 		instance.queue_free()
 		instance = null
 	hasDrink = true
+	color_score_text()
 	ShowScore()
 	return drinkScore
+
+func color_score_text():
+	if drinkScore == 0:
+		textScore.modulate = Color(0.8, 0.259, 0.369)
+	elif drinkScore == 20:
+		textScore.modulate = Color(0.918, 0.384, 0.384)
+	elif drinkScore == 40:
+		textScore.modulate = Color(0.949, 0.682, 0.6)
+	elif drinkScore == 60:
+		textScore.modulate = Color(0.988, 0.937, 0.553)
+
 func ShowScore():
 	await get_tree().create_timer(10).timeout
 	textScore.show()

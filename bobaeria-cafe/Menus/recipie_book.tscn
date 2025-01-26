@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://dy52m3l240m12"]
+[gd_scene load_steps=19 format=3 uid="uid://dy52m3l240m12"]
 
 [ext_resource type="Script" path="res://Menus/recipie_book_overlay.gd" id="1_1yge7"]
 [ext_resource type="Texture2D" uid="uid://bhajgnb6ch0et" path="res://Icons/Bag.png" id="1_7oohd"]
 [ext_resource type="Script" path="res://Menus/drinks.gd" id="1_kg0i3"]
 [ext_resource type="FontFile" uid="uid://um3bnq4u2kaj" path="res://Fonts/puffi.ttf" id="1_vcir7"]
 [ext_resource type="Script" path="res://Menus/recipie_book.gd" id="1_yta3o"]
+[ext_resource type="FontFile" uid="uid://dbsvhg7b3et03" path="res://Fonts/Spineless Normal.ttf" id="2_0ayoa"]
 [ext_resource type="StyleBox" uid="uid://dfjpbvoidlf2p" path="res://Styles/round-panel-black.tres" id="2_of0cw"]
 [ext_resource type="Material" uid="uid://sajypig68e7q" path="res://Menus/text_woble.tres" id="3_vqdjq"]
 [ext_resource type="StyleBox" uid="uid://bd8tf3grtlofo" path="res://Styles/round-panel-white.tres" id="5_8faog"]
@@ -111,33 +112,38 @@ script = ExtResource("1_yta3o")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/Search"]
 use_parent_material = true
+custom_minimum_size = Vector2(500, 650)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 538.0
+offset_right = 500.0
 grow_vertical = 2
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="TextureRect/Search/VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
 [node name="Search" type="LineEdit" parent="TextureRect/Search/VBoxContainer"]
 custom_minimum_size = Vector2(330, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_placeholder_color = Color(0.8, 0.8, 0.8, 0.486275)
+theme_override_fonts/font = ExtResource("2_0ayoa")
+theme_override_font_sizes/font_size = 15
 placeholder_text = "Search for Drink"
 alignment = 1
 caret_blink = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="TextureRect/Search/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="TextureRect/Search/VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/Search/VBoxContainer"]
 clip_contents = false
+custom_minimum_size = Vector2(500, 430)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 2
 horizontal_scroll_mode = 0
 
 [node name="Drinks" type="VBoxContainer" parent="TextureRect/Search/VBoxContainer/ScrollContainer"]
