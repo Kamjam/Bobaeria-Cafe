@@ -25,15 +25,13 @@ func _on_twelve_hr_system_activated(date_time:DateTime):
 		update_label(hour_label, date_time.twelve_hr)
 	if is_twelve_hr_clock and date_time.hours == 24: 
 		is_twelve_hr_clock = false
-		#update_label(hour_label, date_time.hours)
 
 func calc_meridiem(hours:int):
+	print(hours)
 	if hours >= 12 and cur_state == MState.AM:
 		cur_state = MState.PM 
 		meridiem_label.text = "PM"
-	else: #hours >= 24 and cur_state == MState.PM:
-		cur_state = MState.AM
-		meridiem_label.text = "AM"
+	
 
 func add_leading_zero(label:Label, value:int):
 	if value < 10: label.text += '0'

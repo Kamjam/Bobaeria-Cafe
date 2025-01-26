@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d2dl1wt6gslug"
+path="res://.godot/imported/(no copyright music) lofi type beat 'Grinch's cafe shop' free vlog music  by Lofiru.mp3-7e97f2278db6d0e08f2dc808ce1c55d8.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/(no copyright music) lofi type beat 'Grinch's cafe shop' free vlog music  by Lofiru.mp3"
+dest_files=["res://.godot/imported/(no copyright music) lofi type beat 'Grinch's cafe shop' free vlog music  by Lofiru.mp3-7e97f2278db6d0e08f2dc808ce1c55d8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

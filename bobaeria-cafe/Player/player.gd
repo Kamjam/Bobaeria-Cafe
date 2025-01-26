@@ -50,11 +50,9 @@ func _input(event):
 		interactables[0].queue_free()
 		interactables.remove_at(0)
 		pickedObject = false
-		print("trashed")
 	elif event.is_action_pressed("interact") and menuController != null:
 		menuController.enable_constructor_menu()
 		canMove = !canMove
-		print("menu opened")
 
 func pick_up_object(object):
 	object.reparent(self)
