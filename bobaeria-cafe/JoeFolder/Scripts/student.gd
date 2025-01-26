@@ -11,6 +11,7 @@ extends CharacterBody3D
 @export var leaveTime : float = 4
 @export var thoughtBubble : PackedScene
 @export var bubblePos : Node3D
+@export var studentAnimator: StudentAnimator
 
 var isSeated = false
 var hasOrder = false
@@ -48,6 +49,8 @@ func _init():
 			listToJudge[2] = num
 			SetRandomDesire(3)
 			
+	
+	
 	#print(listToJudge[0], listToJudge[1], listToJudge[2])
 func SetRandomDesire(num):
 	if num == 1:
@@ -209,6 +212,9 @@ func _ready() -> void:
 	chair = manager.GetChair()
 	destination = chair.position
 	manager.RemoveChair(0)
+	
+	studentAnimator.play_left()
+
 func _physics_process(delta: float) -> void:
 	var pos : Vector2 = Vector2(global_position.x, global_position.z)
 	var lookTarget : Vector2 = Vector2(destination.x, destination.z)
@@ -227,6 +233,8 @@ func _physics_process(delta: float) -> void:
 	
 
 func Thinking():
+	studentAnimator.pause()
+	
 	await get_tree().create_timer(thinkingTime).timeout
 	hasOrder = true
 	instance = thoughtBubble.instantiate()
@@ -236,6 +244,7 @@ func Thinking():
 	get_parent().add_child(instance)
 	await get_tree().create_timer(leaveTime).timeout
 	Leave()
+
 func Leave():
 	destination = manager.GetExit()
 	if instance:
@@ -243,6 +252,9 @@ func Leave():
 		instance = null
 	await get_tree().create_timer(10).timeout
 	manager.AddChair(chair)
+	
+	studentAnimator.play_left()
+	
 	queue_free()
 
 

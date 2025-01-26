@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://do5p4i335e27s"]
+[gd_scene load_steps=7 format=3 uid="uid://do5p4i335e27s"]
 
 [ext_resource type="Script" path="res://JoeFolder/Scripts/student.gd" id="1_b1qys"]
 [ext_resource type="PackedScene" uid="uid://dlpg46q2lkiwn" path="res://JoeFolder/thought_bubble.tscn" id="2_2msao"]
 [ext_resource type="Texture2D" uid="uid://b46y5njumyqi3" path="res://icon.svg" id="3_0bxu7"]
+[ext_resource type="PackedScene" uid="uid://xp5tfwyroe3x" path="res://Assets/animations/npcs/customer_walk_animator.tscn" id="4_lcv0p"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6o55e"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3f0l"]
 
-[node name="Student" type="CharacterBody3D" node_paths=PackedStringArray("agent", "bubblePos") groups=["Student"]]
+[node name="Student" type="CharacterBody3D" node_paths=PackedStringArray("agent", "bubblePos", "studentAnimator") groups=["Student"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_b1qys")
@@ -18,6 +19,7 @@ speed = 2.0
 leaveTime = 60.0
 thoughtBubble = ExtResource("2_2msao")
 bubblePos = NodePath("BubblePos")
+studentAnimator = NodePath("Customer_Walk_animator")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
@@ -38,6 +40,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.439871, 0)
+visible = false
 billboard = 1
 texture = ExtResource("3_0bxu7")
 
@@ -50,3 +53,5 @@ font_size = 100
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Customer_Walk_animator" parent="." instance=ExtResource("4_lcv0p")]
