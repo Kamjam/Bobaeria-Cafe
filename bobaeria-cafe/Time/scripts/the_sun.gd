@@ -64,3 +64,9 @@ func _process(delta: float) -> void:
 	#default 1.5 light energy
 	if $".".light_energy > 0.1:
 		$".".light_energy -= 0.0001
+	
+
+func _on_time_system_day_reset() -> void:
+	$".".rotation_degrees = Vector3(-45,90,0)
+	$".".light_energy = 1.5
+	

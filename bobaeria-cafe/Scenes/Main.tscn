@@ -67,6 +67,7 @@ ambient_light_energy = 0.5
 [node name="Time GUI" parent="." instance=ExtResource("2_n8t0o")]
 
 [node name="Control" parent="." instance=ExtResource("3_4ss8n")]
+visible = false
 
 [node name="THE SUN" parent="." node_paths=PackedStringArray("time_system") instance=ExtResource("4_08trf")]
 light_energy = 1.5
@@ -368,4 +369,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.13086, -1.01835, 2.01195e-0
 light_energy = 8.0
 spot_range = 20.0
 
+[connection signal="day_reset" from="TimeSystem" to="THE SUN" method="_on_time_system_day_reset"]
 [connection signal="AddScore" from="Player" to="ScoreKeeper" method="_on_player_add_score"]
