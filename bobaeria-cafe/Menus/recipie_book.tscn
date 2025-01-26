@@ -1,0 +1,337 @@
+[gd_scene load_steps=15 format=3 uid="uid://chhh41ck7uovr"]
+
+[ext_resource type="Script" path="res://Menus/recipie_book_overlay.gd" id="1_1yge7"]
+[ext_resource type="Texture2D" uid="uid://bhajgnb6ch0et" path="res://Icons/Bag.png" id="1_7oohd"]
+[ext_resource type="Script" path="res://Menus/drinks.gd" id="1_kg0i3"]
+[ext_resource type="FontFile" uid="uid://um3bnq4u2kaj" path="res://Fonts/puffi.ttf" id="1_vcir7"]
+[ext_resource type="Script" path="res://Menus/recipie_book.gd" id="1_yta3o"]
+[ext_resource type="StyleBox" uid="uid://dfjpbvoidlf2p" path="res://Styles/round-panel-black.tres" id="2_of0cw"]
+[ext_resource type="Script" path="res://Menus/tea_button.gd" id="5_x4fue"]
+[ext_resource type="PackedScene" uid="uid://b0axo6y3tlra" path="res://Menus/display_tea.tscn" id="8_cwjot"]
+
+[sub_resource type="Shader" id="Shader_bgck4"]
+code = "shader_type canvas_item;
+
+uniform float lod: hint_range(0.0, 5.0) = 5.0;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform float mix_percentage: hint_range(0.0, 1.0) = 0.3;
+
+void fragment(){
+	vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV, lod);
+	color = mix(color, vec4(0,0,0,1), mix_percentage);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1cau8"]
+shader = SubResource("Shader_bgck4")
+shader_parameter/lod = 2.324
+shader_parameter/mix_percentage = 0.3
+
+[sub_resource type="Animation" id="Animation_nov3i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2e123"]
+resource_name = "panel_fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8w4ov"]
+resource_name = "panel_fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w07kq"]
+_data = {
+"RESET": SubResource("Animation_nov3i"),
+"panel_fade_in": SubResource("Animation_2e123"),
+"panel_fade_out": SubResource("Animation_8w4ov")
+}
+
+[node name="Recipie Book" type="CanvasLayer"]
+process_mode = 3
+
+[node name="TextureRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_1cau8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect"]
+libraries = {
+"": SubResource("AnimationLibrary_w07kq")
+}
+
+[node name="Search" type="Control" parent="TextureRect"]
+custom_minimum_size = Vector2(500, 550)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -275.0
+offset_right = 250.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yta3o")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/Search"]
+use_parent_material = true
+layout_mode = 2
+offset_right = 500.0
+offset_bottom = 550.0
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/Search/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="Search" type="LineEdit" parent="TextureRect/Search/VBoxContainer"]
+custom_minimum_size = Vector2(330, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+placeholder_text = "Search for Drink"
+alignment = 1
+caret_blink = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="TextureRect/Search/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/Search/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Drinks" type="VBoxContainer" parent="TextureRect/Search/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+alignment = 1
+script = ExtResource("1_kg0i3")
+Names = Array[String](["Taro Twist", "Mango Madness", "The Original", "Coconut Dreamwave", "Oolong Surprise", "Milk n Cookies", "Dewy Green", "Coffee Jelly"])
+
+[node name="Tea Button" type="Button" parent="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks" node_paths=PackedStringArray("menu", "viewport", "sprite", "display_tea", "menu_btn", "timer")]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_vcir7")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("2_of0cw")
+text = "321665132"
+script = ExtResource("5_x4fue")
+menu = NodePath("../../../..")
+viewport = NodePath("../../../../../../Tea Viewport")
+sprite = NodePath("../../../../../../Display Sprite/Tea Sprite")
+display_tea = NodePath("../../../../../../Tea Viewport/DisplayTea")
+menu_btn = NodePath("../../../../../../Toggle Search")
+timer = NodePath("../../../../../../Display")
+
+[node name="Button2" type="Button" parent="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks" node_paths=PackedStringArray("menu", "viewport", "sprite", "display_tea", "menu_btn", "timer")]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_vcir7")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("2_of0cw")
+text = "321665132"
+script = ExtResource("5_x4fue")
+menu = NodePath("../../../..")
+viewport = NodePath("../../../../../../Tea Viewport")
+sprite = NodePath("../../../../../../Display Sprite/Tea Sprite")
+display_tea = NodePath("../../../../../../Tea Viewport/DisplayTea")
+menu_btn = NodePath("../../../../../../Toggle Search")
+timer = NodePath("../../../../../../Display")
+
+[node name="Button3" type="Button" parent="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks" node_paths=PackedStringArray("menu", "viewport", "sprite", "display_tea", "menu_btn", "timer")]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_vcir7")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("2_of0cw")
+text = "321665132"
+script = ExtResource("5_x4fue")
+menu = NodePath("../../../..")
+viewport = NodePath("../../../../../../Tea Viewport")
+sprite = NodePath("../../../../../../Display Sprite/Tea Sprite")
+display_tea = NodePath("../../../../../../Tea Viewport/DisplayTea")
+menu_btn = NodePath("../../../../../../Toggle Search")
+timer = NodePath("../../../../../../Display")
+
+[node name="Button4" type="Button" parent="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks" node_paths=PackedStringArray("menu", "viewport", "sprite", "display_tea", "menu_btn", "timer")]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_vcir7")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("2_of0cw")
+text = "321665132"
+script = ExtResource("5_x4fue")
+menu = NodePath("../../../..")
+viewport = NodePath("../../../../../../Tea Viewport")
+sprite = NodePath("../../../../../../Display Sprite/Tea Sprite")
+display_tea = NodePath("../../../../../../Tea Viewport/DisplayTea")
+menu_btn = NodePath("../../../../../../Toggle Search")
+timer = NodePath("../../../../../../Display")
+
+[node name="Button5" type="Button" parent="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks" node_paths=PackedStringArray("menu", "viewport", "sprite", "display_tea", "menu_btn", "timer")]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_vcir7")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("2_of0cw")
+text = "321665132"
+script = ExtResource("5_x4fue")
+menu = NodePath("../../../..")
+viewport = NodePath("../../../../../../Tea Viewport")
+sprite = NodePath("../../../../../../Display Sprite/Tea Sprite")
+display_tea = NodePath("../../../../../../Tea Viewport/DisplayTea")
+menu_btn = NodePath("../../../../../../Toggle Search")
+timer = NodePath("../../../../../../Display")
+
+[node name="Button6" type="Button" parent="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks" node_paths=PackedStringArray("menu", "viewport", "sprite", "display_tea", "menu_btn", "timer")]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_vcir7")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("2_of0cw")
+text = "321665132"
+script = ExtResource("5_x4fue")
+menu = NodePath("../../../..")
+viewport = NodePath("../../../../../../Tea Viewport")
+sprite = NodePath("../../../../../../Display Sprite/Tea Sprite")
+display_tea = NodePath("../../../../../../Tea Viewport/DisplayTea")
+menu_btn = NodePath("../../../../../../Toggle Search")
+timer = NodePath("../../../../../../Display")
+
+[node name="Button7" type="Button" parent="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks" node_paths=PackedStringArray("menu", "viewport", "sprite", "display_tea", "menu_btn", "timer")]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_vcir7")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("2_of0cw")
+text = "321665132"
+script = ExtResource("5_x4fue")
+menu = NodePath("../../../..")
+viewport = NodePath("../../../../../../Tea Viewport")
+sprite = NodePath("../../../../../../Display Sprite/Tea Sprite")
+display_tea = NodePath("../../../../../../Tea Viewport/DisplayTea")
+menu_btn = NodePath("../../../../../../Toggle Search")
+timer = NodePath("../../../../../../Display")
+
+[node name="Button8" type="Button" parent="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks" node_paths=PackedStringArray("menu", "viewport", "sprite", "display_tea", "menu_btn", "timer")]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_vcir7")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("2_of0cw")
+text = "321665132"
+script = ExtResource("5_x4fue")
+menu = NodePath("../../../..")
+viewport = NodePath("../../../../../../Tea Viewport")
+sprite = NodePath("../../../../../../Display Sprite/Tea Sprite")
+display_tea = NodePath("../../../../../../Tea Viewport/DisplayTea")
+menu_btn = NodePath("../../../../../../Toggle Search")
+timer = NodePath("../../../../../../Display")
+
+[node name="Toggle Search" type="Button" parent="." node_paths=PackedStringArray("animator", "overlay")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -36.0
+grow_horizontal = 0
+grow_vertical = 0
+icon = ExtResource("1_7oohd")
+script = ExtResource("1_1yge7")
+animator = NodePath("../TextureRect/AnimationPlayer")
+overlay = NodePath("../TextureRect")
+
+[node name="Display Sprite" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tea Sprite" type="Sprite2D" parent="Display Sprite"]
+
+[node name="Display" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="Tea Viewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="DisplayTea" parent="Tea Viewport" instance=ExtResource("8_cwjot")]
+
+[connection signal="text_changed" from="TextureRect/Search/VBoxContainer/Search" to="TextureRect/Search" method="_on_search_text_changed"]
+[connection signal="pressed" from="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Tea Button" to="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Tea Button" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Button2" to="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Button2" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Button3" to="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Button3" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Button4" to="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Button4" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Button5" to="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Button5" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Button6" to="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Button6" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Button7" to="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Button7" method="_on_pressed"]
+[connection signal="pressed" from="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Button8" to="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Button8" method="_on_pressed"]
+[connection signal="button_down" from="Toggle Search" to="Toggle Search" method="_on_button_down"]
+[connection signal="timeout" from="Display" to="TextureRect/Search/VBoxContainer/ScrollContainer/Drinks/Tea Button" method="_on_display_timeout"]

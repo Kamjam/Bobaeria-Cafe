@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cuocjtsbiy6h1"]
+
+[ext_resource type="FontFile" uid="uid://ndha7hy85g75" path="res://Fonts/FatPix-SVG.ttf" id="1_vp5lx"]
+
+[resource]
+font = ExtResource("1_vp5lx")
+font_size = 24

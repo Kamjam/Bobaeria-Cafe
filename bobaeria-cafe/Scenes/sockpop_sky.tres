@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://crijbrjtu075w"]
 
-[ext_resource type="Shader" path="res://Scenes/sockpop_sky.gdshader" id="1_nsjfd"]
+[ext_resource type="Shader" path="res://Shaders/sockpop_sky.gdshader" id="1_nsjfd"]
 
 [resource]
 shader = ExtResource("1_nsjfd")

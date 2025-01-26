@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dbt7mpif02xcs"]
+
+[ext_resource type="FontFile" uid="uid://um3bnq4u2kaj" path="res://Fonts/puffi.ttf" id="1_ccpxe"]
+
+[resource]
+font = ExtResource("1_ccpxe")
+font_size = 24

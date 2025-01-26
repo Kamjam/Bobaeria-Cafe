@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0axo6y3tlra"]
+
+[ext_resource type="PackedScene" uid="uid://cvmkj1lrggwni" path="res://Ian_Art/boba-world.glb" id="1_hbsug"]
+[ext_resource type="Script" path="res://Menus/display_tea_rotate.gd" id="1_pbdrn"]
+[ext_resource type="Material" uid="uid://crijbrjtu075w" path="res://Scenes/sockpop_sky.tres" id="2_wuw5j"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q0r0w"]
+height = 0.748985
+radius = 0.191764
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ne1x"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8ak8l"]
+material = SubResource("StandardMaterial3D_6ne1x")
+
+[sub_resource type="Sky" id="Sky_x43lm"]
+sky_material = ExtResource("2_wuw5j")
+
+[sub_resource type="Environment" id="Environment_wur43"]
+sky = SubResource("Sky_x43lm")
+ambient_light_source = 3
+ambient_light_color = Color(0, 0, 0, 0)
+
+[node name="DisplayTea" type="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_q0r0w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 0, 0, 0)
+visible = false
+mesh = SubResource("CylinderMesh_8ak8l")
+
+[node name="boba-world" parent="." instance=ExtResource("1_hbsug")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_pbdrn")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.0104437, 0.350812, -0.936388, -0.00391242, 0.936446, 0.35079, 0.999938, 0, 0.0111525, -2.37713, 0.984581, 0)
+environment = SubResource("Environment_wur43")
