@@ -205,7 +205,8 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/BobaSlider"]
 layout_mode = 2
-text = "Boba Level"
+text = "Bubbles
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -368,11 +369,11 @@ _contorl_node = NodePath("../..")
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/COCONUT" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/COCONUT" method="_on_button_toggled"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/COCONUT" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" method="on_radio_button_toggeled" binds= [&"COCONUT"]]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/WippedCreambutton/WippedCreamCheckedBox" to="VBoxContainer/HBoxContainer2/WippedCreambutton/WippedCreamCheckedBox" method="_on_toggled"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/BobaSlider/BobaAmountSlider" to="VBoxContainer/HBoxContainer2/BobaSlider/BobaAmountSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer2/BobaSlider/BobaAmountSlider" to="VBoxContainer/HBoxContainer2/BobaSlider/Label2" method="print_slider_level"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/SweetnessSlider/SweetnessSlider" to="VBoxContainer/HBoxContainer2/SweetnessSlider/SweetnessSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/BobaSlider/BobaAmountSlider" to="VBoxContainer/HBoxContainer2/BobaSlider/BobaAmountSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer2/SweetnessSlider/SweetnessSlider" to="VBoxContainer/HBoxContainer2/SweetnessSlider/Label2" method="print_slider_level"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/IceSlider/IceLevelSlider" to="VBoxContainer/HBoxContainer2/IceSlider/IceLevelSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/SweetnessSlider/SweetnessSlider" to="VBoxContainer/HBoxContainer2/SweetnessSlider/SweetnessSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer2/IceSlider/IceLevelSlider" to="VBoxContainer/HBoxContainer2/IceSlider/Label2" method="print_slider_level"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/IceSlider/IceLevelSlider" to="VBoxContainer/HBoxContainer2/IceSlider/IceLevelSlider" method="_on_value_changed"]
 [connection signal="button_down" from="VBoxContainer/CreatDrinkButton" to="VBoxContainer/CreatDrinkButton" method="_on_button_down"]
 [connection signal="button_down" from="VBoxContainer/CloseMenuButton" to="VBoxContainer/CloseMenuButton" method="disable_menu"]
