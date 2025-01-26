@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bxng2h6fp6edb"]
+
+[ext_resource type="FontFile" uid="uid://cn208fb5xbsmb" path="res://Fonts/LittleGuy.ttf" id="1_x6la5"]
+
+[resource]
+font = ExtResource("1_x6la5")
+font_size = 24

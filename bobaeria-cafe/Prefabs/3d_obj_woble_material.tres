@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://k0sg3s63ugtd"]
+
+[ext_resource type="Shader" path="res://Shaders/sockpop_3d_woble.gdshader" id="1_gm45l"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_gm45l")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/normal_offset = 0.02
+shader_parameter/time_influence = 3.0
+shader_parameter/y_div = 2.87

@@ -1,12 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dv7duqydprt1d"]
+[gd_scene load_steps=13 format=3 uid="uid://dv7duqydprt1d"]
 
 [ext_resource type="Script" path="res://Menus/splashscreen.gd" id="1_1vqqd"]
 [ext_resource type="Shader" path="res://Shaders/silly_circles.gdshader" id="1_dkv2d"]
 [ext_resource type="Texture2D" uid="uid://bdbarplw6vcbu" path="res://Ian_Art/boba-world_bobaTea.png" id="2_2b8m8"]
+[ext_resource type="Material" uid="uid://4jrah7dlw45x" path="res://Menus/texture_rect_squish.tres" id="3_kxk3w"]
 [ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="3_u5itr"]
 [ext_resource type="StyleBox" uid="uid://d1l5ocquqr8ta" path="res://Styles/transparent-round-panel.tres" id="4_pwovl"]
-[ext_resource type="FontFile" uid="uid://dbsvhg7b3et03" path="res://Fonts/Spineless Normal.ttf" id="5_mtwwl"]
+[ext_resource type="Script" path="res://Menus/squish_on_mouse.gd" id="4_suclo"]
+[ext_resource type="Material" uid="uid://sajypig68e7q" path="res://Menus/text_woble.tres" id="6_xcilc"]
 [ext_resource type="AudioStream" uid="uid://d3gtxe4rgav0l" path="res://Sounds/SFX/pop-91931.mp3" id="7_ejocc"]
+[ext_resource type="LabelSettings" uid="uid://bn50j3psvjp4n" path="res://Styles/spineless_white_text.tres" id="7_xtpgg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t8i62"]
 shader = ExtResource("1_dkv2d")
@@ -23,10 +26,6 @@ shader_parameter/color2 = Color(0.121569, 0.0627451, 0.164706, 1)
 shader = ExtResource("3_u5itr")
 shader_parameter/lod = 2.0
 shader_parameter/mix_percentage = 0.3
-
-[sub_resource type="LabelSettings" id="LabelSettings_g676h"]
-font = ExtResource("5_mtwwl")
-font_size = 50
 
 [node name="Splash Screen" type="Control" node_paths=PackedStringArray("changescenetimer", "audioplayer")]
 custom_minimum_size = Vector2(400, 500)
@@ -66,10 +65,12 @@ grow_vertical = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+material = ExtResource("3_kxk3w")
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("2_2b8m8")
+script = ExtResource("4_suclo")
 
 [node name="Container" type="PanelContainer" parent="VBoxContainer"]
 material = SubResource("ShaderMaterial_jpgrm")
@@ -79,10 +80,11 @@ size_flags_horizontal = 4
 theme_override_styles/panel = ExtResource("4_pwovl")
 
 [node name="Label" type="Label" parent="VBoxContainer/Container"]
+material = ExtResource("6_xcilc")
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_pwovl")
 text = "Bobaeria Cafe"
-label_settings = SubResource("LabelSettings_g676h")
+label_settings = ExtResource("7_xtpgg")
 horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
@@ -94,5 +96,7 @@ autostart = true
 stream = ExtResource("7_ejocc")
 autoplay = true
 
+[connection signal="mouse_entered" from="VBoxContainer/TextureRect" to="VBoxContainer/TextureRect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/TextureRect" to="VBoxContainer/TextureRect" method="_on_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

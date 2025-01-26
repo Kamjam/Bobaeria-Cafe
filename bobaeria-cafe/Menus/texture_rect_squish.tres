@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://4jrah7dlw45x"]
+
+[ext_resource type="Shader" path="res://Shaders/squishy_on_mouse.gdshader" id="1_g8y3r"]
+
+[resource]
+shader = ExtResource("1_g8y3r")
+shader_parameter/up_left = Vector2(0, 0)
+shader_parameter/up_right = Vector2(1, 0)
+shader_parameter/down_right = Vector2(1, 1)
+shader_parameter/down_left = Vector2(0, 1)
+shader_parameter/plane_size = null
+shader_parameter/mouse_position = null
+shader_parameter/hover_strength = 0.1

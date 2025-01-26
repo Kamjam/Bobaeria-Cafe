@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bduyrkhs3dtg8"]
+
+[ext_resource type="FontFile" uid="uid://dbsvhg7b3et03" path="res://Fonts/Spineless Normal.ttf" id="1_84bqj"]
+
+[resource]
+font = ExtResource("1_84bqj")
+font_size = 50
+outline_size = 3
+outline_color = Color(0.682353, 0.886275, 1, 1)
