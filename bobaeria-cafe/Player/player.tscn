@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0u83fayrvkma"]
+[gd_scene load_steps=12 format=3 uid="uid://d0u83fayrvkma"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_aau14"]
+[ext_resource type="PackedScene" uid="uid://ch330pk0oenh4" path="res://Assets/animations/player/player_animator.tscn" id="2_qp5da"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uxrvj"]
 
@@ -26,13 +27,15 @@ material = SubResource("StandardMaterial3D_k8jvy")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_plcyi"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("animator")]
 transform = Transform3D(3.455, 0, 0, 0, 3.455, 0, 0, 0, 3.455, 0, 1.34545, 0)
 collision_mask = 7
 script = ExtResource("1_aau14")
+animator = NodePath("Player_Animator")
 
 [node name="Body" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.290434, 0, 0, 0, 0.290434, 0, 0, 0, 0.290434, 0, 0, 0)
+visible = false
 shape = SubResource("CapsuleShape3D_uxrvj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
@@ -64,6 +67,9 @@ shape = SubResource("BoxShape3D_plcyi")
 [node name="CarryTeaMarker" type="Marker3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.258454, 0, 0)
+
+[node name="Player_Animator" parent="." instance=ExtResource("2_qp5da")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.149636, 0)
 
 [connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="PickupArea" to="." method="_on_pickup_area_area_exited"]

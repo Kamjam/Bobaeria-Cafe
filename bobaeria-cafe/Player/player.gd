@@ -9,7 +9,13 @@ var byTrashCan: bool = false
 var menuController: DrinkMenuController
 var canMove : bool = true
 var students: Array[CharacterBody3D]
+
+var input_dir: Vector2
+
+var horrizontalLastDirrection: float
+
 @export var currentDrink : bobaDrink
+@export var animator: PlayerAnimator
 signal AddScore(num : int)
 signal DrinkPickedUp(drink: Node3D)
 @onready var dayEnd = $"../DayEndManager"
@@ -21,7 +27,12 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Get the input direction and handle the movement/deceleration.
-	var input_dir := Input.get_vector("left", "right", "up", "down")
+	input_dir = Input.get_vector("left", "right", "up", "down")
+	
+	if input_dir.x != 0:
+		
+		horrizontalLastDirrection = input_dir.x
+	
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
@@ -31,6 +42,8 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	if canMove:
 		move_and_slide()
+	
+	_player_animation()
 
 func _input(event):
 	if event.is_action_pressed("quit"):get_tree().quit()
@@ -93,4 +106,28 @@ func _on_pickup_area_body_exited(body: Node3D) -> void:
 	if body is DrinkMenuController:
 		menuController = null
 	
+
+func _player_animation():
 	
+	if input_dir == Vector2.ZERO:
+		
+		if horrizontalLastDirrection < 0:
+			
+			animator.set_player_facing_left(true)
+		
+		elif horrizontalLastDirrection > 0:
+			
+			animator.set_player_facing_left(false)
+			
+		animator.play_idle()
+	
+	else:
+		if horrizontalLastDirrection < 0:
+			
+			animator.set_player_facing_left(true)
+		
+		elif horrizontalLastDirrection > 0:
+			
+			animator.set_player_facing_left(false)
+			
+		animator.play_walk()
