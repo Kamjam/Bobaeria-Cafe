@@ -39,7 +39,7 @@ func _input(event):
 		pickedObject = true
 	
 	elif event.is_action_pressed("interact") and pickedObject and students.size() > 0:
-		if students[0].hasDrink == false:
+		if students[0].hasOrder and students[0].hasDrink == false:
 			var num = students[0].JudgeDrink(currentDrink)
 			AddScore.emit(num)
 			students.remove_at(0)
@@ -84,7 +84,6 @@ func _on_pickup_area_body_entered(body: Node3D) -> void:
 func _on_pickup_area_body_exited(body: Node3D) -> void:
 	if body is ThisIsTrashCan:
 		byTrashCan = false
-		print("not trash can")
 	if body is Student:
 		students.erase(body)
 	if body is DrinkMenuController:

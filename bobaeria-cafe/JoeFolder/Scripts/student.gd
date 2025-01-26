@@ -13,6 +13,7 @@ extends CharacterBody3D
 @export var bubblePos : Node3D
 
 var isSeated = false
+var hasOrder = false
 var destination : Vector3
 var manager
 var instance
@@ -197,8 +198,12 @@ func JudgeDrink(otherDrink : bobaDrink) -> int:
 		instance.queue_free()
 		instance = null
 	hasDrink = true
-	textScore.show()
+	ShowScore()
 	return drinkScore
+func ShowScore():
+	await get_tree().create_timer(10).timeout
+	textScore.show()
+	
 func _ready() -> void:
 	manager = get_tree().get_first_node_in_group("Manager")
 	chair = manager.GetChair()
@@ -223,6 +228,7 @@ func _physics_process(delta: float) -> void:
 
 func Thinking():
 	await get_tree().create_timer(thinkingTime).timeout
+	hasOrder = true
 	instance = thoughtBubble.instantiate()
 	instance.position = bubblePos.global_position
 	instance.rotation = Vector3(0,0,0)

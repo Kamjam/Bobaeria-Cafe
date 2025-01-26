@@ -31,7 +31,7 @@ var in_transition:bool = false
 
 func _ready() -> void:
 	TimeSys.time_system_updated.connect(_on_time_system_updated)
-	
+	$".".rotation_degrees = Vector3(-45,90,0)
 	#makes sure that everything is symched with the main time system
 	var diff_day_start = time_system.date_time.diff_without_days(day_start)
 	var diff_evening_start = time_system.date_time.diff_without_days(evening_start)
@@ -58,4 +58,9 @@ func update_transition(time_diff:int, next_state:DayState):
 		in_transition = false
 	else:
 		self.light_color  = color_map[cur_state].lerp(color_map[next_state], ratio)
-	
+
+func _process(delta: float) -> void:
+	$".".rotation_degrees.x -= 0.002
+	#default 1.5 light energy
+	if $".".light_energy > 0.1:
+		$".".light_energy -= 0.0001

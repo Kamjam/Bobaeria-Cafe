@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgtxsrha2o255"]
+[gd_scene load_steps=6 format=3 uid="uid://cgtxsrha2o255"]
 
 [ext_resource type="Script" path="res://Prefabs/tea.gd" id="1_v2e1t"]
+[ext_resource type="PackedScene" uid="uid://cvmkj1lrggwni" path="res://Ian_Art/boba-world.glb" id="2_ijvul"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4lxcr"]
 height = 0.748985
@@ -23,4 +24,8 @@ shape = SubResource("CylinderShape3D_4lxcr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 0, 0, 0)
+visible = false
 mesh = SubResource("CylinderMesh_8j0of")
+
+[node name="boba-world" parent="." instance=ExtResource("2_ijvul")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
