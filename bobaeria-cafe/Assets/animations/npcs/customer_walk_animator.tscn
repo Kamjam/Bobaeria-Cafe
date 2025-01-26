@@ -474,6 +474,7 @@ animations = [{
 }]
 
 [node name="Customer_Walk_animator" type="AnimatedSprite3D" node_paths=PackedStringArray("_sprite")]
+billboard = 2
 sprite_frames = SubResource("SpriteFrames_c8kr7")
 animation = &"M_Walk_Right"
 speed_scale = 5.0
