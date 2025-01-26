@@ -68,7 +68,6 @@ ambient_light_energy = 0.5
 [node name="Main" type="Node3D"]
 
 [node name="TimeSystem" parent="." node_paths=PackedStringArray("day_manager") instance=ExtResource("1_4divv")]
-ticks_per_sec = 2000
 day_manager = NodePath("../DayEndManager")
 
 [node name="Time GUI" parent="." instance=ExtResource("2_5hg1t")]
@@ -324,7 +323,7 @@ mesh = SubResource("SphereMesh_lwtrr")
 script = ExtResource("6_vqcra")
 student = ExtResource("7_esb7w")
 spawnPosition = NodePath(".")
-customerRate = 2.0
+customerRate = 10.0
 
 [node name="Exit" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0776, 1.12142, 18.2188)
