@@ -233,7 +233,8 @@ func _physics_process(delta: float) -> void:
 	
 
 func Thinking():
-	studentAnimator.pause()
+	studentAnimator.play_Sit()
+
 	
 	await get_tree().create_timer(thinkingTime).timeout
 	hasOrder = true

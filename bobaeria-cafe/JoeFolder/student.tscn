@@ -56,3 +56,4 @@ one_shot = true
 
 [node name="Customer_Walk_animator" parent="." instance=ExtResource("4_lcv0p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.634861, 0)
+animation = &"M_Walk_Left"

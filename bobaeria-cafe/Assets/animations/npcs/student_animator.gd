@@ -10,6 +10,13 @@ func _ready() -> void:
 	
 	_animation_type = randi_range(1,2)
 
+
+func play_Sit():
+	if _animation_type == 1:
+		_sprite.play("M_Sit")
+	
+	if _animation_type == 2:
+		_sprite.play("W_Sit")
 func play_right():
 	
 	if _animation_type == 1:

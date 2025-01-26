@@ -1,6 +1,7 @@
-[gd_scene load_steps=115 format=3 uid="uid://xp5tfwyroe3x"]
+[gd_scene load_steps=117 format=3 uid="uid://xp5tfwyroe3x"]
 
 [ext_resource type="Texture2D" uid="uid://bjg5shvvyotw3" path="res://Assets/animations/npcs/maleleftwalk/malenpcwalkleft0000.png" id="1_a0ju7"]
+[ext_resource type="Texture2D" uid="uid://cyn7uwcsc2aqw" path="res://Assets/animations/npcs/Sitting/manSit.png" id="1_mjgir"]
 [ext_resource type="Texture2D" uid="uid://cdfx1dyh8gblp" path="res://Assets/animations/npcs/maleleftwalk/malenpcwalkleft0001.png" id="2_6gkmi"]
 [ext_resource type="Texture2D" uid="uid://boawhfhkm1gxq" path="res://Assets/animations/npcs/maleleftwalk/malenpcwalkleft0002.png" id="3_b1yqy"]
 [ext_resource type="Texture2D" uid="uid://dvyo8rnb64gct" path="res://Assets/animations/npcs/maleleftwalk/malenpcwalkleft0003.png" id="4_fnymd"]
@@ -58,6 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://blwoh17oxojlr" path="res://Assets/animations/npcs/malerightwalk/malenpcwalkright0027.png" id="56_gqles"]
 [ext_resource type="Texture2D" uid="uid://dxrjflfj7g2xr" path="res://Assets/animations/npcs/girlleftwalk/womannpcwalkleft0000.png" id="57_xt37l"]
 [ext_resource type="Texture2D" uid="uid://dx425nfdy8fyq" path="res://Assets/animations/npcs/girlleftwalk/womannpcwalkleft0001.png" id="58_btubq"]
+[ext_resource type="Texture2D" uid="uid://71pe021avmtq" path="res://Assets/animations/npcs/Sitting/womanSit.png" id="58_huium"]
 [ext_resource type="Texture2D" uid="uid://bgv5dalhnpv8k" path="res://Assets/animations/npcs/girlleftwalk/womannpcwalkleft0002.png" id="59_8odn4"]
 [ext_resource type="Texture2D" uid="uid://b03wr28bpdyj1" path="res://Assets/animations/npcs/girlleftwalk/womannpcwalkleft0003.png" id="60_0s4d5"]
 [ext_resource type="Texture2D" uid="uid://cjoaxqqedhb2r" path="res://Assets/animations/npcs/girlleftwalk/womannpcwalkleft0004.png" id="61_s37w0"]
@@ -116,6 +118,14 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c8kr7"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mjgir")
+}],
+"loop": true,
+"name": &"M_Sit",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_a0ju7")
@@ -292,6 +302,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"M_Walk_Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("58_huium")
+}],
+"loop": true,
+"name": &"W_Sit",
 "speed": 5.0
 }, {
 "frames": [{
@@ -476,7 +494,7 @@ animations = [{
 [node name="Customer_Walk_animator" type="AnimatedSprite3D" node_paths=PackedStringArray("_sprite")]
 billboard = 2
 sprite_frames = SubResource("SpriteFrames_c8kr7")
-animation = &"M_Walk_Right"
+animation = &"M_Sit"
 speed_scale = 5.0
 script = ExtResource("113_xmg3g")
 _sprite = NodePath(".")
