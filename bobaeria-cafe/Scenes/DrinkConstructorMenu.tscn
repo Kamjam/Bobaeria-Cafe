@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dup83nxucg4u2"]
+[gd_scene load_steps=14 format=3 uid="uid://dup83nxucg4u2"]
 
 [ext_resource type="Script" path="res://Boba/drink/drink_constructor.gd" id="1_jnf6v"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/tea_base_setter_button.gd" id="3_8noy5"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/flavor_setter_button.gd" id="5_yx06p"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/sweetness_level_setter_slider.gd" id="6_j6f1i"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/ice_level_setter_slider.gd" id="7_ug3ot"]
+[ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/print_slider_level.gd" id="7_wjhio"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/create_drink_button.gd" id="9_2j1gy"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/drink_counter_controller.gd" id="10_6jbcc"]
 [ext_resource type="Script" path="res://UI/DrinkConstructorMenu/Scripts/close_menu_button.gd" id="12_nhfb0"]
@@ -208,6 +209,13 @@ text = "Boba Level"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/BobaSlider" node_paths=PackedStringArray("label")]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+script = ExtResource("7_wjhio")
+label = NodePath(".")
+
 [node name="BobaAmountSlider" type="VSlider" parent="VBoxContainer/HBoxContainer2/BobaSlider" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
 size_flags_horizontal = 1
@@ -230,6 +238,15 @@ text = "Sweetness
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/SweetnessSlider" node_paths=PackedStringArray("label")]
+layout_mode = 2
+text = "1
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_wjhio")
+label = NodePath(".")
+
 [node name="SweetnessSlider" type="VSlider" parent="VBoxContainer/HBoxContainer2/SweetnessSlider" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
 size_flags_horizontal = 1
@@ -251,6 +268,15 @@ text = "Ice Level
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/IceSlider" node_paths=PackedStringArray("label")]
+layout_mode = 2
+text = "1
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_wjhio")
+label = NodePath(".")
 
 [node name="IceLevelSlider" type="VSlider" parent="VBoxContainer/HBoxContainer2/IceSlider" node_paths=PackedStringArray("_drink_constructor")]
 layout_mode = 2
@@ -343,7 +369,10 @@ _contorl_node = NodePath("../..")
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3/COCONUT" to="VBoxContainer/HBoxContainer2/FlavorsRadioButtonControler3" method="on_radio_button_toggeled" binds= [&"COCONUT"]]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/WippedCreambutton/WippedCreamCheckedBox" to="VBoxContainer/HBoxContainer2/WippedCreambutton/WippedCreamCheckedBox" method="_on_toggled"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer2/BobaSlider/BobaAmountSlider" to="VBoxContainer/HBoxContainer2/BobaSlider/BobaAmountSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/BobaSlider/BobaAmountSlider" to="VBoxContainer/HBoxContainer2/BobaSlider/Label2" method="print_slider_level"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer2/SweetnessSlider/SweetnessSlider" to="VBoxContainer/HBoxContainer2/SweetnessSlider/SweetnessSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/SweetnessSlider/SweetnessSlider" to="VBoxContainer/HBoxContainer2/SweetnessSlider/Label2" method="print_slider_level"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer2/IceSlider/IceLevelSlider" to="VBoxContainer/HBoxContainer2/IceSlider/IceLevelSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/IceSlider/IceLevelSlider" to="VBoxContainer/HBoxContainer2/IceSlider/Label2" method="print_slider_level"]
 [connection signal="button_down" from="VBoxContainer/CreatDrinkButton" to="VBoxContainer/CreatDrinkButton" method="_on_button_down"]
 [connection signal="button_down" from="VBoxContainer/CloseMenuButton" to="VBoxContainer/CloseMenuButton" method="disable_menu"]
