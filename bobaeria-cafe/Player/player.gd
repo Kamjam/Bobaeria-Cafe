@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 const SPEED = 5.0
@@ -10,6 +11,7 @@ var canMove : bool = true
 var students: Array[CharacterBody3D]
 @export var currentDrink : bobaDrink
 signal AddScore(num : int)
+signal DrinkPickedUp(drink: Node3D)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -37,6 +39,7 @@ func _input(event):
 		pick_up_object(interactables[0])
 		
 		pickedObject = true
+		DrinkPickedUp.emit(interactables[0])
 	
 	elif event.is_action_pressed("interact") and pickedObject and students.size() > 0:
 		if students[0].hasOrder and students[0].hasDrink == false:

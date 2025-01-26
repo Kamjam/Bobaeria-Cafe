@@ -1,5 +1,6 @@
 class_name DrinkSpawner
 extends Node
+@export var _time_till_drink_despawn: float = 3
 
 @export var _drink_fall_speed: float = 1
 
@@ -11,16 +12,21 @@ var _drink_spawn_dict: Dictionary = {}
 
 @export var _drink_constructor: DrinkConstructor
 
-@export var _return_queue: Array[Node3D]
+var _return_queue: Array[Node3D]
+
+@export var _player: Player
 
 signal drink_spawned(spawned_drink: Node3D)
 
 signal destroy_drink(drink: Node3D)
 
 func _ready() -> void:
-	pass
+	
 	if _drink_constructor != null:
 		_drink_constructor.drink_created.connect(_spawn_drink)
+	
+	if _player != null:
+		_player.DrinkPickedUp.connect(_remove_drink_from_destroy_queue)
 	
 	for points in _drink_spawn_points:
 		_drink_spawn_dict[points] = null
@@ -54,6 +60,13 @@ func _add_drink_to_destroy_queue(added_drink: Node3D):
 			
 			destroy_drink.emit(added_drink) 
 
+func _remove_drink_from_destroy_queue(removed_drink: Node3D):
+	
+	for points in _drink_spawn_points:
+		if _drink_spawn_dict[points] == removed_drink:
+			
+			_drink_spawn_dict[points] = null
+
 func add_drink_to_return_queue(drink: Node3D, drink_position: Vector3):
 	
 	var global_pos: Vector3 = drink.global_position
@@ -64,7 +77,10 @@ func add_drink_to_return_queue(drink: Node3D, drink_position: Vector3):
 		if _drink_spawn_dict[nodes] == drink:
 			nodes.add_child(drink)
 			
+	
 	drink.global_position = drink_position
+	drink.scale = Vector3(0.25, 0.25, 0.25)
+	
 	print("drink has been reparented")
 	print(drink.global_position)
 	_return_queue.append(drink)
@@ -87,9 +103,16 @@ func _return_drinks_to_spawn(delta: float):
 					
 					print("distance is: ", drinks.global_position.distance_to(nodes.global_position))
 					
-					if drinks.global_position.distance_to(nodes.global_position) < 0.1:
+					if drinks.global_position.distance_to(nodes.global_position) < 0.01:
 						
 						print("distance is: ", drinks.global_position.distance_to(nodes.global_position))
 						drinks.global_position = nodes.global_position
-						_return_queue.erase(drinks)
+						
+						_remove_drink_from_return_queue(drinks)
+						_add_drink_to_destroy_queue(drinks)
 		
+
+func _remove_drink_from_return_queue(removed_drink: Node3D):
+	
+	if(_return_queue.has(removed_drink)):
+		_return_queue.erase(removed_drink)
