@@ -8,25 +8,31 @@ signal time_system_updated
 signal twelve_hr_system_activated
 signal day_reset
 
-func _ready() -> void:
-	ResetTheDay()
+@export var theSun : Node3D
+
+
 func _process(delta: float) -> void:
 	
-	if date_time.hours >= 20:
+	#20 is 8pm
+	if date_time.hours >= 12:
+		isPaused = true
+
+		
+	if Input.is_action_just_pressed("ui_home"):
+		isPaused = true
 		ResetTheDay()
 		
-	if Input.is_action_just_pressed("fire"):
-		isPaused = false
-		ResetTheDay()
-	
 	if !isPaused:
 		date_time.increase_by_sec(delta * ticks_per_sec)
 		TimeSys.time_system_updated.emit(date_time)
 		TimeSys.twelve_hr_system_activated.emit(date_time)
 func ResetTheDay():
-	TimeSys.day_reset.emit(date_time)
+	if theSun:
+		theSun.ResetDay()
 	date_time.hours = 11
 	date_time.mins = 0
 	date_time.secs = 0
 	
+func Unpause():
+	isPaused = false
 	

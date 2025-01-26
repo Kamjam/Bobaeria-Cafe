@@ -29,6 +29,7 @@ var in_transition:bool = false
 	DayState.EVENING: evening_color,
 }
 
+@onready var day_manager = $"../Day Manager"
 func _ready() -> void:
 	TimeSys.time_system_updated.connect(_on_time_system_updated)
 	$".".rotation_degrees = Vector3(-45,90,0)
@@ -50,7 +51,7 @@ func _on_time_system_updated(game_time:DateTime):
 		update_transition(time_diff, next_state)
 	else:
 		self.light_color = color_map[cur_state]
-
+		
 func update_transition(time_diff:int, next_state:DayState):
 	var ratio = 1 - (time_diff as float / (transition_time * 60))
 	if ratio > 1:
@@ -64,9 +65,13 @@ func _process(delta: float) -> void:
 	#default 1.5 light energy
 	if $".".light_energy > 0.1:
 		$".".light_energy -= 0.0001
-	
+	#$".".rotation_degrees = Vector3(-45,90,0)
+	#$".".light_energy = 1.5
 
-func _on_time_system_day_reset() -> void:
+
+func ResetDay():
+	print("Reset")
+	day_manager.NewDay()
+	cur_state = DayState.DAY
 	$".".rotation_degrees = Vector3(-45,90,0)
-	$".".light_energy = 1.5
-	
+	$".".light_energy = 1.5	
