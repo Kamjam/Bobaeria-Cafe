@@ -42,9 +42,10 @@ func _physics_process(delta: float) -> void:
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 		
 		move_and_slide()
+		_player_animation()
+	else:
+		animator.play_idle()
 	
-	_player_animation()
-
 func _input(event):
 	if event.is_action_pressed("quit"):get_tree().quit()
 	
