@@ -72,4 +72,4 @@ func ResetDay():
 	print("Reset")
 	cur_state = DayState.DAY
 	$".".rotation_degrees = Vector3(-45,90,0)
-	$".".light_energy = 1.5	
+	$".".light_energy = 0.8	

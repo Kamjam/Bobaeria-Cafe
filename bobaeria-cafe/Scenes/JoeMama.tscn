@@ -1,33 +1,49 @@
 [gd_scene load_steps=44 format=3 uid="uid://s0y7ph8xpq0q"]
 
 [ext_resource type="PackedScene" uid="uid://7cmxluwvpp1r" path="res://Time/time_system.tscn" id="1_4divv"]
-[ext_resource type="PackedScene" path="res://Prefabs/Trash.tscn" id="1_dyfi0"]
-[ext_resource type="PackedScene" uid="uid://c0d3asfjghctc" path="res://Menus/controls_overlay.tscn" id="1_hu5c0"]
-[ext_resource type="PackedScene" uid="uid://hrhiwsr2ivwh" path="res://Time/Time GUI.tscn" id="2_5hg1t"]
+[ext_resource type="PackedScene" uid="uid://bg0l6trxtasyy" path="res://Prefabs/Trash.tscn" id="1_dyfi0"]
+[ext_resource type="PackedScene" uid="uid://c7cgcijvuyqhn" path="res://Time/Time GUI.tscn" id="2_5hg1t"]
 [ext_resource type="PackedScene" uid="uid://d0u83fayrvkma" path="res://Player/player.tscn" id="2_ruddo"]
 [ext_resource type="Texture2D" uid="uid://b46y5njumyqi3" path="res://icon.svg" id="3_872u7"]
 [ext_resource type="PackedScene" uid="uid://dup83nxucg4u2" path="res://Scenes/DrinkConstructorMenu.tscn" id="3_x6iix"]
 [ext_resource type="PackedScene" uid="uid://de2lrqxj3ma6v" path="res://Time/the_sun.tscn" id="4_5m0e6"]
-[ext_resource type="PackedScene" uid="uid://ccaw8hs5vu0ni" path="res://Menus/tutorial_overlay.tscn" id="4_h4ve6"]
 [ext_resource type="PackedScene" uid="uid://cgtxsrha2o255" path="res://Prefabs/Tea.tscn" id="4_pjios"]
 [ext_resource type="Script" path="res://JoeFolder/Scripts/TableManager.gd" id="5_6hxun"]
 [ext_resource type="Script" path="res://drink_menu_controller.gd" id="5_udj78"]
-[ext_resource type="PackedScene" uid="uid://dy52m3l240m12" path="res://Menus/recipie_book.tscn" id="6_74lpg"]
 [ext_resource type="Script" path="res://ScoreScripts/BubblePopping.gd" id="6_atcqm"]
+[ext_resource type="PackedScene" uid="uid://ceftpv5jeks6w" path="res://Ian_Art/kiosk.glb" id="6_vcgry"]
 [ext_resource type="Script" path="res://JoeFolder/Scripts/StudentSpawner.gd" id="6_vqcra"]
 [ext_resource type="PackedScene" uid="uid://dnyjcyjaajw3l" path="res://Ian_Art/table.glb" id="6_y86qm"]
 [ext_resource type="PackedScene" uid="uid://do5p4i335e27s" path="res://JoeFolder/student.tscn" id="7_esb7w"]
 [ext_resource type="Resource" uid="uid://bc4pt7uxm52as" path="res://DrinkResources/TestDrink.tres" id="7_ok7un"]
-[ext_resource type="PackedScene" path="res://JoeFolder/door_trigger.tscn" id="8_uugu6"]
+[ext_resource type="PackedScene" uid="uid://bc0flyw6we6xc" path="res://Ian_Art/restaurant.glb" id="7_rfn7o"]
+[ext_resource type="PackedScene" uid="uid://cspvqn1uy5npb" path="res://Ian_Art/blender.glb" id="8_78yk4"]
+[ext_resource type="PackedScene" uid="uid://8b7le07s2bwh" path="res://JoeFolder/door_trigger.tscn" id="8_uugu6"]
 [ext_resource type="Script" path="res://ScoreScripts/score_mannager.gd" id="14_g7g1d"]
 [ext_resource type="PackedScene" uid="uid://ckuvr458mwi4f" path="res://drink_spawner.tscn" id="15_q87gh"]
 [ext_resource type="Script" path="res://Boba/bubbled_drink_controller.gd" id="18_3w1qe"]
-[ext_resource type="PackedScene" path="res://drink_bubble.tscn" id="19_1qonx"]
+[ext_resource type="PackedScene" uid="uid://1p5nseud57au" path="res://drink_bubble.tscn" id="19_1qonx"]
 [ext_resource type="AudioStream" uid="uid://d2dl1wt6gslug" path="res://Sounds/Music/(no copyright music) lofi type beat 'Grinch's cafe shop' free vlog music  by Lofiru.mp3" id="20_rkofv"]
 [ext_resource type="PackedScene" uid="uid://daqcvp33bdhp7" path="res://Menus/day_over_screen.tscn" id="21_sd4mh"]
 [ext_resource type="PackedScene" path="res://JoeFolder/Fade.tscn" id="22_18evc"]
 [ext_resource type="Script" path="res://JoeFolder/Scripts/DayManger.gd" id="22_76nyx"]
 [ext_resource type="PackedScene" uid="uid://bmej1u0su7ojr" path="res://Ian_Art/chair.glb" id="24_6uach"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kvbx8"]
+sky_top_color = Color(0.78, 1, 0.923, 1)
+sky_horizon_color = Color(0.22732, 0.690888, 1, 1)
+
+[sub_resource type="Sky" id="Sky_u674q"]
+sky_material = SubResource("ProceduralSkyMaterial_kvbx8")
+
+[sub_resource type="Environment" id="Environment_dmqok"]
+background_mode = 2
+sky = SubResource("Sky_u674q")
+ambient_light_source = 2
+ambient_light_color = Color(0.768657, 0.649989, 0.552346, 1)
+ambient_light_sky_contribution = 0.25
+ambient_light_energy = 0.4
+ssao_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_qm2hx"]
 vertices = PackedVector3Array(16.6537, 0.0398855, -7.70873, 16.9037, 0.0398855, -7.20873, 50.1537, 0.0398855, -38.7087, -5.84631, 0.0398855, -7.70873, 1.15369, 0.0398855, -87.9587, -26.3463, 0.0398855, -60.4587, -6.34631, 0.0398855, -3.70873, -5.34631, 0.0398855, -3.95873, -5.34631, 0.0398855, -5.45873, -6.34631, 0.0398855, -5.70873, -6.34631, 0.0398855, -7.45873, -20.8463, 0.0398855, 31.2913, -5.84631, 0.0398855, 15.2913, -6.34631, 0.0398855, 15.0413, -69.5963, 0.0398855, -17.2087, 16.9037, 0.0398855, 9.79127, 15.9037, 0.0398855, 10.0413, 15.9037, 0.0398855, 11.5413, 16.9037, 0.0398855, 11.7913, 16.9037, 0.0398855, 14.7913, 73.9037, 0.0398855, 35.7913, 99.4037, 0.0398855, 10.2913, 15.4037, 4.78989, -6.45873, 15.9037, 4.53989, 9.04127, 15.9037, 4.78989, -6.70873, -5.34631, 4.78989, -6.70873, -4.09631, 0.289886, -3.70873, -2.09631, 0.289886, -3.95873, -2.34631, 0.289886, -5.45873, -1.59631, 0.289886, 5.29127, 1.15369, 0.289886, 5.29127, 3.65369, 0.289886, 5.29127, 6.90369, 0.289886, -3.95873, 1.40369, 0.289886, 7.04127, 3.40369, 0.289886, 7.04127, 6.65369, 0.289886, 5.54127, -4.09631, 0.289886, 7.04127, -1.84631, 0.289886, 7.04127, -1.34631, 1.78989, -5.45873, -1.34631, 1.78989, -4.95873, 6.40369, 1.78989, -4.95873, 6.40369, 1.78989, -5.45873, 12.6537, 0.289886, 1.54127, 14.6537, 0.289886, 1.29127, 14.6537, 0.289886, -0.458733, 12.4037, 0.289886, -0.708733, 6.65369, 0.289886, 7.04127, 12.4037, 0.289886, 7.04127, 12.4037, 0.289886, -3.20873, 14.6537, 0.289886, -3.45873, 14.6537, 0.289886, -5.45873, 7.40369, 0.289886, -5.45873, 7.40369, 0.289886, -4.20873, -5.34631, 0.789886, 14.2913, 14.6537, 0.789886, 14.2913, -4.84631, 0.789886, 14.0413, -5.34631, 0.789886, -2.95873, 13.4037, 3.53989, -2.45873, 13.4037, 3.53989, -1.45873, 14.4037, 3.53989, -1.45873, 14.4037, 3.53989, -2.45873, 13.6537, 0.289886, -2.20873, 13.6537, 0.289886, -1.70873, 14.1537, 0.289886, -1.70873, 14.1537, 0.289886, -2.20873, 13.6537, 1.78989, 2.29127, 13.6537, 1.78989, 3.29127, 14.6537, 1.78989, 3.29127, 14.6537, 1.78989, 2.29127, 13.6537, 1.78989, 4.54127, 13.6537, 1.78989, 5.54127, 14.4037, 1.78989, 5.54127, 14.4037, 1.78989, 4.54127, -0.846306, 1.78989, 6.54127, -0.846306, 1.78989, 8.04127, 0.403694, 1.78989, 8.04127, 0.403694, 1.78989, 6.54127, 4.40369, 1.78989, 6.54127, 4.40369, 1.78989, 8.04127, 5.65369, 1.78989, 8.04127, 5.65369, 1.78989, 6.54127, 13.4037, 1.78989, 6.79127, 13.4037, 1.78989, 7.54127, 14.4037, 1.78989, 7.54127, 14.4037, 1.78989, 6.79127, 3.40369, 0.289886, 8.79127, 1.15369, 0.289886, 9.04127, -1.59631, 0.289886, 9.04127, -4.09631, 0.289886, 13.0413, 5.15369, 0.289886, 13.0413, 5.15369, 0.289886, 9.04127, 14.6537, 0.289886, 11.7913, 14.6537, 0.289886, 9.79127, 6.65369, 0.289886, 8.79127, 12.6537, 0.289886, 8.54127, 14.6537, 0.289886, 8.54127, 14.6537, 0.289886, 13.0413, 16.6537, 0.0398855, 15.2913, 28.6537, 0.0398855, 81.0413)
@@ -51,18 +67,6 @@ albedo_color = Color(1, 0.47451, 0.478431, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5cmy4"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kvbx8"]
-sky_top_color = Color(1, 1, 1, 1)
-
-[sub_resource type="Sky" id="Sky_u674q"]
-sky_material = SubResource("ProceduralSkyMaterial_kvbx8")
-
-[sub_resource type="Environment" id="Environment_dmqok"]
-background_mode = 2
-sky = SubResource("Sky_u674q")
-ambient_light_source = 2
-ambient_light_energy = 0.5
-
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6b1m8"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_q83gp"]
@@ -72,29 +76,27 @@ ambient_light_energy = 0.5
 [sub_resource type="SphereMesh" id="SphereMesh_lwtrr"]
 
 [node name="Main2" type="Node3D"]
-process_mode = 1
 
 [node name="TimeSystem" parent="." node_paths=PackedStringArray("day_manager") instance=ExtResource("1_4divv")]
 day_manager = NodePath("../DayEndManager")
 
 [node name="Time GUI" parent="." instance=ExtResource("2_5hg1t")]
 
-[node name="Drink Constructor" parent="." instance=ExtResource("3_x6iix")]
-visible = true
-
-[node name="tutorial overlay" parent="." instance=ExtResource("4_h4ve6")]
-visible = false
-
-[node name="Esc Menu" parent="." instance=ExtResource("1_hu5c0")]
-visible = false
-
-[node name="Recipie Book" parent="." instance=ExtResource("6_74lpg")]
-visible = false
+[node name="Control" parent="." instance=ExtResource("3_x6iix")]
 
 [node name="THE SUN" parent="." node_paths=PackedStringArray("time_system") instance=ExtResource("4_5m0e6")]
-light_energy = 1.5
+light_color = Color(0.843184, 0.843184, 0.843184, 1)
+light_energy = 0.8
 shadow_enabled = true
+shadow_reverse_cull_face = true
+shadow_opacity = 0.9
+directional_shadow_mode = 0
+directional_shadow_blend_splits = true
+day_color = Color(0.892173, 0.847201, 0.709054, 1)
 time_system = NodePath("../TimeSystem")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dmqok")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(0.708774, 0, 0.708774, 0, 1.00236, 0, -0.708774, 0, 0.708774, -6.37445, 0, 1.08938)
@@ -102,41 +104,54 @@ navigation_mesh = SubResource("NavigationMesh_qm2hx")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="NavigationRegion3D"]
 transform = Transform3D(0, 0, -20, 0, 0.24, 0, 20, 0, 0, 5.27773, -0.198597, 3.73711)
+visible = false
 use_collision = true
 mesh = SubResource("BoxMesh_f162b")
 
 [node name="Floor" type="CSGMesh3D" parent="NavigationRegion3D"]
 transform = Transform3D(49.3907, 0, -35.6147, 0, 36.57, 0, 49.3907, 0, 35.6147, 14.9091, -0.251616, -3.45333)
+visible = false
+use_collision = true
+mesh = SubResource("PlaneMesh_ndn0t")
+material = SubResource("StandardMaterial3D_ivgd7")
+
+[node name="Floor2" type="CSGMesh3D" parent="NavigationRegion3D"]
+transform = Transform3D(175.219, 0, -158.939, 0, 36.57, 0, 175.219, 0, 158.939, 14.9091, -89.0587, -3.45333)
 use_collision = true
 mesh = SubResource("PlaneMesh_ndn0t")
 material = SubResource("StandardMaterial3D_ivgd7")
 
 [node name="TopWall" type="CSGMesh3D" parent="NavigationRegion3D"]
 transform = Transform3D(-4.37483e-08, 0, -21.9785, 0, 5.08463, 0, 1.00084, 0, -9.60709e-07, 5.26817, 1.7651, -6.68832)
+visible = false
 use_collision = true
 mesh = SubResource("BoxMesh_f162b")
 material = SubResource("StandardMaterial3D_pxpgt")
 
 [node name="LeftWall_short" type="CSGMesh3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, -2.28137e-07, 0, 5.27079, 0, 1.33118e-07, 0, 2.49198, 15.7422, 1.71312, 13.3899)
+visible = false
 use_collision = true
 mesh = SubResource("BoxMesh_f162b")
 material = SubResource("StandardMaterial3D_pxpgt")
 
 [node name="LeftWall_long" type="CSGMesh3D" parent="NavigationRegion3D"]
 transform = Transform3D(0.976453, 0, 1.43051e-06, 0, 5.14668, 0, -8.9407e-08, 0, 15.5785, 15.7646, 1.69949, 1.56159)
+visible = false
 use_collision = true
 mesh = SubResource("BoxMesh_f162b")
 material = SubResource("StandardMaterial3D_pxpgt")
 
 [node name="RightWall" type="CSGMesh3D" parent="NavigationRegion3D"]
 transform = Transform3D(0, 0, -20.3091, 0, 5.24795, 0, 0.995666, 0, 0, 5.31565, -2.3131, 14.185)
+visible = false
 use_collision = true
 mesh = SubResource("BoxMesh_f162b")
 material = SubResource("StandardMaterial3D_pxpgt")
 
 [node name="BottomWall" type="CSGMesh3D" parent="NavigationRegion3D"]
 transform = Transform3D(-1, 0, 0, 0, 5.27079, 0, -8.9407e-08, 0, -18.0291, -5.22015, -2.32472, 5.64467)
+visible = false
 use_collision = true
 mesh = SubResource("BoxMesh_f162b")
 material = SubResource("StandardMaterial3D_pxpgt")
@@ -152,16 +167,16 @@ visible = false
 mesh = SubResource("BoxMesh_5cmy4")
 
 [node name="Table9" type="StaticBody3D" parent="NavigationRegion3D" node_paths=PackedStringArray("_drink_constructor_node")]
-transform = Transform3D(0, 0, -1.7, 0, 4.99224, 0, 1.7, 0, 0, 13.9013, 0.75182, -1.87345)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.9013, 0.75182, -1.87345)
 collision_layer = 6
 script = ExtResource("5_udj78")
-_drink_constructor_node = NodePath("../../Drink Constructor")
+_drink_constructor_node = NodePath("../../Control")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Table9"]
 shape = SubResource("BoxShape3D_57gc4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Table9"]
-mesh = SubResource("BoxMesh_5cmy4")
+[node name="kiosk2" parent="NavigationRegion3D/Table9" instance=ExtResource("6_vcgry")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.98505e-09, 0.0773457, -0.864474)
 
 [node name="table2" parent="NavigationRegion3D" instance=ExtResource("6_y86qm")]
 transform = Transform3D(0.519894, 0, 0, 0, 0.997645, 0, 0, 0, 0.997648, 5.07834, -0.680382, 7.1366)
@@ -195,11 +210,11 @@ transform = Transform3D(0.000218749, -6.36103e-05, -1.7, 0.000190091, 1.7, -6.36
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Table6"]
 shape = SubResource("BoxShape3D_57gc4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Table6"]
-mesh = SubResource("BoxMesh_5cmy4")
-
 [node name="DrinkSpawnPoint" type="Node3D" parent="NavigationRegion3D/Table6"]
-transform = Transform3D(1, -1.81899e-11, 2.98023e-08, 3.63798e-12, 1, -3.63798e-12, -2.98023e-08, 3.63798e-12, 1, 8.65459e-05, 0.773498, -2.95639e-05)
+transform = Transform3D(0.999314, 1.46284e-06, 0.0370449, -1.30938e-06, 1, -4.16797e-06, -0.0370449, 4.11663e-06, 0.999314, 0.0407438, 0.773515, 0.586906)
+
+[node name="blender4" parent="NavigationRegion3D" instance=ExtResource("8_78yk4")]
+transform = Transform3D(0, 0, -0.85, 0, 0.85, 0, 0.85, 0, 0, 13.977, 0.771403, 2.80461)
 
 [node name="Table7" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(0, 0, -1.7, 0, 1.7, 0, 1.7, 0, 0, 14.0364, 0.532608, 4.95702)
@@ -207,11 +222,11 @@ transform = Transform3D(0, 0, -1.7, 0, 1.7, 0, 1.7, 0, 0, 14.0364, 0.532608, 4.9
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Table7"]
 shape = SubResource("BoxShape3D_57gc4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Table7"]
-mesh = SubResource("BoxMesh_5cmy4")
+[node name="blender3" parent="NavigationRegion3D/Table7" instance=ExtResource("8_78yk4")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.000751693, 0.140468, 0.0349407)
 
 [node name="DrinkSpawnPoint" type="Node3D" parent="NavigationRegion3D/Table7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.792233, 0)
+transform = Transform3D(0.999313, 0, 0.0370448, 0, 1, 0, -0.0370448, 0, 0.999313, 0.0416794, 0.792233, 0.539858)
 
 [node name="Table8" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(0, 0, -1.7, 0, 1.7, 0, 1.7, 0, 0, 13.977, 0.532608, 7.17143)
@@ -219,15 +234,19 @@ transform = Transform3D(0, 0, -1.7, 0, 1.7, 0, 1.7, 0, 0, 13.977, 0.532608, 7.17
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Table8"]
 shape = SubResource("BoxShape3D_57gc4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Table8"]
-mesh = SubResource("BoxMesh_5cmy4")
-
 [node name="DrinkSpawnPoint" type="Node3D" parent="NavigationRegion3D/Table8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.819812, 0)
+transform = Transform3D(0.999313, 0, 0.0370448, 0, 1, 0, -0.0370448, 0, 0.999313, 0.0420797, 0.819812, 0.49158)
+
+[node name="blender2" parent="NavigationRegion3D/Table8" instance=ExtResource("8_78yk4")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.140468, 0)
+
+[node name="restaurant" parent="NavigationRegion3D" instance=ExtResource("7_rfn7o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.31187, -0.0753088, 3.78837)
 
 [node name="Camera3D" type="Camera3D" parent="." groups=["Cam"]]
 transform = Transform3D(1, -2.10734e-08, 2.10734e-08, -1.77636e-15, 0.707107, 0.707107, -2.98023e-08, -0.707107, 0.707107, 0, 59.493, 59.531)
 fov = 16.9
+far = 100000.0
 script = ExtResource("6_atcqm")
 
 [node name="Player" parent="." instance=ExtResource("2_ruddo")]
@@ -238,9 +257,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.197159, 0.174203)
 visible = false
 billboard = 1
 texture = ExtResource("3_872u7")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_dmqok")
 
 [node name="Boundary" type="StaticBody3D" parent="."]
 
@@ -371,13 +387,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0776, 1.12142, 18.2188)
 mesh = SubResource("SphereMesh_lwtrr")
 
 [node name="DoorTrigger" parent="." instance=ExtResource("8_uugu6")]
-transform = Transform3D(-2.07137, 0, -2.07137, 0, 3.32412, 0, 2.07137, 0, -2.07137, 12.4042, 0.14535, -2.48874)
+transform = Transform3D(-2.07137, 0, -2.07137, 0, 3.32412, 0, 2.07137, 0, -2.07137, 12.1947, 0.14535, -2.93587)
 
 [node name="DoorTrigger2" parent="." instance=ExtResource("8_uugu6")]
-transform = Transform3D(2.13313, 0, 2.10944, 0, 3, 0, -2.10944, 0, 2.13313, -13.4307, 0.266522, 1.38014)
+transform = Transform3D(2.13313, 0, 2.10944, 0, 3, 0, -2.10944, 0, 2.13313, -13.5303, 0.266522, 1.5539)
 
 [node name="Trash" parent="." instance=ExtResource("1_dyfi0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.07418, 0.791596, -9.53582)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.07418, 0.921218, -9.53582)
 
 [node name="ScoreKeeper" type="Node3D" parent="." node_paths=PackedStringArray("text_satisfaction", "text_failed", "text_perfect")]
 transform = Transform3D(2.13313, 0, 2.10944, 0, 3, 0, -2.10944, 0, 2.13313, -13.4307, 0.266522, 1.38014)
@@ -389,7 +405,7 @@ text_perfect = NodePath("../Day Over Screen/HBoxContainer/VBoxContainer2/Tabs/Cu
 [node name="DrinkSpawner" parent="." node_paths=PackedStringArray("_drink_spawn_points", "_drink_constructor", "_player") instance=ExtResource("15_q87gh")]
 _drink_prefab = ExtResource("4_pjios")
 _drink_spawn_points = [NodePath("../NavigationRegion3D/Table8/DrinkSpawnPoint"), NodePath("../NavigationRegion3D/Table7/DrinkSpawnPoint"), NodePath("../NavigationRegion3D/Table6/DrinkSpawnPoint")]
-_drink_constructor = NodePath("../Drink Constructor")
+_drink_constructor = NodePath("../Control")
 _player = NodePath("../Player")
 
 [node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("_drink_spawner")]
@@ -410,24 +426,40 @@ parameters/looping = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.6467, -2.11255e-07)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.49731, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.79851, 1.35366)
+light_color = Color(1, 0.974, 0.88, 1)
 light_energy = 8.0
-spot_range = 20.0
+light_specular = 0.0
+shadow_enabled = true
+spot_range = 12.0
+spot_angle = 60.0
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.43675, 0.0410972, 1.50916e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.43675, 0.342301, 1.35366)
+light_color = Color(1, 0.974, 0.88, 1)
 light_energy = 8.0
-spot_range = 20.0
+light_specular = 0.0
+shadow_enabled = true
+spot_range = 12.0
+spot_angle = 60.0
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.210127, -7.15521, 7.9003e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.210127, -6.85401, 1.35367)
+light_color = Color(1, 0.974, 0.88, 1)
 light_energy = 8.0
-spot_range = 20.0
+light_specular = 0.0
+shadow_enabled = true
+spot_range = 12.0
+spot_angle = 60.0
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.13086, -1.01835, 2.01195e-06)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.13086, -0.717146, 1.35367)
+light_color = Color(1, 0.974, 0.88, 1)
 light_energy = 8.0
-spot_range = 20.0
+light_specular = 0.0
+shadow_enabled = true
+spot_range = 12.0
+spot_angle = 60.0
 
 [node name="Day Over Screen" parent="." instance=ExtResource("21_sd4mh")]
 

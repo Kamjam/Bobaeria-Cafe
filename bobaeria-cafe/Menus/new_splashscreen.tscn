@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://533n7x6ofymc"]
+[gd_scene load_steps=11 format=3 uid="uid://d02neijhnyxly"]
 
 [ext_resource type="Shader" path="res://Shaders/silly_circles.gdshader" id="1_l4dco"]
 [ext_resource type="Texture2D" uid="uid://c35jxau1pyw3y" path="res://Ian_Art/boba-intro.gif" id="3_nqy0p"]
 [ext_resource type="Script" path="res://Menus/splashscreen.gd" id="4_3l8no"]
 [ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="5_ja2pr"]
-[ext_resource type="Material" uid="uid://sajypig68e7q" path="res://Menus/text_woble.tres" id="6_4vltw"]
+[ext_resource type="Material" uid="uid://bqoj8csik42km" path="res://Menus/text_woble.tres" id="6_4vltw"]
 [ext_resource type="FontFile" uid="uid://dbsvhg7b3et03" path="res://Fonts/Spineless Normal.ttf" id="6_dqeep"]
 [ext_resource type="AudioStream" uid="uid://d3gtxe4rgav0l" path="res://Sounds/SFX/pop-91931.mp3" id="7_prvj3"]
 
