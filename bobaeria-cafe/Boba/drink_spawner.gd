@@ -1,6 +1,8 @@
 class_name DrinkSpawner
 extends Node
 
+@export var _drink_fall_speed: float = 1
+
 @export var _drink_prefab: PackedScene
 
 var _drink_spawn_dict: Dictionary = {}
@@ -81,7 +83,7 @@ func _return_drinks_to_spawn(delta: float):
 				
 				if drinks == _drink_spawn_dict[nodes]:
 					
-					drinks.global_position = lerp(drinks.global_position, nodes.global_position, .1 * delta)
+					drinks.global_position = lerp(drinks.global_position, nodes.global_position, _drink_fall_speed * delta)
 					
 					print("distance is: ", drinks.global_position.distance_to(nodes.global_position))
 					
