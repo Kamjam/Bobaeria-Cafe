@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://Menus/splashscreen.gd" id="1_1vqqd"]
 [ext_resource type="Shader" path="res://Shaders/silly_circles.gdshader" id="1_dkv2d"]
 [ext_resource type="Texture2D" uid="uid://bdbarplw6vcbu" path="res://Ian_Art/boba-world_bobaTea.png" id="2_2b8m8"]
-[ext_resource type="Material" uid="uid://4jrah7dlw45x" path="res://Menus/texture_rect_squish.tres" id="3_kxk3w"]
+[ext_resource type="Material" path="res://Menus/texture_rect_squish.tres" id="3_kxk3w"]
 [ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="3_u5itr"]
 [ext_resource type="StyleBox" uid="uid://d1l5ocquqr8ta" path="res://Styles/transparent-round-panel.tres" id="4_pwovl"]
 [ext_resource type="Script" path="res://Menus/squish_on_mouse.gd" id="4_suclo"]
-[ext_resource type="Material" uid="uid://sajypig68e7q" path="res://Menus/text_woble.tres" id="6_xcilc"]
+[ext_resource type="Material" uid="uid://bqoj8csik42km" path="res://Menus/text_woble.tres" id="6_xcilc"]
 [ext_resource type="AudioStream" uid="uid://d3gtxe4rgav0l" path="res://Sounds/SFX/pop-91931.mp3" id="7_ejocc"]
-[ext_resource type="LabelSettings" uid="uid://bn50j3psvjp4n" path="res://Styles/spineless_white_text.tres" id="7_xtpgg"]
+[ext_resource type="LabelSettings" path="res://Styles/spineless_white_text.tres" id="7_xtpgg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t8i62"]
 shader = ExtResource("1_dkv2d")

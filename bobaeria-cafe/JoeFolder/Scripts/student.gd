@@ -253,7 +253,7 @@ func Leave():
 	if instance:
 		instance.queue_free()
 		instance = null
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(15).timeout
 	manager.AddChair(chair)
 	
 	studentAnimator.play_left()
