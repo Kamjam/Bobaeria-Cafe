@@ -16,9 +16,9 @@
 [ext_resource type="Resource" uid="uid://bc4pt7uxm52as" path="res://DrinkResources/TestDrink.tres" id="7_ok7un"]
 [ext_resource type="PackedScene" uid="uid://8b7le07s2bwh" path="res://JoeFolder/door_trigger.tscn" id="8_uugu6"]
 [ext_resource type="Script" path="res://ScoreScripts/score_mannager.gd" id="14_g7g1d"]
-[ext_resource type="PackedScene" uid="uid://bf8vnwiy4om5x" path="res://drink_spawner.tscn" id="15_q87gh"]
+[ext_resource type="PackedScene" uid="uid://ckuvr458mwi4f" path="res://drink_spawner.tscn" id="15_q87gh"]
 [ext_resource type="Script" path="res://Boba/bubbled_drink_controller.gd" id="18_3w1qe"]
-[ext_resource type="PackedScene" uid="uid://brafkcj31svm" path="res://drink_bubble.tscn" id="19_1qonx"]
+[ext_resource type="PackedScene" uid="uid://1p5nseud57au" path="res://drink_bubble.tscn" id="19_1qonx"]
 [ext_resource type="AudioStream" uid="uid://d2dl1wt6gslug" path="res://Sounds/Music/(no copyright music) lofi type beat 'Grinch's cafe shop' free vlog music  by Lofiru.mp3" id="20_rkofv"]
 [ext_resource type="PackedScene" uid="uid://daqcvp33bdhp7" path="res://Menus/day_over_screen.tscn" id="21_sd4mh"]
 [ext_resource type="Script" path="res://JoeFolder/Scripts/DayManger.gd" id="22_76nyx"]
@@ -68,6 +68,7 @@ ambient_light_energy = 0.5
 [node name="Main" type="Node3D"]
 
 [node name="TimeSystem" parent="." node_paths=PackedStringArray("day_manager") instance=ExtResource("1_4divv")]
+ticks_per_sec = 2000
 day_manager = NodePath("../DayEndManager")
 
 [node name="Time GUI" parent="." instance=ExtResource("2_5hg1t")]
@@ -323,7 +324,7 @@ mesh = SubResource("SphereMesh_lwtrr")
 script = ExtResource("6_vqcra")
 student = ExtResource("7_esb7w")
 spawnPosition = NodePath(".")
-customerRate = 15.0
+customerRate = 2.0
 
 [node name="Exit" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0776, 1.12142, 18.2188)

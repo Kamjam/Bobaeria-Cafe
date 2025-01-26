@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://JoeFolder/Scripts/student.gd" id="1_b1qys"]
 [ext_resource type="PackedScene" uid="uid://dlpg46q2lkiwn" path="res://JoeFolder/thought_bubble.tscn" id="2_2msao"]
 [ext_resource type="Texture2D" uid="uid://b46y5njumyqi3" path="res://icon.svg" id="3_0bxu7"]
-[ext_resource type="PackedScene" uid="uid://xp5tfwyroe3x" path="res://Assets/animations/npcs/customer_walk_animator.tscn" id="4_lcv0p"]
+[ext_resource type="PackedScene" path="res://Assets/animations/npcs/customer_walk_animator.tscn" id="4_lcv0p"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6o55e"]
 
