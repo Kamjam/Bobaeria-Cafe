@@ -6,9 +6,10 @@ var pickedObject: bool = false
 var interactables: Array[Area3D] 
 var byTrashCan: bool = false
 var menuController: DrinkMenuController
-
+var canMove : bool = true
 var students: Array[CharacterBody3D]
 @export var currentDrink : bobaDrink
+signal AddScore(num : int)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -24,23 +25,23 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-	
-	move_and_slide()
+	if canMove:
+		move_and_slide()
 
 func _input(event):
 	if event.is_action_pressed("quit"):get_tree().quit()
 	
 	if event.is_action_pressed("interact") and interactables.size() > 0 and !pickedObject:
-		
+		currentDrink = interactables[0]._drink_resource
 		interactables[0].reparent(get_tree().current_scene)
 		pick_up_object(interactables[0])
 		
 		pickedObject = true
-		print("grabbed")
 	
 	elif event.is_action_pressed("interact") and pickedObject and students.size() > 0:
 		if students[0].hasDrink == false:
-			students[0].JudgeDrink(currentDrink)
+			var num = students[0].JudgeDrink(currentDrink)
+			AddScore.emit(num)
 			students.remove_at(0)
 			interactables[0].queue_free()
 			interactables.remove_at(0)
@@ -52,6 +53,7 @@ func _input(event):
 		print("trashed")
 	elif event.is_action_pressed("interact") and menuController != null:
 		menuController.enable_constructor_menu()
+		canMove = !canMove
 		print("menu opened")
 
 func pick_up_object(object):
@@ -59,16 +61,13 @@ func pick_up_object(object):
 	object.global_position = %CarryTeaMarker.global_position
 
 func _on_pickup_area_area_entered(area: Area3D) -> void:
-	
-	#This needs to be changed. currently the player can pick up anything with
-	#an area 3D which lets the player pick up the door.
-	interactables.append(area)
-	print("in area")
+	if area is Tea:
+		interactables.append(area)
 	
 
 func _on_pickup_area_area_exited(area: Area3D) -> void:
-	interactables.erase(area)
-	print("out area")
+	if area is Tea:
+		interactables.erase(area)
 	
 	
 
@@ -78,11 +77,9 @@ func _on_pickup_area_body_entered(body: Node3D) -> void:
 	
 	if body is ThisIsTrashCan:
 		byTrashCan = true
-		print("trash can")
 	
 	if body is DrinkMenuController:
 		menuController = body
-		print("menuController")
 
 func _on_pickup_area_body_exited(body: Node3D) -> void:
 	if body is ThisIsTrashCan:
@@ -92,3 +89,5 @@ func _on_pickup_area_body_exited(body: Node3D) -> void:
 		students.erase(body)
 	if body is DrinkMenuController:
 		menuController = null
+
+	

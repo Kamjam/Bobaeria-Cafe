@@ -304,10 +304,11 @@ script = ExtResource("9_2j1gy")
 _drink_constructor = NodePath("../..")
 
 [node name="CloseMenuButton" type="Button" parent="VBoxContainer" node_paths=PackedStringArray("_contorl_node")]
+process_mode = 4
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Close
+text = "E - Close
 "
 script = ExtResource("12_nhfb0")
 _contorl_node = NodePath("../..")
