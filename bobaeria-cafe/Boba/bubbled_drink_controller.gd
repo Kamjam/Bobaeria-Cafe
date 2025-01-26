@@ -25,7 +25,7 @@ func _bubble_new_drink(new_drink: Node3D):
 	new_drink.get_parent().add_child(bubble)
 	bubble.set_bubble_stats(_bubble_float_hight, _bubble_durration_time)
 	new_drink.reparent(bubble)
-	#bubble.add_drink_to_bubble(new_drink)
+	bubble.add_drink_to_bubble(new_drink)
 	bubble.bubble_popped.connect(_return_drink_to_spawner)
 
 func remove_drink_from_bubbled_drinks(removed_drink: Node3D):
@@ -38,6 +38,6 @@ func remove_drink_from_bubbled_drinks(removed_drink: Node3D):
 #func _process(delta: float) -> void:
 	#for
 
-func _return_drink_to_spawner(drink: Node3D):
-	_drink_spawner.add_drink_to_return_queue(drink)
-	print("Bro",drink)
+func _return_drink_to_spawner(drink: Node3D, global_position: Vector3):
+	print("drink to return: ", drink)
+	_drink_spawner.add_drink_to_return_queue(drink, global_position)

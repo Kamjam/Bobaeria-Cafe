@@ -1,0 +1,350 @@
+[gd_scene load_steps=10 format=3 uid="uid://ccaw8hs5vu0ni"]
+
+[ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="1_dah4w"]
+[ext_resource type="Script" path="res://Menus/tutorial-controls.gd" id="2_fkqxn"]
+[ext_resource type="LabelSettings" uid="uid://bxng2h6fp6edb" path="res://Styles/littleguy_white_text.tres" id="3_aq11s"]
+[ext_resource type="Material" uid="uid://sajypig68e7q" path="res://Menus/text_woble.tres" id="3_kvpkf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbhgc"]
+shader = ExtResource("1_dah4w")
+shader_parameter/lod = 5.0
+shader_parameter/mix_percentage = 0.3
+
+[sub_resource type="Animation" id="Animation_nov3i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2e123"]
+resource_name = "panel_fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8w4ov"]
+resource_name = "panel_fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w07kq"]
+_data = {
+"RESET": SubResource("Animation_nov3i"),
+"panel_fade_in": SubResource("Animation_2e123"),
+"panel_fade_out": SubResource("Animation_8w4ov")
+}
+
+[node name="tutorial overlay" type="CanvasLayer" node_paths=PackedStringArray("animator")]
+process_mode = 3
+script = ExtResource("2_fkqxn")
+animator = NodePath("blurShader/AnimationPlayer")
+
+[node name="blurShader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_kbhgc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="blurShader"]
+libraries = {
+"": SubResource("AnimationLibrary_w07kq")
+}
+
+[node name="BottomContainer" type="Control" parent="blurShader"]
+custom_minimum_size = Vector2(200, 130)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+offset_right = 200.0
+grow_vertical = 0
+
+[node name="TopContainer" type="Control" parent="blurShader"]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_bottom = 150.0
+grow_horizontal = 0
+
+[node name="Panel3" type="Panel" parent="blurShader/TopContainer"]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -75.0
+offset_right = 100.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/TopContainer/Panel3"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -56.5
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Header" type="HBoxContainer" parent="blurShader/TopContainer/Panel3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="menu label" type="Label" parent="blurShader/TopContainer/Panel3/VBoxContainer/Header"]
+material = ExtResource("3_kvpkf")
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "This is the Day and Time"
+label_settings = ExtResource("3_aq11s")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="KeysContainer" type="VBoxContainer" parent="blurShader/TopContainer/Panel3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="menu label" type="Label" parent="blurShader/TopContainer/Panel3/VBoxContainer/KeysContainer"]
+material = ExtResource("3_kvpkf")
+custom_minimum_size = Vector2(15, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Store Hours are 
+"
+label_settings = ExtResource("3_aq11s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="menu label2" type="Label" parent="blurShader/TopContainer/Panel3/VBoxContainer/KeysContainer"]
+material = ExtResource("3_kvpkf")
+custom_minimum_size = Vector2(15, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "11:00 AM - 8PM"
+label_settings = ExtResource("3_aq11s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MiddleContainer" type="Control" parent="blurShader"]
+custom_minimum_size = Vector2(200, 130)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -65.0
+offset_right = 100.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/MiddleContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.5
+offset_top = -139.5
+offset_right = 87.5
+offset_bottom = 139.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="blurShader/MiddleContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/MiddleContainer/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -50.0
+offset_right = 75.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ControlsHeader" type="HBoxContainer" parent="blurShader/MiddleContainer/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="menu label" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel/VBoxContainer/ControlsHeader"]
+custom_minimum_size = Vector2(150, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Close This Panel With:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="KeysContainer" type="GridContainer" parent="blurShader/MiddleContainer/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 15
+columns = 3
+
+[node name="menu label" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel/VBoxContainer/KeysContainer"]
+custom_minimum_size = Vector2(15, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="blurShader/MiddleContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/MiddleContainer/VBoxContainer/Panel2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -80.0
+offset_right = 43.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ControlsHeader" type="HBoxContainer" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="menu label" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer/ControlsHeader"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Controls: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeysContainer" type="GridContainer" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 15
+columns = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer/KeysContainer"]
+layout_mode = 2
+
+[node name="menu label" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer/KeysContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "W"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer/KeysContainer"]
+layout_mode = 2
+
+[node name="menu label2" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer/KeysContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="menu label3" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer/KeysContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="menu label4" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer/KeysContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControlsHeader2" type="HBoxContainer" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="hpLabel" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer/ControlsHeader2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Attack: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeysContainer2" type="GridContainer" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 10
+columns = 3
+
+[node name="hpLabel2" type="Label" parent="blurShader/MiddleContainer/VBoxContainer/Panel2/VBoxContainer/KeysContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Left Click/E"
+horizontal_alignment = 1
+vertical_alignment = 1
