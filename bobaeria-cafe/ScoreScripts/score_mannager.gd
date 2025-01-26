@@ -1,5 +1,6 @@
 extends Node
 
+
 @export var player_score: int
 @onready var scoreLabel = $"../UpgradeMenu/VBoxContainer/ScoreLabel"
 
