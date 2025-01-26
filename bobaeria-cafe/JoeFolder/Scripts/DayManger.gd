@@ -1,25 +1,29 @@
 extends  Node3D
 @onready var time_system = $"../TimeSystem"
-@onready var updgradeMenu = $"../UpgradeMenu"
-@onready var drinkMenu =  $"../NavigationRegion3D/Machine"
+@onready var dayOverMenu = $"../Day Over Screen"
+@onready var drinkMenu =  $"../NavigationRegion3D/Table9"
 @onready var theSun = $"../THE SUN"
+@export var ref : Node3D
+
 
 func _ready() -> void:
-	updgradeMenu.hide()
+	dayOverMenu.hide()
 	drinkMenu.SetFalse()
+	
+	
 
 func NewDay():
 	print("Recieved")
-	updgradeMenu.show()
+	dayOverMenu.show()
 	drinkMenu.SetFalse()
 	
 	
-
-
-func _on_start_new_day_button_down() -> void:
+func StartNewDay():
 	time_system.Unpause()
-	updgradeMenu.hide()
+	dayOverMenu.hide()
 	drinkMenu.SetFalse()
 	if theSun:
 		theSun.ResetDay()
+
+	
 	
