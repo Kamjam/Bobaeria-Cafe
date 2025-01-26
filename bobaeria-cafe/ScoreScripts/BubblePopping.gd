@@ -15,5 +15,6 @@ func ToCursor():
 	ray_query.to = to
 	var raycast_result = space.intersect_ray(ray_query)
 	if !raycast_result.is_empty():
-		if raycast_result.collider is PUTBUBBLECLASSHERE:
-			pass
+		if raycast_result.collider is DrinkBubble:
+			var bubble: DrinkBubble = raycast_result.collider
+			bubble.pop_bubble()
