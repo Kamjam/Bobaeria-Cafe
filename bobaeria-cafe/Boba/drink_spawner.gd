@@ -16,12 +16,14 @@ var _return_queue: Array[Node3D]
 
 @export var _player: Player
 
+var dayEnd
+
 signal drink_spawned(spawned_drink: Node3D)
 
 signal destroy_drink(drink: Node3D)
 
 func _ready() -> void:
-	
+	dayEnd = get_tree().get_first_node_in_group("DayEnd")
 	if _drink_constructor != null:
 		_drink_constructor.drink_created.connect(_spawn_drink)
 	
@@ -46,7 +48,8 @@ func _spawn_drink(drink_to_spawn: bobaDrink):
 			
 			_drink_spawn_dict[point] = spawned_tea
 			drink_spawned.emit(spawned_tea)
-			
+			if dayEnd:
+				dayEnd.SetMade()
 			_add_drink_to_destroy_queue(spawned_tea)
 			#stops looking for empty spawn point if one is found
 			return
@@ -97,7 +100,7 @@ func _return_drinks_to_spawn(delta: float):
 		
 			for drinks in _return_queue:
 				
-				if drinks == _drink_spawn_dict[nodes]:
+				if drinks == _drink_spawn_dict[nodes] and drinks != null:
 					
 					drinks.global_position = lerp(drinks.global_position, nodes.global_position, _drink_fall_speed * delta)
 					

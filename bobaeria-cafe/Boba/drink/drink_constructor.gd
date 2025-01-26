@@ -22,6 +22,7 @@ extends Node
 
 @export var _cooldown_timer: float
 var isShowing = false
+
 signal drink_created(created_drink: bobaDrink)
 
 func set_boba_level(set_level: int):
@@ -71,7 +72,7 @@ func construct_drink():
 		
 		for int in _number_of_drinks_to_construct:
 			drink_created.emit(created_drink)
-		
+			
 			print(created_drink.teaBase)
 			print(created_drink.bubbleLevel)
 			print(created_drink.flavor)
@@ -79,7 +80,7 @@ func construct_drink():
 			print(created_drink.sweetness)
 			print(created_drink.iceLevel)
 			print(created_drink.hasWhippedCream)
-			print()
+			
 		
 		#drink.new(boba, flavor, ice_level, topping, sweetness, teabase, whipped_cream)
 

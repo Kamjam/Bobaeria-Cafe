@@ -36,6 +36,7 @@ alignment = 1
 [node name="time of day" type="Sprite2D" parent="Control/VBoxContainer/DayCounter"]
 
 [node name="day" type="Label" parent="Control/VBoxContainer/DayCounter"]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "0"

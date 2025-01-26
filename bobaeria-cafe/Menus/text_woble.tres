@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://sajypig68e7q"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bqoj8csik42km"]
 
 [ext_resource type="Shader" path="res://Shaders/sockpop_2d_woble.gdshader" id="1_iklxf"]
 

@@ -12,6 +12,8 @@ var students: Array[CharacterBody3D]
 @export var currentDrink : bobaDrink
 signal AddScore(num : int)
 signal DrinkPickedUp(drink: Node3D)
+@onready var dayEnd = $"../DayEndManager"
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -43,6 +45,7 @@ func _input(event):
 	
 	elif event.is_action_pressed("interact") and pickedObject and students.size() > 0:
 		if students[0].hasOrder and students[0].hasDrink == false:
+			dayEnd.SetGiven()
 			var num = students[0].JudgeDrink(currentDrink)
 			AddScore.emit(num)
 			students.remove_at(0)
@@ -89,5 +92,5 @@ func _on_pickup_area_body_exited(body: Node3D) -> void:
 		students.erase(body)
 	if body is DrinkMenuController:
 		menuController = null
-
+	
 	
