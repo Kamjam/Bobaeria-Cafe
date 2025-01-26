@@ -40,7 +40,6 @@ func _process(delta: float) -> void:
 			position.y += _bubble_float_speed * delta
 
 func pop_bubble():
-	
 	remove_child(_drink)
 	bubble_popped.emit(_drink)
-	self.queue_free()
+	#self.queue_free()

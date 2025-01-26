@@ -29,4 +29,4 @@ func SpawnStudent():
 		
 func _on_time_system_updated(date_time:DateTime):
 	time = date_time.hours
-	print(time)
+	

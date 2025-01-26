@@ -24,8 +24,8 @@ func _ready() -> void:
 		_drink_spawn_dict[points] = null
 
 func _process(delta: float) -> void:
-	_return_drinks_to_spawn()
-
+	#_return_drinks_to_spawn()
+	pass
 func _spawn_drink(drink_to_spawn: bobaDrink):
 	
 	for point in _drink_spawn_points:
@@ -53,12 +53,13 @@ func _add_drink_to_destroy_queue(added_drink: Node3D):
 			destroy_drink.emit(added_drink) 
 
 func add_drink_to_return_queue(drink: Node3D):
-	
+	for nodes in _drink_spawn_points:
+		if _drink_spawn_dict[nodes] == drink:
+			nodes.add_child(drink)
 	_return_queue.append(drink)
-	pass
+	
 
 func _return_drinks_to_spawn():
-	
 	if _return_queue.size() > 0:
 		
 		for nodes in _drink_spawn_points:

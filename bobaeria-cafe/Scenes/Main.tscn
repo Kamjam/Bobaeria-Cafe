@@ -1,5 +1,9 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [gd_scene load_steps=36 format=3 uid="uid://cgi74d48wt8qo"]
+=======
+[gd_scene load_steps=35 format=3 uid="uid://cgi74d48wt8qo"]
+>>>>>>> Stashed changes
 =======
 [gd_scene load_steps=35 format=3 uid="uid://cgi74d48wt8qo"]
 >>>>>>> Stashed changes
@@ -23,9 +27,12 @@
 [ext_resource type="PackedScene" uid="uid://cgtxsrha2o255" path="res://Prefabs/Tea.tscn" id="16_2kvcp"]
 [ext_resource type="AudioStream" uid="uid://d2dl1wt6gslug" path="res://Sounds/Music/(no copyright music) lofi type beat 'Grinch's cafe shop' free vlog music  by Lofiru.mp3" id="17_2ycdk"]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [ext_resource type="Script" path="res://Boba/bubbled_drink_controller.gd" id="18_efweb"]
 [ext_resource type="PackedScene" uid="uid://1p5nseud57au" path="res://drink_bubble.tscn" id="18_fdcos"]
 =======
+=======
+>>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://bdbarplw6vcbu" path="res://Ian_Art/boba-world_bobaTea.png" id="18_6yuoq"]
 [ext_resource type="Script" path="res://JoeFolder/Scripts/DayManger.gd" id="18_npe31"]
 >>>>>>> Stashed changes
@@ -75,7 +82,12 @@ ambient_light_energy = 0.5
 [node name="Main" type="Node3D"]
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [node name="TimeSystem" parent="." instance=ExtResource("1_k1bah")]
+=======
+[node name="TimeSystem" parent="." node_paths=PackedStringArray("day_manager") instance=ExtResource("1_k1bah")]
+day_manager = NodePath("../Day Manager")
+>>>>>>> Stashed changes
 =======
 [node name="TimeSystem" parent="." node_paths=PackedStringArray("day_manager") instance=ExtResource("1_k1bah")]
 day_manager = NodePath("../Day Manager")
@@ -418,6 +430,9 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 [node name="Lights" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.6467, -2.11255e-07)
@@ -448,5 +463,8 @@ spot_range = 20.0
 [node name="Day Manager" type="Node3D" parent="."]
 script = ExtResource("18_npe31")
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 [connection signal="AddScore" from="Player" to="ScoreKeeper" method="_on_player_add_score"]

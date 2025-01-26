@@ -40,3 +40,4 @@ func remove_drink_from_bubbled_drinks(removed_drink: Node3D):
 
 func _return_drink_to_spawner(drink: Node3D):
 	_drink_spawner.add_drink_to_return_queue(drink)
+	print("Bro",drink)
