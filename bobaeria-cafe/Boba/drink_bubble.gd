@@ -13,7 +13,7 @@ var _stats_set: bool = false
 
 var _current_hight: float
 
-signal bubble_popped(drink_node: Node3D)
+signal bubble_popped(drink_node: Node3D, bubble_pos: Vector3)
 
 func set_bubble_stats(popping_hight: float, time_till_bubble_pop:float):
 	
@@ -24,8 +24,8 @@ func set_bubble_stats(popping_hight: float, time_till_bubble_pop:float):
 	_stats_set = true
 
 func add_drink_to_bubble(drink: Node3D):
-	drink.reparent(drink)
-	drink.global_position = self.global_position
+	#drink.reparent(drink)
+	#drink.global_position = self.global_position
 	_drink = drink
 
 func _process(delta: float) -> void:
@@ -41,6 +41,9 @@ func _process(delta: float) -> void:
 
 func pop_bubble():
 	
+	print("bubble is popped")
 	remove_child(_drink)
-	bubble_popped.emit(_drink)
+	_drink.global_position = self.global_position
+	print("bubble is popped")
+	bubble_popped.emit(_drink, self.global_position)
 	self.queue_free()

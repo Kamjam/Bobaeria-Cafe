@@ -2,20 +2,20 @@
 
 [ext_resource type="Script" path="res://Boba/drink_bubble.gd" id="1_8qxqv"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thv6q"]
-transparency = 1
-albedo_color = Color(0, 1, 1, 0.215686)
-
-[sub_resource type="SphereMesh" id="SphereMesh_ak1oi"]
-material = SubResource("StandardMaterial3D_thv6q")
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_86yay"]
 
-[node name="DrinkBubble" type="MeshInstance3D"]
-mesh = SubResource("SphereMesh_ak1oi")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3dwr"]
+transparency = 1
+albedo_color = Color(0.121569, 1, 1, 0.176471)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3ngel"]
+material = SubResource("StandardMaterial3D_b3dwr")
+
+[node name="DrinkBubble" type="StaticBody3D"]
 script = ExtResource("1_8qxqv")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_86yay")
+
+[node name="StaticBody3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_3ngel")

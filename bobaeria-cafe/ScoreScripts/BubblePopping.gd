@@ -17,4 +17,6 @@ func ToCursor():
 	if !raycast_result.is_empty():
 		if raycast_result.collider is DrinkBubble:
 			var bubble: DrinkBubble = raycast_result.collider
+			print("found bubble: ", bubble)
+			print(bubble.name)
 			bubble.pop_bubble()

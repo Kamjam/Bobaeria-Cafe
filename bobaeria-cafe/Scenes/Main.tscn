@@ -350,6 +350,7 @@ _bubble_float_hight = 5.0
 _bubble_durration_time = 2.0
 _drink_bubble = ExtResource("18_fdcos")
 _drink_spawner = NodePath("../DrinkSpawner")
+_time_till_despawn_start = null
 
 [node name="MusicPlayer" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 12.4042, 0.14535, -2.48874)

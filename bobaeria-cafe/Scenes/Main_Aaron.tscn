@@ -70,7 +70,6 @@ ambient_light_energy = 0.5
 [node name="Time GUI" parent="." instance=ExtResource("2_x1djx")]
 
 [node name="Control" parent="." instance=ExtResource("3_fgi62")]
-visible = false
 
 [node name="THE SUN" parent="." node_paths=PackedStringArray("time_system") instance=ExtResource("4_g772c")]
 light_energy = 1.5
@@ -350,6 +349,7 @@ _bubble_float_hight = 5.0
 _bubble_durration_time = 2.0
 _drink_bubble = ExtResource("19_j47ib")
 _drink_spawner = NodePath("../DrinkSpawner")
+_time_till_despawn_start = null
 
 [node name="MusicPlayer" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 12.4042, 0.14535, -2.48874)
