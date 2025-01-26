@@ -1,41 +1,25 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 [gd_scene load_steps=36 format=3 uid="uid://cgi74d48wt8qo"]
-=======
-[gd_scene load_steps=35 format=3 uid="uid://cgi74d48wt8qo"]
->>>>>>> Stashed changes
-=======
-[gd_scene load_steps=35 format=3 uid="uid://cgi74d48wt8qo"]
->>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" uid="uid://7cmxluwvpp1r" path="res://Time/time_system.tscn" id="1_k1bah"]
 [ext_resource type="PackedScene" uid="uid://c7cgcijvuyqhn" path="res://Time/Time GUI.tscn" id="2_n8t0o"]
 [ext_resource type="PackedScene" uid="uid://dup83nxucg4u2" path="res://Scenes/DrinkConstructorMenu.tscn" id="3_4ss8n"]
 [ext_resource type="PackedScene" uid="uid://de2lrqxj3ma6v" path="res://Time/the_sun.tscn" id="4_08trf"]
 [ext_resource type="Script" path="res://drink_menu_controller.gd" id="5_7msft"]
+[ext_resource type="Script" path="res://ScoreScripts/BubblePopping.gd" id="6_8wpo2"]
 [ext_resource type="PackedScene" uid="uid://d0u83fayrvkma" path="res://Player/player.tscn" id="6_65oeg"]
-[ext_resource type="Script" path="res://ScoreScripts/BubblePopping.gd" id="6_gvcd3"]
 [ext_resource type="Resource" uid="uid://bc4pt7uxm52as" path="res://DrinkResources/TestDrink.tres" id="7_8onm5"]
 [ext_resource type="Texture2D" uid="uid://b46y5njumyqi3" path="res://icon.svg" id="8_2iiss"]
 [ext_resource type="Script" path="res://JoeFolder/Scripts/TableManager.gd" id="9_rhwpo"]
 [ext_resource type="Script" path="res://JoeFolder/Scripts/StudentSpawner.gd" id="10_kqeog"]
 [ext_resource type="PackedScene" uid="uid://do5p4i335e27s" path="res://JoeFolder/student.tscn" id="11_jmnrb"]
-[ext_resource type="PackedScene" path="res://JoeFolder/door_trigger.tscn" id="12_1tdl0"]
-[ext_resource type="PackedScene" path="res://Prefabs/Trash.tscn" id="13_c4xk5"]
+[ext_resource type="PackedScene" uid="uid://8b7le07s2bwh" path="res://JoeFolder/door_trigger.tscn" id="12_1tdl0"]
+[ext_resource type="PackedScene" uid="uid://bg0l6trxtasyy" path="res://Prefabs/Trash.tscn" id="13_c4xk5"]
 [ext_resource type="Script" path="res://ScoreScripts/score_mannager.gd" id="14_asaiu"]
-[ext_resource type="PackedScene" uid="uid://ckuvr458mwi4f" path="res://drink_spawner.tscn" id="15_0wdf1"]
+[ext_resource type="PackedScene" uid="uid://bf8vnwiy4om5x" path="res://drink_spawner.tscn" id="15_0wdf1"]
 [ext_resource type="PackedScene" uid="uid://cgtxsrha2o255" path="res://Prefabs/Tea.tscn" id="16_2kvcp"]
 [ext_resource type="AudioStream" uid="uid://d2dl1wt6gslug" path="res://Sounds/Music/(no copyright music) lofi type beat 'Grinch's cafe shop' free vlog music  by Lofiru.mp3" id="17_2ycdk"]
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-[ext_resource type="Script" path="res://Boba/bubbled_drink_controller.gd" id="18_efweb"]
-[ext_resource type="PackedScene" uid="uid://1p5nseud57au" path="res://drink_bubble.tscn" id="18_fdcos"]
-=======
-=======
->>>>>>> Stashed changes
-[ext_resource type="Texture2D" uid="uid://bdbarplw6vcbu" path="res://Ian_Art/boba-world_bobaTea.png" id="18_6yuoq"]
-[ext_resource type="Script" path="res://JoeFolder/Scripts/DayManger.gd" id="18_npe31"]
->>>>>>> Stashed changes
+[ext_resource type="Script" path="res://Boba/bubbled_drink_controller.gd" id="18_5wr35"]
+[ext_resource type="PackedScene" uid="uid://brafkcj31svm" path="res://drink_bubble.tscn" id="19_8fxcr"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_qm2hx"]
 vertices = PackedVector3Array(16.6537, 0.0398855, -7.70873, 16.9037, 0.0398855, -7.20873, 50.1537, 0.0398855, -38.7087, -5.8463, 0.0398855, -7.70873, 1.1537, 0.0398855, -87.9587, -26.3463, 0.0398855, -60.4587, -6.3463, 0.0398855, -3.70873, -5.3463, 0.0398855, -3.95873, -5.3463, 0.0398855, -5.45873, -6.3463, 0.0398855, -5.70873, -6.3463, 0.0398855, -7.45873, -20.8463, 0.0398855, 31.2913, -5.8463, 0.0398855, 15.2913, -6.3463, 0.0398855, 15.0413, -69.5963, 0.0398855, -17.2087, 16.9037, 0.0398855, 9.79127, 15.9037, 0.0398855, 10.0413, 15.9037, 0.0398855, 11.5413, 16.9037, 0.0398855, 11.7913, 16.9037, 0.0398855, 14.7913, 73.9037, 0.0398855, 35.7913, 99.4037, 0.0398855, 10.2913, 15.4037, 4.78989, -6.45873, 15.9037, 4.53989, 9.04127, 15.9037, 4.78989, -6.70873, -5.3463, 4.78989, -6.70873, -4.0963, 0.289886, -3.70873, -2.0963, 0.289886, -3.95873, -2.3463, 0.289886, -5.45873, -4.0963, 0.289886, 7.04127, -2.3463, 0.289886, 7.04127, -2.0963, 0.289886, 5.79127, 4.6537, 0.289886, -3.95873, 0.153702, 0.289886, 5.79127, 3.4037, 0.289886, 5.79127, 4.6537, 0.289886, 5.79127, 0.403702, 0.289886, 7.04127, 3.1537, 0.289886, 7.04127, -1.3463, 1.78989, -5.45873, -1.3463, 1.78989, -4.95873, 6.4037, 1.78989, -4.95873, 6.4037, 1.78989, -5.45873, 12.6537, 0.289886, 1.54127, 14.6537, 0.289886, 1.29127, 14.6537, 0.289886, -0.458733, 12.4037, 0.289886, -0.708733, 9.9037, 0.289886, -3.95873, 7.1537, 0.289886, -3.95873, 9.6537, 0.289886, -5.45873, 7.4037, 0.289886, -5.45873, 5.9037, 0.289886, 5.79127, 6.1537, 0.289886, 7.04127, 12.4037, 0.289886, 7.04127, 12.4037, 0.289886, -3.20873, 14.6537, 0.289886, -3.45873, 14.6537, 0.289886, -5.45873, 11.9037, 0.289886, -5.45873, 11.4037, 0.289886, -3.95873, -5.3463, 0.789886, 14.2913, 14.6537, 0.789886, 14.2913, -4.8463, 0.789886, 14.0413, -5.3463, 0.789886, -2.95873, 13.4037, 3.53989, -2.45873, 13.4037, 3.53989, -1.45873, 14.4037, 3.53989, -1.45873, 14.4037, 3.53989, -2.45873, 13.6537, 0.289886, -2.20873, 13.6537, 0.289886, -1.70873, 14.1537, 0.289886, -1.70873, 14.1537, 0.289886, -2.20873, 13.6537, 1.78989, 2.29127, 13.6537, 1.78989, 3.29127, 14.6537, 1.78989, 3.29127, 14.6537, 1.78989, 2.29127, 13.6537, 1.78989, 4.54127, 13.6537, 1.78989, 5.54127, 14.4037, 1.78989, 5.54127, 14.4037, 1.78989, 4.54127, -1.3463, 1.78989, 6.79127, -1.3463, 1.78989, 7.54127, -0.596298, 1.78989, 7.54127, -0.596298, 1.78989, 6.79127, 4.1537, 1.78989, 6.79127, 4.1537, 1.78989, 7.54127, 5.1537, 1.78989, 7.54127, 5.1537, 1.78989, 6.79127, 13.4037, 1.78989, 6.79127, 13.4037, 1.78989, 7.54127, 14.4037, 1.78989, 7.54127, 14.4037, 1.78989, 6.79127, -2.0963, 0.289886, 8.54127, -4.0963, 0.289886, 13.0413, 3.1537, 0.289886, 8.29127, 0.153702, 0.289886, 8.54127, 4.6537, 0.289886, 8.54127, 4.6537, 0.289886, 13.0413, 14.6537, 0.289886, 11.7913, 14.6537, 0.289886, 9.79127, 12.6537, 0.289886, 8.54127, 5.9037, 0.289886, 8.54127, 14.6537, 0.289886, 8.54127, 14.6537, 0.289886, 13.0413, 16.6537, 0.0398855, 15.2913, 28.6537, 0.0398855, 81.0413)
@@ -81,22 +65,11 @@ ambient_light_energy = 0.5
 
 [node name="Main" type="Node3D"]
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 [node name="TimeSystem" parent="." instance=ExtResource("1_k1bah")]
-=======
-[node name="TimeSystem" parent="." node_paths=PackedStringArray("day_manager") instance=ExtResource("1_k1bah")]
-day_manager = NodePath("../Day Manager")
->>>>>>> Stashed changes
-=======
-[node name="TimeSystem" parent="." node_paths=PackedStringArray("day_manager") instance=ExtResource("1_k1bah")]
-day_manager = NodePath("../Day Manager")
->>>>>>> Stashed changes
 
 [node name="Time GUI" parent="." instance=ExtResource("2_n8t0o")]
 
 [node name="Control" parent="." instance=ExtResource("3_4ss8n")]
-visible = false
 
 [node name="THE SUN" parent="." node_paths=PackedStringArray("time_system") instance=ExtResource("4_08trf")]
 light_energy = 1.5
@@ -226,7 +199,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.819812, 0)
 [node name="Camera3D" type="Camera3D" parent="." groups=["Cam"]]
 transform = Transform3D(1, -2.10734e-08, 2.10734e-08, -1.77636e-15, 0.707107, 0.707107, -2.98023e-08, -0.707107, 0.707107, 0, 59.493, 59.531)
 fov = 16.9
-script = ExtResource("6_gvcd3")
+script = ExtResource("6_8wpo2")
 
 [node name="Player" parent="." instance=ExtResource("6_65oeg")]
 currentDrink = ExtResource("7_8onm5")
@@ -370,11 +343,11 @@ _drink_prefab = ExtResource("16_2kvcp")
 _drink_spawn_points = [NodePath("../NavigationRegion3D/Table8/DrinkSpawnPoint"), NodePath("../NavigationRegion3D/Table7/DrinkSpawnPoint"), NodePath("../NavigationRegion3D/Table6/DrinkSpawnPoint")]
 _drink_constructor = NodePath("../Control")
 
-[node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("_drink_spawner")]
-script = ExtResource("18_efweb")
+[node name="BubbleControl" type="Node3D" parent="." node_paths=PackedStringArray("_drink_spawner")]
+script = ExtResource("18_5wr35")
 _bubble_float_hight = 5.0
 _bubble_durration_time = 2.0
-_drink_bubble = ExtResource("18_fdcos")
+_drink_bubble = ExtResource("19_8fxcr")
 _drink_spawner = NodePath("../DrinkSpawner")
 
 [node name="MusicPlayer" type="AudioStreamPlayer3D" parent="."]
@@ -383,57 +356,6 @@ stream = ExtResource("17_2ycdk")
 autoplay = true
 parameters/looping = true
 
-<<<<<<< Updated upstream
-=======
-[node name="UpgradeMenu" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="UpgradeMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("18_6yuoq")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ScoreLabel" type="Label" parent="UpgradeMenu/VBoxContainer"]
-layout_mode = 2
-text = "Score:"
-
-[node name="StartNewDay" type="Button" parent="UpgradeMenu/VBoxContainer"]
-layout_mode = 2
-text = "Start Next Day
-"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeMenu"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 [node name="Lights" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.6467, -2.11255e-07)
 
@@ -457,14 +379,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.13086, -1.01835, 2.01195e-0
 light_energy = 8.0
 spot_range = 20.0
 
-<<<<<<< Updated upstream
-[connection signal="day_reset" from="TimeSystem" to="THE SUN" method="_on_time_system_day_reset"]
-=======
-[node name="Day Manager" type="Node3D" parent="."]
-script = ExtResource("18_npe31")
-
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 [connection signal="AddScore" from="Player" to="ScoreKeeper" method="_on_player_add_score"]

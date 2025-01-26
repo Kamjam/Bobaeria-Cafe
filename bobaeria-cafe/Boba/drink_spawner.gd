@@ -24,8 +24,8 @@ func _ready() -> void:
 		_drink_spawn_dict[points] = null
 
 func _process(delta: float) -> void:
-	#_return_drinks_to_spawn()
-	pass
+	_return_drinks_to_spawn()
+	
 func _spawn_drink(drink_to_spawn: bobaDrink):
 	
 	for point in _drink_spawn_points:

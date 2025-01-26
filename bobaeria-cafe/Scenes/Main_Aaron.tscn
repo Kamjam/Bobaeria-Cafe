@@ -70,7 +70,6 @@ ambient_light_energy = 0.5
 [node name="Time GUI" parent="." instance=ExtResource("2_x1djx")]
 
 [node name="Control" parent="." instance=ExtResource("3_fgi62")]
-visible = false
 
 [node name="THE SUN" parent="." node_paths=PackedStringArray("time_system") instance=ExtResource("4_g772c")]
 light_energy = 1.5
