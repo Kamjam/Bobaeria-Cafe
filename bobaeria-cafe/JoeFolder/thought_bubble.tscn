@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlpg46q2lkiwn"]
 
-[ext_resource type="Texture2D" uid="uid://b2w7lbj1wthd" path="res://Assets/ThoughtBubble.png" id="1_evyrv"]
 [ext_resource type="Script" path="res://JoeFolder/thought_bubble.gd" id="1_i2xtq"]
+[ext_resource type="Texture2D" uid="uid://dd8n0exyklgpd" path="res://Assets/bubble.png" id="2_fu0vk"]
 
 [node name="ThoughtBubble" type="MeshInstance3D" node_paths=PackedStringArray("one", "two", "three")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.73374, 0)
@@ -12,11 +12,20 @@ one = NodePath("One")
 two = NodePath("Two")
 three = NodePath("Three")
 
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.315, 0, 0, 0, 0.315, 0, 0, 0, 0.315, 0, 1.01021, 0)
+layers = 512
+modulate = Color(1, 1, 1, 0.431373)
+billboard = 2
+render_priority = 10
+texture = ExtResource("2_fu0vk")
+region_rect = Rect2(0, 0, 750, 700)
+
 [node name="One" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85826, 0)
 layers = 512
 pixel_size = 0.015
-billboard = 1
+billboard = 2
 render_priority = 10
 outline_render_priority = 9
 text = "Sweet Green Tea"
@@ -27,7 +36,7 @@ autowrap_mode = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01527, 0)
 layers = 512
 pixel_size = 0.015
-billboard = 1
+billboard = 2
 render_priority = 10
 outline_render_priority = 9
 text = "Sweet Green Tea"
@@ -37,15 +46,8 @@ font_size = 26
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.184361, 0)
 layers = 512
 pixel_size = 0.015
-billboard = 1
+billboard = 2
 render_priority = 10
 outline_render_priority = 9
 text = "Sweet Green Tea"
 font_size = 26
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0145447, 0)
-billboard = 2
-texture = ExtResource("1_evyrv")
-region_enabled = true
-region_rect = Rect2(0, 0, 750, 700)

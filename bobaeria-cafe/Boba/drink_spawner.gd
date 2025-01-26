@@ -1,6 +1,6 @@
 class_name DrinkSpawner
 extends Node
-@export var _time_till_drink_despawn: float = 3
+@export var _time_till_drink_despawn: float = 4
 
 @export var _drink_fall_speed: float = 1
 
@@ -56,7 +56,7 @@ func _spawn_drink(drink_to_spawn: bobaDrink):
 
 func _add_drink_to_destroy_queue(added_drink: Node3D):
 	
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(_time_till_drink_despawn).timeout
 	
 	for nodes in _drink_spawn_points:
 		if _drink_spawn_dict[nodes] == added_drink:
