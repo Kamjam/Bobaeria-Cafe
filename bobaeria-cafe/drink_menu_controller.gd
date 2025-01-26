@@ -5,3 +5,6 @@ extends Node3D
 
 func enable_constructor_menu():
 	_drink_constructor_node.visible = !_drink_constructor_node.visible
+
+func SetFalse():
+	_drink_constructor_node.visible = false

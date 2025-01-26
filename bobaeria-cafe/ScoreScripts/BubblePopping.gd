@@ -14,7 +14,8 @@ func ToCursor():
 	ray_query.from = from
 	ray_query.to = to
 	var raycast_result = space.intersect_ray(ray_query)
-	if !raycast_result.is_empty():
+	if !raycast_result.is_empty() and Input.is_action_just_pressed("fire"):
+		print(raycast_result.collider)
 		if raycast_result.collider is DrinkBubble:
 			var bubble: DrinkBubble = raycast_result.collider
 			print("found bubble: ", bubble)
