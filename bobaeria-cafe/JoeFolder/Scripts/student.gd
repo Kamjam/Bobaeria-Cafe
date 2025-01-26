@@ -246,6 +246,9 @@ func Thinking():
 	Leave()
 
 func Leave():
+	
+	studentAnimator.play_left()
+	
 	destination = manager.GetExit()
 	if instance:
 		instance.queue_free()
