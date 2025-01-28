@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bwfi0rrbe2aph"]
+[gd_scene load_steps=12 format=3 uid="uid://bwfi0rrbe2aph"]
 
 [ext_resource type="PackedScene" uid="uid://cvmkj1lrggwni" path="res://Ian_Art/boba-world.glb" id="1_hbsug"]
 [ext_resource type="Script" path="res://Menus/display_tea_rotate.gd" id="1_pbdrn"]
-[ext_resource type="Material" uid="uid://crijbrjtu075w" path="res://Scenes/sockpop_sky.tres" id="2_wuw5j"]
+[ext_resource type="Shader" path="res://Shaders/sockpop_sky.gdshader" id="3_ys6ys"]
 [ext_resource type="Material" uid="uid://k0sg3s63ugtd" path="res://Prefabs/3d_obj_woble_material.tres" id="4_6jjlp"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_q0r0w"]
@@ -15,8 +15,17 @@ albedo_color = Color(0, 1, 1, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_8ak8l"]
 material = SubResource("StandardMaterial3D_6ne1x")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_340f7"]
+shader = ExtResource("3_ys6ys")
+shader_parameter/color_top = Color(0.94902, 0.682353, 0.6, 1)
+shader_parameter/color_horizon = Color(0.788235, 0.45098, 0.45098, 1)
+shader_parameter/color_bottom = Color(1, 0.721569, 0.47451, 1)
+shader_parameter/exponent_factor_top = 1.0
+shader_parameter/exponent_factor_bottom = 2.0
+shader_parameter/intensity_amp = 1.0
+
 [sub_resource type="Sky" id="Sky_x43lm"]
-sky_material = ExtResource("2_wuw5j")
+sky_material = SubResource("ShaderMaterial_340f7")
 
 [sub_resource type="Environment" id="Environment_wur43"]
 sky = SubResource("Sky_x43lm")

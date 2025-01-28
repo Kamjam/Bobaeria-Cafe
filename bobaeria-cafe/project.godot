@@ -41,6 +41,10 @@ up={
 
 TimeSys="*res://Time/time_system.tscn"
 
+[display]
+
+mouse_cursor/custom_image="res://Icons/Hand3_light.png"
+
 [input]
 
 left={

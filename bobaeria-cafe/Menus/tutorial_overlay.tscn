@@ -1,15 +1,28 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccaw8hs5vu0ni"]
+[gd_scene load_steps=14 format=3 uid="uid://ccaw8hs5vu0ni"]
 
-[ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="1_dah4w"]
 [ext_resource type="Script" path="res://Menus/tutorial-controls.gd" id="2_fkqxn"]
 [ext_resource type="LabelSettings" uid="uid://bxng2h6fp6edb" path="res://Styles/littleguy_white_text.tres" id="3_aq11s"]
 [ext_resource type="StyleBox" uid="uid://dfjpbvoidlf2p" path="res://Styles/round-panel-black.tres" id="3_h6tds"]
 [ext_resource type="Material" uid="uid://sajypig68e7q" path="res://Menus/text_woble.tres" id="3_kvpkf"]
+[ext_resource type="Texture2D" uid="uid://c4mg5mskgdwb0" path="res://Icons/Bobaeria-kiosk.png" id="6_41yxl"]
 [ext_resource type="LabelSettings" uid="uid://cv0kyqpg1hqot" path="res://Styles/tutorial_overlay_keywords.tres" id="6_jfhbn"]
 
+[sub_resource type="Shader" id="Shader_jbb3x"]
+code = "shader_type canvas_item;
+
+uniform float lod: hint_range(0.0, 5.0) = 5.0;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform float mix_percentage: hint_range(0.0, 1.0) = 0.3;
+
+void fragment(){
+	vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV, lod);
+	color = mix(color, vec4(0,0,0,1), mix_percentage);
+	COLOR = color;
+}"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kbhgc"]
-shader = ExtResource("1_dah4w")
-shader_parameter/lod = 5.0
+shader = SubResource("Shader_jbb3x")
+shader_parameter/lod = 2.5
 shader_parameter/mix_percentage = 0.3
 
 [sub_resource type="Animation" id="Animation_nov3i"]
@@ -64,6 +77,18 @@ _data = {
 "panel_fade_out": SubResource("Animation_8w4ov")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ride"]
+bg_color = Color(0.109804, 0.109804, 0.109804, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [node name="tutorial overlay" type="CanvasLayer" node_paths=PackedStringArray("animator")]
 process_mode = 3
 script = ExtResource("2_fkqxn")
@@ -81,151 +106,6 @@ grow_vertical = 2
 libraries = {
 "": SubResource("AnimationLibrary_w07kq")
 }
-
-[node name="BottomContainer" type="Control" parent="blurShader"]
-custom_minimum_size = Vector2(200, 130)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -221.0
-offset_top = -130.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Panel3" type="Panel" parent="blurShader/BottomContainer"]
-custom_minimum_size = Vector2(225, 125)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -225.0
-offset_top = -125.0
-grow_horizontal = 0
-grow_vertical = 0
-size_flags_horizontal = 4
-theme_override_styles/panel = ExtResource("3_h6tds")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/BottomContainer/Panel3"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -56.5
-offset_bottom = 56.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="Header" type="HBoxContainer" parent="blurShader/BottomContainer/Panel3/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="menu label" type="Label" parent="blurShader/BottomContainer/Panel3/VBoxContainer/Header"]
-material = ExtResource("3_kvpkf")
-custom_minimum_size = Vector2(200, 45)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Click Over here
-for a"
-label_settings = ExtResource("3_aq11s")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="KeysContainer" type="VBoxContainer" parent="blurShader/BottomContainer/Panel3/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="menu label2" type="Label" parent="blurShader/BottomContainer/Panel3/VBoxContainer/KeysContainer"]
-material = ExtResource("3_kvpkf")
-custom_minimum_size = Vector2(15, 25)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Surprise"
-label_settings = ExtResource("6_jfhbn")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BottomContainer2" type="Control" parent="blurShader"]
-custom_minimum_size = Vector2(200, 130)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -352.0
-offset_top = -24.0
-offset_right = -131.0
-offset_bottom = 106.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="Panel3" type="Panel" parent="blurShader/BottomContainer2"]
-custom_minimum_size = Vector2(225, 145)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -225.0
-offset_top = -125.0
-grow_horizontal = 0
-grow_vertical = 0
-size_flags_horizontal = 4
-theme_override_styles/panel = ExtResource("3_h6tds")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/BottomContainer2/Panel3"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -56.5
-offset_bottom = 56.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="Header" type="HBoxContainer" parent="blurShader/BottomContainer2/Panel3/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="menu label" type="Label" parent="blurShader/BottomContainer2/Panel3/VBoxContainer/Header"]
-material = ExtResource("3_kvpkf")
-custom_minimum_size = Vector2(200, 45)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Beware your neglected drinks may"
-label_settings = ExtResource("3_aq11s")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="KeysContainer" type="VBoxContainer" parent="blurShader/BottomContainer2/Panel3/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="menu label2" type="Label" parent="blurShader/BottomContainer2/Panel3/VBoxContainer/KeysContainer"]
-material = ExtResource("3_kvpkf")
-custom_minimum_size = Vector2(15, 25)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Bubble Away"
-label_settings = ExtResource("6_jfhbn")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="TopContainer" type="Control" parent="blurShader"]
 custom_minimum_size = Vector2(250, 150)
@@ -245,10 +125,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -75.0
-offset_right = 100.0
-offset_bottom = 75.0
+offset_left = -135.0
+offset_top = -70.0
+offset_right = 120.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -303,50 +183,55 @@ material = ExtResource("3_kvpkf")
 custom_minimum_size = Vector2(15, 25)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "11:00 AM - 8PM"
+text = "11:00 AM - 7PM"
 label_settings = ExtResource("6_jfhbn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TopContainer2" type="Control" parent="blurShader"]
-custom_minimum_size = Vector2(250, 150)
+[node name="SideContainer" type="Control" parent="blurShader"]
+custom_minimum_size = Vector2(250, 450)
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
+anchors_preset = 0
+offset_right = 240.0
+offset_bottom = 400.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="blurShader/SideContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -220.0
+offset_right = 130.0
+offset_bottom = 234.0
+grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/TopContainer2"]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 250.0
-grow_vertical = 2
-theme_override_constants/separation = 25
-
-[node name="Panel4" type="Panel" parent="blurShader/TopContainer2/VBoxContainer"]
-custom_minimum_size = Vector2(250, 150)
+[node name="Panel4" type="Panel" parent="blurShader/SideContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = ExtResource("3_h6tds")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/TopContainer2/VBoxContainer/Panel4"]
+[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/SideContainer/HBoxContainer/Panel4"]
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -56.5
-offset_bottom = 56.5
+offset_left = -100.0
+offset_top = -78.5
+offset_right = 100.0
+offset_bottom = 78.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="KeysContainer" type="VBoxContainer" parent="blurShader/TopContainer2/VBoxContainer/Panel4/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="menu label" type="Label" parent="blurShader/TopContainer2/VBoxContainer/Panel4/VBoxContainer/KeysContainer"]
+[node name="menu label" type="Label" parent="blurShader/SideContainer/HBoxContainer/Panel4/VBoxContainer"]
 material = ExtResource("3_kvpkf")
 custom_minimum_size = Vector2(15, 25)
 layout_mode = 2
@@ -356,7 +241,11 @@ label_settings = ExtResource("3_aq11s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="menu label2" type="Label" parent="blurShader/TopContainer2/VBoxContainer/Panel4/VBoxContainer/KeysContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="blurShader/SideContainer/HBoxContainer/Panel4/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="menu label2" type="Label" parent="blurShader/SideContainer/HBoxContainer/Panel4/VBoxContainer/HBoxContainer"]
 material = ExtResource("3_kvpkf")
 custom_minimum_size = Vector2(15, 25)
 layout_mode = 2
@@ -366,14 +255,21 @@ label_settings = ExtResource("6_jfhbn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Header" type="HBoxContainer" parent="blurShader/TopContainer2/VBoxContainer/Panel4/VBoxContainer"]
+[node name="KisoskImg" type="TextureRect" parent="blurShader/SideContainer/HBoxContainer/Panel4/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("6_41yxl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Header" type="HBoxContainer" parent="blurShader/SideContainer/HBoxContainer/Panel4/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="menu label" type="Label" parent="blurShader/TopContainer2/VBoxContainer/Panel4/VBoxContainer/Header"]
+[node name="menu label" type="Label" parent="blurShader/SideContainer/HBoxContainer/Panel4/VBoxContainer/Header"]
 material = ExtResource("3_kvpkf")
-custom_minimum_size = Vector2(200, 45)
+custom_minimum_size = Vector2(230, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "To create drinks"
@@ -382,30 +278,33 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Panel3" type="Panel" parent="blurShader/TopContainer2/VBoxContainer"]
+[node name="Panel3" type="Panel" parent="blurShader/SideContainer/HBoxContainer"]
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = ExtResource("3_h6tds")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/TopContainer2/VBoxContainer/Panel3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/SideContainer/HBoxContainer/Panel3"]
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -56.5
-offset_bottom = 56.5
+offset_left = -101.0
+offset_top = -109.5
+offset_right = 101.0
+offset_bottom = 109.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="KeysContainer" type="VBoxContainer" parent="blurShader/TopContainer2/VBoxContainer/Panel3/VBoxContainer"]
+[node name="KeysContainer" type="VBoxContainer" parent="blurShader/SideContainer/HBoxContainer/Panel3/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="menu label" type="Label" parent="blurShader/TopContainer2/VBoxContainer/Panel3/VBoxContainer/KeysContainer"]
+[node name="menu label" type="Label" parent="blurShader/SideContainer/HBoxContainer/Panel3/VBoxContainer/KeysContainer"]
 material = ExtResource("3_kvpkf")
 custom_minimum_size = Vector2(15, 25)
 layout_mode = 2
@@ -415,7 +314,7 @@ label_settings = ExtResource("3_aq11s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="menu label2" type="Label" parent="blurShader/TopContainer2/VBoxContainer/Panel3/VBoxContainer/KeysContainer"]
+[node name="menu label2" type="Label" parent="blurShader/SideContainer/HBoxContainer/Panel3/VBoxContainer/KeysContainer"]
 material = ExtResource("3_kvpkf")
 custom_minimum_size = Vector2(15, 25)
 layout_mode = 2
@@ -425,12 +324,12 @@ label_settings = ExtResource("6_jfhbn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Header" type="HBoxContainer" parent="blurShader/TopContainer2/VBoxContainer/Panel3/VBoxContainer"]
+[node name="Header" type="HBoxContainer" parent="blurShader/SideContainer/HBoxContainer/Panel3/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="menu label" type="Label" parent="blurShader/TopContainer2/VBoxContainer/Panel3/VBoxContainer/Header"]
+[node name="menu label" type="Label" parent="blurShader/SideContainer/HBoxContainer/Panel3/VBoxContainer/Header"]
 material = ExtResource("3_kvpkf")
 custom_minimum_size = Vector2(200, 45)
 layout_mode = 2
@@ -442,17 +341,12 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="MiddleContainer" type="Control" parent="blurShader"]
-custom_minimum_size = Vector2(200, 130)
+custom_minimum_size = Vector2(245, 200)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 13
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -65.0
-offset_right = 100.0
-offset_bottom = 65.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -464,12 +358,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -87.5
-offset_top = -139.5
-offset_right = 87.5
-offset_bottom = 139.5
+offset_left = -125.0
+offset_top = -161.0
+offset_right = 125.0
+offset_bottom = 161.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 20
 
 [node name="Panel" type="Panel" parent="blurShader/MiddleContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 100)
@@ -531,7 +426,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(250, 200)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_styles/panel = ExtResource("3_h6tds")
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ride")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="blurShader/MiddleContainer/VBoxContainer/Panel2"]
 custom_minimum_size = Vector2(200, 0)
@@ -635,33 +530,130 @@ columns = 3
 material = ExtResource("3_kvpkf")
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Left Click/E"
+text = "E"
 label_settings = ExtResource("6_jfhbn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MiddleContainer2" type="Control" parent="blurShader"]
-custom_minimum_size = Vector2(200, 130)
+[node name="BottomContainer" type="Control" parent="blurShader"]
+custom_minimum_size = Vector2(225, 190)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -225.0
+offset_top = -190.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Panel3" type="Panel" parent="blurShader/BottomContainer"]
+custom_minimum_size = Vector2(225, 190)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -230.0
+offset_top = -195.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("3_h6tds")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/BottomContainer/Panel3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -81.5
+offset_right = 100.0
+offset_bottom = 81.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="menu label" type="Label" parent="blurShader/BottomContainer/Panel3/VBoxContainer"]
+material = ExtResource("3_kvpkf")
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "When You close this...."
+label_settings = ExtResource("3_aq11s")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="blurShader/BottomContainer/Panel3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="menu label2" type="Label" parent="blurShader/BottomContainer/Panel3/VBoxContainer/Header"]
+material = ExtResource("3_kvpkf")
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Click Over here
+for a"
+label_settings = ExtResource("3_aq11s")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="KeysContainer" type="VBoxContainer" parent="blurShader/BottomContainer/Panel3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="menu label2" type="Label" parent="blurShader/BottomContainer/Panel3/VBoxContainer/KeysContainer"]
+material = ExtResource("3_kvpkf")
+custom_minimum_size = Vector2(15, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Surprise"
+label_settings = ExtResource("6_jfhbn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FloatingContainer" type="Control" parent="blurShader"]
+custom_minimum_size = Vector2(180, 150)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -100.0
-offset_right = 152.0
-offset_bottom = 148.0
+offset_left = 131.0
+offset_top = 96.0
+offset_right = 311.0
+offset_bottom = 246.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 
-[node name="Panel5" type="Panel" parent="blurShader/MiddleContainer2"]
+[node name="Panel5" type="Panel" parent="blurShader/FloatingContainer"]
 custom_minimum_size = Vector2(175, 150)
-offset_left = 230.0
-offset_top = 75.0
-offset_right = 405.0
-offset_bottom = 225.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.5
+offset_top = -75.0
+offset_right = 87.5
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = ExtResource("3_h6tds")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/MiddleContainer2/Panel5"]
+[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/FloatingContainer/Panel5"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -677,11 +669,11 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="KeysContainer" type="VBoxContainer" parent="blurShader/MiddleContainer2/Panel5/VBoxContainer"]
+[node name="KeysContainer" type="VBoxContainer" parent="blurShader/FloatingContainer/Panel5/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="menu label2" type="Label" parent="blurShader/MiddleContainer2/Panel5/VBoxContainer/KeysContainer"]
+[node name="menu label2" type="Label" parent="blurShader/FloatingContainer/Panel5/VBoxContainer/KeysContainer"]
 material = ExtResource("3_kvpkf")
 custom_minimum_size = Vector2(15, 25)
 layout_mode = 2
@@ -691,7 +683,7 @@ label_settings = ExtResource("6_jfhbn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="menu label" type="Label" parent="blurShader/MiddleContainer2/Panel5/VBoxContainer/KeysContainer"]
+[node name="menu label" type="Label" parent="blurShader/FloatingContainer/Panel5/VBoxContainer/KeysContainer"]
 material = ExtResource("3_kvpkf")
 custom_minimum_size = Vector2(15, 25)
 layout_mode = 2
@@ -701,12 +693,12 @@ label_settings = ExtResource("3_aq11s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Header" type="VBoxContainer" parent="blurShader/MiddleContainer2/Panel5/VBoxContainer"]
+[node name="Header" type="VBoxContainer" parent="blurShader/FloatingContainer/Panel5/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="menu label" type="Label" parent="blurShader/MiddleContainer2/Panel5/VBoxContainer/Header"]
+[node name="menu label" type="Label" parent="blurShader/FloatingContainer/Panel5/VBoxContainer/Header"]
 material = ExtResource("3_kvpkf")
 custom_minimum_size = Vector2(200, 45)
 layout_mode = 2
@@ -716,3 +708,197 @@ label_settings = ExtResource("3_aq11s")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="FloatingContainer2" type="Control" parent="blurShader"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -335.0
+offset_top = -53.0
+offset_right = -114.0
+offset_bottom = 97.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="blurShader/FloatingContainer2"]
+layout_mode = 0
+offset_left = -30.0
+offset_right = 290.0
+offset_bottom = 145.0
+theme_override_constants/separation = 5
+
+[node name="Panel3" type="Panel" parent="blurShader/FloatingContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(225, 145)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("3_h6tds")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/FloatingContainer2/HBoxContainer/Panel3"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -63.5
+offset_right = -12.0
+offset_bottom = 61.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Header" type="HBoxContainer" parent="blurShader/FloatingContainer2/HBoxContainer/Panel3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="menu label" type="Label" parent="blurShader/FloatingContainer2/HBoxContainer/Panel3/VBoxContainer/Header"]
+material = ExtResource("3_kvpkf")
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Beware your neglected drinks may"
+label_settings = ExtResource("3_aq11s")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="KeysContainer" type="VBoxContainer" parent="blurShader/FloatingContainer2/HBoxContainer/Panel3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="menu label2" type="Label" parent="blurShader/FloatingContainer2/HBoxContainer/Panel3/VBoxContainer/KeysContainer"]
+material = ExtResource("3_kvpkf")
+custom_minimum_size = Vector2(15, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Bubble Away"
+label_settings = ExtResource("6_jfhbn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel4" type="Panel" parent="blurShader/FloatingContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("3_h6tds")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/FloatingContainer2/HBoxContainer/Panel4"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -56.5
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Header" type="HBoxContainer" parent="blurShader/FloatingContainer2/HBoxContainer/Panel4/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="menu label2" type="Label" parent="blurShader/FloatingContainer2/HBoxContainer/Panel4/VBoxContainer/Header"]
+material = ExtResource("3_kvpkf")
+custom_minimum_size = Vector2(15, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Click "
+label_settings = ExtResource("6_jfhbn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeysContainer" type="VBoxContainer" parent="blurShader/FloatingContainer2/HBoxContainer/Panel4/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="menu label" type="Label" parent="blurShader/FloatingContainer2/HBoxContainer/Panel4/VBoxContainer/KeysContainer"]
+material = ExtResource("3_kvpkf")
+custom_minimum_size = Vector2(75, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "To save them!"
+label_settings = ExtResource("3_aq11s")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="FloatingContainer3" type="Control" parent="blurShader"]
+custom_minimum_size = Vector2(255, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.0
+offset_top = 153.0
+offset_right = -233.0
+offset_bottom = 303.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel5" type="Panel" parent="blurShader/FloatingContainer3"]
+custom_minimum_size = Vector2(230, 145)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -70.0
+offset_right = 112.5
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("3_h6tds")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="blurShader/FloatingContainer3/Panel5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Header" type="HBoxContainer" parent="blurShader/FloatingContainer3/Panel5/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="menu label" type="Label" parent="blurShader/FloatingContainer3/Panel5/VBoxContainer/Header"]
+material = ExtResource("3_kvpkf")
+custom_minimum_size = Vector2(225, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Serve Drinks to your customers with "
+label_settings = ExtResource("3_aq11s")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="KeysContainer" type="VBoxContainer" parent="blurShader/FloatingContainer3/Panel5/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="menu label2" type="Label" parent="blurShader/FloatingContainer3/Panel5/VBoxContainer/KeysContainer"]
+material = ExtResource("3_kvpkf")
+custom_minimum_size = Vector2(15, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "E"
+label_settings = ExtResource("6_jfhbn")
+horizontal_alignment = 1
+vertical_alignment = 1
